@@ -168,15 +168,15 @@ Your feedback and contributions are invaluable! Feel free to open issues, submit
 <p align="center"><a href="#"><img src="https://img.shields.io/badge/Back%20to%20top--lightgrey?style=social" alt="Back to top" height="20"/></a></p>
 
 <a href = "https://github.com/walidbosso">
-  <img src = "border.gif" width="100%"/>
+  <img src = "light.gif" width="100%"/>
 </a>
 
 <a href = "https://github.com/walidbosso">
-  <img src = "ciber-coding.gif" width="100%"/>
+  <img src = "2070f812d6a581d5782c2df2f13165e8.gif" width="100%"/>
 </a>
 
 <a href = "https://github.com/walidbosso">
-  <img src = "border.gif" width="100%"/>
+  <img src = "light.gif" width="100%"/>
 </a>
 
 
