@@ -74,7 +74,7 @@ Before you begin, ensure you have the following installed:
 3. Set up the frontend
 
    ```bash
-   cd frontend
+   cd angular
    npm install
    ```
 
@@ -86,11 +86,6 @@ Before you begin, ensure you have the following installed:
 
    - Start the Spring Boot backend.
    - Start the Angular frontend.
-
-## Usage
-
-   - In progres.. 
-
 
 
 ## License
