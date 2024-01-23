@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import univ.iwa.model.AuthRequest;
+import univ.iwa.model.AuthResponse;
 import univ.iwa.model.UserInfo;
 import univ.iwa.service.JwtService;
 import univ.iwa.service.UserInfoService;
@@ -53,14 +55,15 @@ public class UserController {
     public String individuProfile() { return "Welcome to individu Profile"; } 
   
     @PostMapping("/generateToken")
-    public ResponseEntity<String> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<Object> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if (authentication.isAuthenticated()) {
             List<String> roles = authentication.getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.toList());
-            String token = jwtService.generateToken(authRequest.getUsername(), roles.get(0));
-            return ResponseEntity.ok("{\"accessToken\":\"" + token + "\",\"role\":\"" + roles.get(0) + "\"}");
+            String accessToken = jwtService.generateToken(authRequest.getUsername(), roles.get(0));
+            AuthResponse response = new AuthResponse(accessToken, roles.get(0));
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else {
             throw new UsernameNotFoundException("Invalid user request!");
         }
