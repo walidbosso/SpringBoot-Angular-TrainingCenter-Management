@@ -60,7 +60,7 @@ public class UserController {
                     .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.toList());
             String token = jwtService.generateToken(authRequest.getUsername(), roles.get(0));
-            return ResponseEntity.ok("{\"Token\":\"" + token + "\",\"role\":\"" + roles.get(0) + "\"}");
+            return ResponseEntity.ok("{\"accessToken\":\"" + token + "\",\"role\":\"" + roles.get(0) + "\"}");
         } else {
             throw new UsernameNotFoundException("Invalid user request!");
         }

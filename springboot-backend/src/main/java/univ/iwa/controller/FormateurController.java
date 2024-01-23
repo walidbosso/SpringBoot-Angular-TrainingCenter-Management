@@ -34,7 +34,7 @@ public class FormateurController {
 	return as.addFormateur(g);
 	}
 	
-	@PostMapping("Formateur/{id}/Formation/{id2}")
+	@PostMapping("Formateur/{idFormateur}/Formation/{idFormation}")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Formation addFormateurToFormation(@PathVariable Integer idFormateur, @RequestBody Formation m, @PathVariable Long idFormation) {
 		

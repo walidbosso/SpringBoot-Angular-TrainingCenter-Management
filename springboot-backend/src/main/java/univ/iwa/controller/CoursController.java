@@ -40,7 +40,7 @@ public class CoursController {
 
 }
 	
-	@PostMapping("Cours/post/{id}/Formation/{id2}")
+	@PostMapping("Cours/post/{idCours}/Formation/{idFormation}")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Formation addCoursToFormation(@PathVariable Long idCours, @RequestBody Formation m, @PathVariable Long idFormation) {
 		

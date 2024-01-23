@@ -33,7 +33,7 @@ public class EntrepriseController {
 	return as.addEntreprise(g);
 	}
 	
-	@PostMapping("Entreprise/{id}/Formation/{id2}")
+	@PostMapping("Entreprise/{idEntreprise}/Formation/{idFormation}")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Formation addEntrepriseToFormation(@PathVariable Long idEntreprise, @RequestBody Formation m, @PathVariable Long idFormation) {
 		
