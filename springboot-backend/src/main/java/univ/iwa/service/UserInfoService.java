@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder; 
 import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
 import univ.iwa.model.UserInfo;
 import univ.iwa.model.UserInfoDetails;
 import univ.iwa.repository.UserInfoRepository;
@@ -29,4 +30,49 @@ public class UserInfoService implements UserDetailsService {
 		repository.save(userInfo); 
 		return "User Added Successfully"; 
 	} 
+	
+	//CREATE 4 USERS AS SAMPLE
+	@PostConstruct
+	public String admin(){
+		UserInfo admin = new UserInfo();
+		admin.setId(1);
+		admin.setName("admin");
+		admin.setRoles("ROLE_ADMIN");
+		admin.setPassword(encoder.encode("1234"));
+		repository.save(admin);
+		return "admin added successfully";
+	}
+
+	@PostConstruct
+	public String assistant(){
+		UserInfo assistant = new UserInfo();
+		assistant.setId(2);
+		assistant.setName("assistant");
+		assistant.setPassword(encoder.encode("1234"));
+		assistant.setRoles("ROLE_ASSISTANT");
+		repository.save(assistant);
+		return "assistant added successfully";
+	}
+	
+	@PostConstruct
+	public String formateur(){
+		UserInfo formateur = new UserInfo();
+		formateur.setId(3);
+		formateur.setName("formateur");
+		formateur.setRoles("ROLE_FORMATEUR");
+		formateur.setPassword(encoder.encode("1234"));
+		repository.save(formateur);
+		return "formateur added successfully";
+	}
+
+	@PostConstruct
+	public String individu(){
+		UserInfo individu = new UserInfo();
+		individu.setId(4);
+		individu.setName("individu");
+		individu.setPassword(encoder.encode("1234"));
+		individu.setRoles("ROLE_INDIVIDU");
+		repository.save(individu);
+		return "individu added successfully";
+	}
 } 
