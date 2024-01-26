@@ -22,9 +22,10 @@ import univ.iwa.model.AuthResponse;
 import univ.iwa.model.UserInfo;
 import univ.iwa.service.JwtService;
 import univ.iwa.service.UserInfoService;
+
 @RestController
-@RequestMapping("/auth") 
-public class UserController { 
+@RequestMapping("/auth")
+public class UserController {
 	
     @Autowired UserInfoService service; 
     @Autowired JwtService jwtService; 

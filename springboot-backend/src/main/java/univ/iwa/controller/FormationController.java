@@ -1,7 +1,5 @@
 package univ.iwa.controller;
 
-
-
 import java.time.LocalDate;
 
 import java.util.List;
@@ -16,77 +14,68 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import univ.iwa.model.Cours;
 import univ.iwa.model.Formation;
 import univ.iwa.service.FormationService;
 
-
 @RestController
+@RequestMapping("/formation")
 public class FormationController {
 
 	@Autowired 
-	FormationService ms;
+	private FormationService formationService;
 	
-	@GetMapping("Formation/get")
-		public List<Formation> getAllFormations(){
-		return ms.getAllFormations();
+	@GetMapping("/get")
+	public List<Formation> getAllFormations(){
+		return formationService.getAllFormations();
 	}
 	
-	@GetMapping("Formation/get/{id}")
-		public Formation getFormationById(@PathVariable Long id) {
-		return ms.getFormationById(id); 
+	@GetMapping("/get/{id}")
+	public Formation getFormationById(@PathVariable Long id) {
+		return formationService.getFormationById(id); 
 	}
 	
-	@GetMapping("Formation/get/{id}/Cours")
-	public Cours getCoursByFormationId(@PathVariable Long id) {
-	return ms.getCoursByFormationId(id); 
-}
-//	@GetMapping("Formation/{id}/equipes")
-//	public List<Equipe> getEquipesByFormationId(@PathVariable Long id) {
-//		return ms.getEquipesByFormationId(id);
-//	
-//}
+	@PostMapping("/add")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	public Formation addFormation(@RequestBody Formation formation) {
+		return formationService.addFormation(formation);
+	}
 	
-	@GetMapping("Formation/ville/{ville}")
-	public List<Formation> findByVille(@PathVariable String ville) {
+	@PutMapping("/update")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+		public Formation updateFormation(@RequestBody Formation formation) {
+		return formationService.updateFormation(formation);
+	}
 	
-	    return ms.findByVille(ville);
-
-}
-
-	@GetMapping("Formation/date/{date}")
+	@DeleteMapping("/delete/{id}")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	public void deleteFormation(@PathVariable Long id) {
+		formationService.deleteFormation(id);
+	}
+	
+	/*
+	@DeleteMapping("Formation/delete")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	public List<Formation> deleteFormationsLessThanNow() {
+		return formationService.deleteFormationsLessThanNow();
+	}
+	
+	@GetMapping("formation/date/{date}")
 	public List<Formation> findByDateFormationquals(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-	
-	    return ms.findByDateFormationquals(date);
+	    return formationService.findByDateFormationquals(date);
 
-}
-	@PostMapping("Formation/post")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
-		public Formation addFormation(@RequestBody Formation s) {
-		return ms.addFormation(s);
-	}
-	
-	@PutMapping("Formation/put")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
-		public Formation updateFormation(@RequestBody Formation s) {
-		return ms.updateFormation(s);
 	}
 	
 	@DeleteMapping("Formation/delete/{id}")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
-		public void deleteFormation(@PathVariable Long id) {
-		ms.deleteFormation(id);
+	public void deleteFormation(@PathVariable Long id) {
+		formationService.deleteFormation(id);
 	}
-	
-	@DeleteMapping("Formation/delete")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
-	public List<Formation> deleteFormationsLessThanNow() {
-		return ms.deleteFormationsLessThanNow();
-}	
 	
 	public List<Formation> getAllFormations(int page, int size, String feild){
-		return ms.getAllFormations(page, size, feild);
+		return formationService.getAllFormations(page, size, feild);
 	}
+	*/
 }
