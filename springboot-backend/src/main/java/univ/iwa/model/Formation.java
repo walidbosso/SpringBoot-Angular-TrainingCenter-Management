@@ -1,6 +1,5 @@
 package univ.iwa.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,40 +18,37 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor
 public class Formation {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	private String nom;
+	private String categorie;
+	private String objectif;
+	private String description;
+	private double cout;
+	private Date  duree;
 	@Temporal(TemporalType.DATE)
-	private Date debut;
+	private Date dateDebut;
 	@Temporal(TemporalType.DATE)
-	private Date fin;
-	
-    private String description;
-    private String ville;
+	private Date dateFin;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "cours_id", nullable = false)
-    Cours cours;
+    private UserInfo formateur;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "formateur_id", nullable = false)
-    UserInfo formateur;
+    private Entreprise entreprise;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "entreprise_id", nullable = true)
-    Entreprise entreprise;
-    
     @ManyToMany
     @JoinTable(
-            name = "individus",
-            joinColumns = @JoinColumn(name = "formation_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_info_id")) 
-    private List<UserInfo> individus=new ArrayList<>();;
-
-    
-    
+        name = "individu_formation",
+        joinColumns = @JoinColumn(name = "formation_id"),
+        inverseJoinColumns = @JoinColumn(name = "individu_id")
+    )
+    private List<Individu> individus;
     
 }

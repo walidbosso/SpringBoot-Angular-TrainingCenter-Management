@@ -31,20 +31,16 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { 
 		http.authorizeHttpRequests((auth)->auth
 			.requestMatchers("/auth/welcome", "/auth/addNewUser", "/auth/generateToken", 
-					"/Cours/categorie/**", "/Cours/get/**", "/Formation/ville/**",
-					"/Formation/date/**","Formation/get/**").permitAll() 
+					"/Formation/date/**","formation/get/**").permitAll() 
 			.requestMatchers("/auth/assistant/**").authenticated() 
 			.requestMatchers("/auth/admin/**").authenticated() 	
 			.requestMatchers("/auth/formateur/**").authenticated() 
 			.requestMatchers("/auth/individu/**").authenticated() 
-			.requestMatchers("/Entreprise/**").authenticated() 
-			.requestMatchers("/Formateur/**").authenticated()
-			.requestMatchers("/Cours/delete/**").authenticated()
-			.requestMatchers("/Cours/put/**").authenticated()
-			.requestMatchers("/Cours/post/**").authenticated()
-			.requestMatchers("/Formation/delete/**").authenticated()
-			.requestMatchers("/Formation/put/**").authenticated()
-			.requestMatchers("/Formation/post/**").authenticated()
+			.requestMatchers("/entreprise/**").authenticated() 
+			.requestMatchers("/formateur/**").authenticated()
+			.requestMatchers("/formation/delete/**").authenticated()
+			.requestMatchers("/formation/put/**").authenticated()
+			.requestMatchers("/formation/post/**").authenticated()
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
 			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class) ;	

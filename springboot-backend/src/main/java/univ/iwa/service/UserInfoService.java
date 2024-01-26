@@ -64,7 +64,7 @@ public class UserInfoService implements UserDetailsService {
 		repository.save(formateur);
 		return "formateur added successfully";
 	}
-
+	/*
 	@PostConstruct
 	public String individu(){
 		UserInfo individu = new UserInfo();
@@ -75,4 +75,5 @@ public class UserInfoService implements UserDetailsService {
 		repository.save(individu);
 		return "individu added successfully";
 	}
+	*/
 } 
