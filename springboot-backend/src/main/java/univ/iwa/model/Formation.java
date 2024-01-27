@@ -30,17 +30,18 @@ public class Formation {
 	private String categorie;
 	private String objectif;
 	private String description;
+	private String  duree;
 	private double cout;
-	private Date  duree;
 	@Temporal(TemporalType.DATE)
 	private Date dateDebut;
 	@Temporal(TemporalType.DATE)
 	private Date dateFin;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne()
     private UserInfo formateur;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    
+    // cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    @ManyToOne()
     private Entreprise entreprise;
 
     @ManyToMany

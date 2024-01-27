@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import univ.iwa.model.Formation;
 import univ.iwa.repository.FormationRepository;
@@ -38,9 +39,18 @@ public class FormationService {
 		return formationRepository.save(formation);
 	}
 	
+	@Transactional
 	public void deleteFormation( Long id) {
-		formationRepository.deleteById(id);
+		Formation formation = formationRepository.findById(id).get();
+		// Remove the association between formation and individu
+		formation.getIndividus().forEach(individu -> 
+			individu.getFormations().remove(formation)
+		);
+		
+		// Delete the formation
+        formationRepository.deleteById(id);
 	}
+	
 	/*
 	//TACHE7	
     public List<Formation> findByDebut(Date date) {

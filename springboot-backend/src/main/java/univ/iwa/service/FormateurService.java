@@ -15,6 +15,7 @@ import univ.iwa.repository.FormationRepository;
 
 @Service
 public class FormateurService {
+	
 	@Autowired
 	private PasswordEncoder encoder;
 	
@@ -47,6 +48,18 @@ public class FormateurService {
 	}
 	
 	public void deleteFormateur( Integer id) {
+		UserInfo formateur = userInfoRepository.findById(id).get();
+		List<Formation> Formations = formationRepository.findByFormateur(formateur);
+		//lambda expression
+		Formations.forEach(formation -> {
+			formation.setFormateur(null);
+		});
+		
+		userInfoRepository.deleteById(id);
+	}
+	
+	/*
+	public void deleteFormateur( Integer id) {
 		List<Formation> Formations = getFormationsByFormateurId(id);
 		//lambda expression
 		Formations.forEach(formation -> {
@@ -63,7 +76,7 @@ public class FormateurService {
 	
 		//we pass that group 
 		return formationRepository.findByFormateur(formateur);
-	}
+	}*/
 	/*
 	//TACHE9
 	public Formation addFormateurToFormation( Integer idFormateur,  Formation f,  Long idFormation) {
