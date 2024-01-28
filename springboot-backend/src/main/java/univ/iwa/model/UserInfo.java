@@ -30,8 +30,8 @@ public class UserInfo {
 	//pour formateur
 	//separer par virgule, puis split etc
 	private String competences; 
-	//5stars sera calcule d'apre feedback
-	private int remarques;
+	//5 stars sera calcule d'apres feedback
+	private String remarques;
 	
 	// mappedBy refers to the field in the Formation class
 	// Relation between Formateur and Formation

@@ -26,7 +26,7 @@ public class EntrepriseController {
 	
 	@GetMapping("/get")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
-	List<Entreprise> getAllEntreprises(){
+	public List<Entreprise> getAllEntreprises(){
 		return entrepriseService.getAllEntreprises();
 	}
 	

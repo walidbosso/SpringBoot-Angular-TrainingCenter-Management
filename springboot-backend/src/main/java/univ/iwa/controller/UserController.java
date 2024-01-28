@@ -31,8 +31,10 @@ public class UserController {
     @Autowired JwtService jwtService; 
     @Autowired AuthenticationManager authenticationManager; 
     
-    @GetMapping("/welcome") 
-    public String welcome() {return "Welcome this endpoint is not secure";} 
+    @GetMapping("/home") 
+    public String welcome() {
+    	return "Welcome this endpoint is not secure";
+    } 
     
     @PostMapping("/addNewUser") 
     public String addNewUser(@RequestBody UserInfo userInfo) { 
@@ -41,20 +43,30 @@ public class UserController {
     
     @GetMapping("/assistant/assistantProfile") 
     @PreAuthorize("hasAuthority('ROLE_ASSISTANT')") 
-    public String userProfile() { return "Welcome to Assistant Profile"; } 
+    public String userProfile() {
+    	return "Welcome to Assistant Profile";
+    } 
   
     @GetMapping("/admin/adminProfile") 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')") 
-    public String adminProfile() { return "Welcome to Admin Profile"; } 
+    public String adminProfile() {
+    	return "Welcome to Admin Profile";
+    } 
     
     @GetMapping("/formateur/formateurProfile") 
     @PreAuthorize("hasAuthority('ROLE_FORMATEUR')") 
-    public String formateurProfile() { return "Welcome to formateur Profile"; } 
-  
+    public String formateurProfile() {
+    	return "Welcome to formateur Profile";
+    } 
+    
+    /*
     @GetMapping("/individu/individuProfile") 
     @PreAuthorize("hasAuthority('ROLE_INDIVIDU')") 
-    public String individuProfile() { return "Welcome to individu Profile"; } 
-  
+    public String individuProfile() {
+    	return "Welcome to individu Profile";
+    } 
+  	*/
+    
     @PostMapping("/generateToken")
     public ResponseEntity<Object> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));

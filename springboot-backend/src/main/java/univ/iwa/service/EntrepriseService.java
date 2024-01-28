@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import jakarta.persistence.EntityNotFoundException;
 import univ.iwa.model.Entreprise;
 import univ.iwa.model.Formation;
@@ -39,6 +38,18 @@ public class EntrepriseService {
 	}
 	
 	public void deleteEntreprise(Long id) {
+		Entreprise entreprise = entrepriseRepository.findById(id).get();
+		List<Formation> Formations = formationRepository.findByEntreprise(entreprise); 
+		//lambda expression
+		Formations.forEach(formation -> {
+			formation.setEntreprise(null);
+		});
+		
+		entrepriseRepository.deleteById(id);
+	}
+	
+	/*
+	public void deleteEntreprise(Long id) {
 		List<Formation> Formations = getFormationsByEntrepriseId(id);
 		//lambda expression
 		Formations.forEach(formation -> {
@@ -52,7 +63,7 @@ public class EntrepriseService {
 		Entreprise g = entrepriseRepository.findById(id).get();
 		//we pass that group 
 		return formationRepository.findByEntreprise(g); 
-	}
+	}*/
 	/*
 	public Formation addEntrepriseToFormation( Long idEntreprise,  Formation f,  Long idFormation) {
 		Entreprise e= entrepriseRepository.findById(idEntreprise)

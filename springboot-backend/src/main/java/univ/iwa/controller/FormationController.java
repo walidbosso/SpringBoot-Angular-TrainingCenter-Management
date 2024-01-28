@@ -45,7 +45,7 @@ public class FormationController {
 	
 	@PutMapping("/update")
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-		public Formation updateFormation(@RequestBody Formation formation) {
+	public Formation updateFormation(@RequestBody Formation formation) {
 		return formationService.updateFormation(formation);
 	}
 	

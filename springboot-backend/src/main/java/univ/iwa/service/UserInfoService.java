@@ -21,7 +21,7 @@ public class UserInfoService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { 
 		Optional<UserInfo> userDetail = repository.findByName(username); 
-		// Converting userDetail to UserDetails 
+		// Converting userDetail to UserDetails
 		return userDetail.map(UserInfoDetails::new) 
 				.orElseThrow(() -> new UsernameNotFoundException("User not found " + username)); 
 	} 
@@ -31,7 +31,7 @@ public class UserInfoService implements UserDetailsService {
 		return "User Added Successfully"; 
 	} 
 	
-	//CREATE 4 USERS AS SAMPLE
+	//CREATE 3 USERS AS SAMPLE
 	@PostConstruct
 	public String admin(){
 		UserInfo admin = new UserInfo();
@@ -64,16 +64,5 @@ public class UserInfoService implements UserDetailsService {
 		repository.save(formateur);
 		return "formateur added successfully";
 	}
-	/*
-	@PostConstruct
-	public String individu(){
-		UserInfo individu = new UserInfo();
-		individu.setId(4);
-		individu.setName("individu");
-		individu.setPassword(encoder.encode("1234"));
-		individu.setRoles("ROLE_INDIVIDU");
-		repository.save(individu);
-		return "individu added successfully";
-	}
-	*/
+	
 } 
