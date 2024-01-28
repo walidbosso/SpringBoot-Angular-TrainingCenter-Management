@@ -58,11 +58,15 @@ public class UserController {
     public String formateurProfile() {
     	return "Welcome to formateur Profile";
     } 
-  
+    
+    /*
     @GetMapping("/individu/individuProfile") 
     @PreAuthorize("hasAuthority('ROLE_INDIVIDU')") 
-    public String individuProfile() { return "Welcome to individu Profile"; } 
-  
+    public String individuProfile() {
+    	return "Welcome to individu Profile";
+    } 
+  	*/
+    
     @PostMapping("/generateToken")
     public ResponseEntity<Object> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));

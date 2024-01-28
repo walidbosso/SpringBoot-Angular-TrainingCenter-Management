@@ -30,7 +30,7 @@ public class UserInfoService implements UserDetailsService {
 		repository.save(userInfo); 
 		return "User Added Successfully"; 
 	} 
-	/**/
+	
 	//CREATE 3 USERS AS SAMPLE
 	@PostConstruct
 	public String admin(){

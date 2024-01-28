@@ -35,10 +35,11 @@ public class SecurityConfig {
 			.requestMatchers("/auth/assistant/**").authenticated() 
 			.requestMatchers("/auth/admin/**").authenticated() 	
 			.requestMatchers("/auth/formateur/**").authenticated() 
-			.requestMatchers("/auth/individu/**").authenticated() 
+//			.requestMatchers("/auth/individu/**").authenticated() 
 			.requestMatchers("/entreprise/**").authenticated() 
 			.requestMatchers("/formateur/**").authenticated()
 			.requestMatchers("/formation/**").authenticated()
+			.requestMatchers("/individu/**").authenticated()
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
 			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class) ;	

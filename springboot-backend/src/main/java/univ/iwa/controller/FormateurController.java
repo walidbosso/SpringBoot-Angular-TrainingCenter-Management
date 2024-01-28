@@ -26,7 +26,7 @@ public class FormateurController {
 	
 	@GetMapping("/get")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
-	List<UserInfo> getAllFormateurs(){
+	public List<UserInfo> getAllFormateurs(){
 		return formateurService.getAllFormateurs();
 	}
 	
