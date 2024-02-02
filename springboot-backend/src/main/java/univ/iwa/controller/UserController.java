@@ -11,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,7 @@ import univ.iwa.service.JwtService;
 import univ.iwa.service.UserInfoService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/auth")
 public class UserController {
 	
@@ -66,6 +68,10 @@ public class UserController {
     	return "Welcome to individu Profile";
     } 
   	*/
+    
+    //Spring Security handles the authentication process. 
+    //The authenticationManager.authenticate method attempts to authenticate the user based on the provided credentials.
+    //If successful, the user is considered authenticated.
     
     @PostMapping("/generateToken")
     public ResponseEntity<Object> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
