@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Formations',  icon: 'dashboard', class: '' },
     { path: '/list-formator', title: 'List - Formator',  icon:'content_paste', class: '' },
     { path: '/table-list', title: 'List - Individu',  icon:'content_paste', class: '' },
-    { path: '/list-Entreprise', title: 'List - Entreprise',  icon:'list', class: '' },
+    { path: '/entreprise/get', title: 'Entreprise',  icon:'list', class: '' },
     { path: '/calendar', title: 'Calendar',  icon:'event', class: '' },
     { path: '/logout', title: 'Logout',  icon:'logout', class: 'active-pro' },
 ];

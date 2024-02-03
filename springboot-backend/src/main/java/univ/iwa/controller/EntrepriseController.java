@@ -27,31 +27,31 @@ public class EntrepriseController {
 	private EntrepriseService entrepriseService;
 	
 	@GetMapping("/get")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public List<Entreprise> getAllEntreprises(){
 		return entrepriseService.getAllEntreprises();
 	}
 	
 	@GetMapping("/get/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Entreprise getEntrepriseById(@PathVariable Long id) {
 		return entrepriseService.getEntrepriseById(id);
 	}
 		
 	@PostMapping("/add")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Entreprise addEntreprise(@RequestBody Entreprise entreprise) {
 		return entrepriseService.addEntreprise(entreprise);
 	}
 	
 	@PutMapping("/update")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Entreprise updateEntreprise(@RequestBody Entreprise entreprise) {
 		return entrepriseService.updateEntreprise(entreprise);
 	}
 	
 	@DeleteMapping("delete/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public void deleteEntreprise(@PathVariable Long id) {
 		entrepriseService.deleteEntreprise(id);
 	}

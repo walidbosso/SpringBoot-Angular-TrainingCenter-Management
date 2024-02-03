@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Ajouter une entreprise</h4>
+                        <div class="card-header">
+                            <!-- if we know the link we type normally, if like delete a list we use [] -->
+                            <a  class="btn btn-outline-info float-right" routerLink="/entreprise/get">All Entreprises</a>
+                        </div></div>
+       
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+
+                    <!-- NOM -->
+                    <label for="nom">nom</label>
+                    <!-- ngModel same name in ts -->
+                    <input                     
+                    [(ngModel)]="nom"
+                    class="form-control"  
+                    type="text" name="nom" id="nom">
+                   
+                    <!-- ADDRESS -->
+                    <label for="address">address</label>
+
+                    <textarea         
+                    rows="4"            
+                    [(ngModel)]="address"
+                    class="form-control"  
+                    type="address" name="address" id="address"></textarea>
+
+                    <!-- tel -->
+
+                    <label for="tel">tel</label>
+                    <input                     
+                    [(ngModel)]="tel"
+                    class="form-control"  
+                    type="text" name="tel" id="tel">
+
+                    <!-- URL -->
+                    <label for="url">url</label>
+                    <input                     
+                    [(ngModel)]="url"
+                    class="form-control"  
+                    type="text" name="url" id="url">
+
+                    <!-- email -->
+                    <label for="email">email</label>
+                    <input                     
+                    [(ngModel)]="email"
+                    class="form-control"  
+                    type="text" name="email" id="email">
+                    
+                
+                    <button [disabled]="isSubmitting"
+                    (click)="addEntreprise()"
+                    type="button"
+                    class="btn btn-outline-primary mt-3">
+                    Submit   </button>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+</div> </div>
+
