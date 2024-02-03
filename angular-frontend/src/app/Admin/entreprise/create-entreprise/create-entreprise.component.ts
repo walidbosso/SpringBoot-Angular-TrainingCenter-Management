@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EntrepriseService } from '../entreprise.service';
 import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-entreprise',
@@ -14,14 +15,19 @@ export class CreateEntrepriseComponent {
   url: string='';
   email: string='';
   isSubmitting:boolean=false; //track button clicked or no, when user clicking multiple times
-
   constructor(public entrepriseService:EntrepriseService){}
+
+  // ngOnInit(): void {
+  //   this.myForm = this.formBuilder.group({ //FormGroup=formBuilder.group
+  //     nom: ['', Validators.required], // name required
+  //     email: ['', [Validators.required, Validators.email]] // email required, w syntaxe  (email) shih built-in ghi staemlom
+  //   })  
+  // }
   addEntreprise(){
-    
       this.isSubmitting=true;
       this.entrepriseService.addEntreprise({nom:this.nom, address:this.address,tel:this.tel, url:this.url,email:this.email})
       .then(response=>{
-        console.log(response);
+        console.log(response); 
         this.isSubmitting=false;
         Swal.fire({
           icon:'success',
