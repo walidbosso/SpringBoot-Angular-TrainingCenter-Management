@@ -6,6 +6,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { OneEntrepriseComponent } from './Admin/entreprise/one-entreprise/one-entreprise.component';
 import { CreateEntrepriseComponent } from './Admin/entreprise/create-entreprise/create-entreprise.component';
 import { EditEntrepriseComponent } from './Admin/entreprise/edit-entreprise/edit-entreprise.component';
+import { DashboardComponent } from './Admin/formation/dashboard/dashboard.component';
+import { OneFormationComponent } from './Admin/formation/one-formation/one-formation.component';
+import { EditFormationComponent } from './Admin/formation/edit-formation/edit-formation.component';
+import { CreateFormationComponent } from './Admin/formation/create-formation/create-formation.component';
+import { ListEntrepriseComponent } from './Admin/entreprise/list-entreprise/list-entreprise.component';
 
 const routes: Routes =[
   {
@@ -24,7 +29,9 @@ const routes: Routes =[
   {
     path:'home',
     loadChildren: ()=> import("./home/home.module").then(m=> m.HomeModule)
-  }
+  },
+ 
+
 ];
 
 @NgModule({

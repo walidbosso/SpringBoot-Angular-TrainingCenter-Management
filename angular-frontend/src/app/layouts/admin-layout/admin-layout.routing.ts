@@ -12,9 +12,6 @@ import { CreateFormationComponent } from 'app/Admin/formation/create-formation/c
 import { DateFormationComponent } from 'app/Admin/formation/date-formation/date-formation.component';
 import { CategoryFormationComponent } from 'app/Admin/formation/category-formation/category-formation.component';
 import { CalendarComponent } from 'app/Admin/calendar/calendar.component';
-
-
-
 import { Logout } from '../../Admin/logout/logout.component';
 import { AdminLayoutComponent } from './admin-layout.component';
 
@@ -33,6 +30,10 @@ export const AdminLayoutRoutes: Routes = [
             path: 'individu',
             loadChildren: ()=> import("../../Admin/Individu/individu.module").then(m=> m.IndividuModule)
         },
+        // {
+        //     path: 'formation',
+        //     loadChildren: ()=> import("../../Admin/formation/formation.module").then(m=> m.FormationModule)
+        // },
 
         // FORMATION
         { path: 'dashboard',      component: DashboardComponent },
@@ -40,8 +41,8 @@ export const AdminLayoutRoutes: Routes = [
         { path: 'formation/:id/details',      component: OneFormationComponent },
         { path: 'formation/:id/edit',      component: EditFormationComponent },
         { path: 'formation/create',      component: CreateFormationComponent },
-        // { path: 'formation',      component: DateFormationComponent },
-        // { path: 'formation',      component: CategoryFormationComponent },
+        { path: 'formation',      component: DateFormationComponent },
+        { path: 'formation',      component: CategoryFormationComponent },
 
 
         // ENTREPRISE
@@ -49,12 +50,11 @@ export const AdminLayoutRoutes: Routes = [
         { path: 'entreprise/get', component:ListEntrepriseComponent },
         { path: 'entreprise/create', component:CreateEntrepriseComponent },
         { path: 'entreprise/:id/edit', component:EditEntrepriseComponent},
-        { path: 'entreprise/:id/details', component:OneEntrepriseComponent},
+        { path: 'entreprise/:id/details', component:OneEntrepriseComponent}, 
 
     ],
   },
 
   
-
 
 ];

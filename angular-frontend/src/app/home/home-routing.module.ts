@@ -8,7 +8,7 @@ const routes: Routes = [
     path:'',
     component:HomeComponent,
     children:[
-      {path:'', component:CardHomeComponent}
+      {path:'', component:CardHomeComponent},
     ]
   },
   

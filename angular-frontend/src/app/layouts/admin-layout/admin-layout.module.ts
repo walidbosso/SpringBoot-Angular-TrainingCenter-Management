@@ -16,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { IndividuModule } from 'app/Admin/Individu/individu.module';
+import { EntrepriseModule } from 'app/Admin/entreprise/entreprise.module';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { IndividuModule } from 'app/Admin/Individu/individu.module';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    IndividuModule
+    IndividuModule,
+    EntrepriseModule
   ],
   declarations: [
     DashboardComponent,
@@ -37,6 +39,7 @@ import { IndividuModule } from 'app/Admin/Individu/individu.module';
     ListEntrepriseComponent,
     CalendarComponent,
     Logout,
+
   ]
 })
 

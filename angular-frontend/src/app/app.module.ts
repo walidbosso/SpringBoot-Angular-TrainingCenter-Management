@@ -22,7 +22,7 @@ import { EntrepriseModule } from './Admin/entreprise/entreprise.module';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    EntrepriseModule
+    // EntrepriseModule
   ],
   declarations: [
     AppComponent,
