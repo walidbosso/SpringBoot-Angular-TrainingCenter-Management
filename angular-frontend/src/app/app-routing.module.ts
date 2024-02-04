@@ -10,7 +10,7 @@ import { EditEntrepriseComponent } from './Admin/entreprise/edit-entreprise/edit
 const routes: Routes =[
   {
     path:'',
-    redirectTo: '/home',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {

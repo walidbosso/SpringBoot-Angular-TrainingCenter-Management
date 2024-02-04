@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../Admin/dashboard/dashboard.component';
 import { TableListFormatorComponent } from '../../Admin/list-formator/list-formator.component';
-import { TableListIndividuComponent } from '../../Admin/list-Idividu/list-Idividu.component';
 import { ListEntrepriseComponent } from '../../Admin/entreprise/list-Entreprise/list-Entreprise.component';
 import { CreateEntrepriseComponent } from 'app/Admin/entreprise/create-entreprise/create-entreprise.component';
 import { EditEntrepriseComponent } from 'app/Admin/entreprise/edit-entreprise/edit-entreprise.component';
@@ -26,7 +25,8 @@ export const AdminLayoutRoutes: Routes = [
         path: 'list-formator', component: TableListFormatorComponent,
       },
       {
-        path: 'table-list', component: TableListIndividuComponent,
+        path: 'individu',
+        loadChildren: ()=> import("../../Admin/Individu/individu.module").then(m=> m.IndividuModule)
       },
       {
         path: 'entreprise', redirectTo: 'entreprise/get', pathMatch: 'full'
