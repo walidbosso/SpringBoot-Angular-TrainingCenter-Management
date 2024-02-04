@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EntrepriseRoutingModule } from './entreprise-routing.module';
-import { ListEntrepriseComponent } from './list-entreprise/list-entreprise.component';
+import { ListEntrepriseComponent } from './list-Entreprise/list-Entreprise.component';
 import { CreateEntrepriseComponent } from './create-entreprise/create-entreprise.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OneEntrepriseComponent } from './one-entreprise/one-entreprise.component';
