@@ -1,0 +1,45 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger sticky-top fixed">
+                        <h4 class="card-title d-inline-block">Ajouter Un Formateur</h4>
+                      <button class="btn btn-success"  routerLink="/formateur/get" >
+                        Liste Des Formateurs
+                      </button>
+                    </div>
+
+                    <div class="card-body ">
+                        <form action="">
+                            <div class="form-group">
+
+                                <!-- NOM -->
+                                <label for="nom">Nom</label>
+                                <!-- ngModel same name in ts -->
+                                <input [(ngModel)]="name" class="form-control" type="text" name="nom" id="nom" required>
+                            </div>
+                            <div class="form-group">
+                                <!-- email -->
+                                <label for="email">E-mail</label>
+                                <input [(ngModel)]="email" class="form-control" type="text" name="email" id="email"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <!-- competences -->
+                                <label for="competences">Competences</label>
+                                <input [(ngModel)]="competences" class="form-control" type="text" name="competences" id="competences">
+                            </div>  
+                            <div class="form-group text-center">
+                                <button [disabled]="isSubmitting" (click)="addFormator()" type="button"
+                                    class="btn button-add mt-3">
+                                    Ajouter </button>
+                             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

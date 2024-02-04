@@ -4,9 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../Admin/dashboard/dashboard.component';
-import { TableListFormatorComponent } from '../../Admin/list-formator/list-formator.component';
+import { TableListFormatorComponent } from '../../Admin/formator/list-formator/list-formator.component';
+import { CreateFormatorComponent } from '../../Admin/formator/add-formator/add-formator.component';
+import { UpdateFormatorComponent } from 'app/Admin/formator/update-formator/update-formator.component';
+
 import { TableListIndividuComponent } from '../../Admin/list-Idividu/list-Idividu.component';
-import { ListEntrepriseComponent } from '../../Admin/entreprise/list-entreprise/list-entreprise.component';
+import { ListEntrepriseComponent } from '../../Admin/entreprise/list-Entreprise/list-Entreprise.component';
 import { CalendarComponent } from '../../Admin/calendar/calendar.component';
 import { Logout } from '../../Admin/logout/logout.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -15,6 +18,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   imports: [
@@ -32,10 +36,13 @@ import {MatSelectModule} from '@angular/material/select';
   declarations: [
     DashboardComponent,
     TableListFormatorComponent,
+    CreateFormatorComponent,
+    UpdateFormatorComponent,
     TableListIndividuComponent,
     ListEntrepriseComponent,
     CalendarComponent,
     Logout,
+    
   ]
 })
 

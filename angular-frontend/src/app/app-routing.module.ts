@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListEntrepriseComponent } from './Admin/entreprise/list-entreprise/list-entreprise.component';
+import { ListEntrepriseComponent } from './Admin/entreprise/list-Entreprise/list-Entreprise.component';
 import { OneEntrepriseComponent } from './Admin/entreprise/one-entreprise/one-entreprise.component';
 import { CreateEntrepriseComponent } from './Admin/entreprise/create-entreprise/create-entreprise.component';
 import { EditEntrepriseComponent } from './Admin/entreprise/edit-entreprise/edit-entreprise.component';

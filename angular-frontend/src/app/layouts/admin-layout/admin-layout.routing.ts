@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../Admin/dashboard/dashboard.component';
-import { TableListFormatorComponent } from '../../Admin/list-formator/list-formator.component';
+import { TableListFormatorComponent } from '../../Admin/formator/list-formator/list-formator.component';
+import { CreateFormatorComponent } from '../../Admin/formator/add-formator/add-formator.component';
+import { UpdateFormatorComponent } from '../../Admin/formator/update-formator/update-formator.component';
+
 import { TableListIndividuComponent } from '../../Admin/list-Idividu/list-Idividu.component';
-import { ListEntrepriseComponent } from '../../Admin/entreprise/list-entreprise/list-entreprise.component';
+import { ListEntrepriseComponent } from 'app/Admin/entreprise/list-Entreprise/list-Entreprise.component';
 import { CalendarComponent } from '../../Admin/calendar/calendar.component';
 import { Logout } from '../../Admin/logout/logout.component';
 import { CreateEntrepriseComponent } from 'app/Admin/entreprise/create-entreprise/create-entreprise.component';
@@ -54,13 +57,19 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'list-formator',  component: TableListFormatorComponent },
-    { path: 'table-list',     component: TableListIndividuComponent },
-    {path: 'entreprise', redirectTo:'entreprise/get', pathMatch:'full'},
+    //Formator
+    { path: 'formateur',  redirectTo:'formateur/get', pathMatch:'full' },
+    { path: 'formateur/get',  component: TableListFormatorComponent },
+    { path: 'formateur/add',  component: CreateFormatorComponent },
+    { path: 'formateur/update/:id',  component: UpdateFormatorComponent },
+    //Entreprise
+    { path: 'entreprise', redirectTo:'entreprise/get', pathMatch:'full'},
     { path: 'entreprise/get', component:ListEntrepriseComponent },
     { path: 'entreprise/create', component:CreateEntrepriseComponent },
-    {path: 'entreprise/:id/edit', component:EditEntrepriseComponent},
-    {path: 'entreprise/:id/details', component:OneEntrepriseComponent},
+    { path: 'entreprise/:id/edit', component:EditEntrepriseComponent},
+    { path: 'entreprise/:id/details', component:OneEntrepriseComponent},
+    //Individu
+    { path: 'table-list',     component: TableListIndividuComponent },
     { path: 'calendar',  component: CalendarComponent },
-    { path: 'logout', component: Logout },
+    { path: 'logout', redirectTo:'dashboard', pathMatch:'full'},
 ];

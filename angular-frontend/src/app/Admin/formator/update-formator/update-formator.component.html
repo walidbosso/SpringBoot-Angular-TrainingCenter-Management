@@ -1,0 +1,55 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger sticky-top fixed">
+                      <h4 class="card-title d-inline-block">Modifier Un Formateur</h4>
+                      <button class="btn btn-success"  routerLink="/formateur/get" >
+                        Liste Des Formateurs
+                      </button>
+                  </div>
+     
+      <div class="card-body">
+          <form action="">
+              <div class="form-group">
+
+                  <!-- NOM -->
+                  <label for="name">Nom</label>
+                  <!-- ngModel same name in ts -->
+                  <input                     
+                  [(ngModel)]="formator.name"
+                  class="form-control"  
+                  type="text" name="nom" id="nom">
+                 
+                  <!-- ADDRESS -->
+                  <label for="email">E-mail</label>
+
+                  <textarea         
+                  rows="4"            
+                  [(ngModel)]="formator.email"
+                  class="form-control"  
+                  type="email" name="email" id="email"></textarea>
+
+                  <!-- email -->
+                  <label for="competences">Competences</label>
+                  <input                     
+                  [(ngModel)]="formator.competences"
+                  class="form-control"  
+                  type="competences" name="competences" id="competences">
+                  
+              
+                  <button [disabled]="isSubmitting"
+                  (click)="updateFormator()" 
+                  type="button"
+                  class="btn btn-outline-primary mt-3">
+                  Modifier</button>
+               </div>
+          </form>
+      </div>
+  </div>
+</div>
+</div>
+
+</div> </div>
+

@@ -31,7 +31,7 @@
                                     <th>
                                         E-Mail
                                     </th>
-                                    <th>
+                                    <th class="text-right" style="padding-right: 70px;">
                                         Action
                                     </th>
                                 </thead>
@@ -43,12 +43,14 @@
                                     <td>{{entreprise.tel}}</td>
                                     <td>{{entreprise.url}}</td>
                                     <td>{{entreprise.email}}</td>
-                                    <td>
+                                    <td class="text-right">
                                     <a [routerLink]="['/entreprise',entreprise.id,'details']"
                                     class="btn btn-outline-info mx-1">Details</a>
-                                    <a [routerLink]="['/entreprise',entreprise.id,'edit']"
-                                    class="btn btn-outline-success mx-1">Edit</a>
-                                    <button (click)="deleteEntreprise(entreprise.id)" class="btn btn-outline-danger mx-1">Delete</button>
+                                    <button [routerLink]="['/entreprise',entreprise.id,'edit']"
+                                    class="btn btn-warning btn-sm mr-2">Edit</button>
+                                    
+                                    <button (click)="deleteEntreprise(entreprise.id)" class="btn btn-danger btn-sm">Delete</button>
+                                    
                                     </td>
                                     </tr>
                                   
