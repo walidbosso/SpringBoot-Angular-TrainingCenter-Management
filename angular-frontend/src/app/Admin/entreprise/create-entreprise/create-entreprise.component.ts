@@ -17,7 +17,7 @@ export class CreateEntrepriseComponent {
   isSubmitting:boolean=false; //track button clicked or no, when user clicking multiple times
   constructor(public entrepriseService:EntrepriseService){}
 
-  // ngOnInit(): void {
+  // ngOnInit(): void { //you gotta get rid of ngModel to use it
   //   this.myForm = this.formBuilder.group({ //FormGroup=formBuilder.group
   //     nom: ['', Validators.required], // name required
   //     email: ['', [Validators.required, Validators.email]] // email required, w syntaxe  (email) shih built-in ghi staemlom

@@ -7,7 +7,21 @@
                     <img src="/assets/img/angular.png"/>
                   </div>
                   <div class="card-body">
-                      <h4 class="card-title">Daily Sales</h4>
+
+                        <tr *ngFor="let formation of formations">
+                        <td>{{formation.id}}</td>
+                        <td>{{formation.nom}}</td>                       
+                        <td>
+                        <a [routerLink]="['/formation',formation.id,'details']"
+                        class="btn btn-outline-info mx-1">Details</a>
+                        <a [routerLink]="['/formation',formation.id,'edit']"
+                        class="btn btn-outline-success mx-1">Edit</a>
+                        <button (click)="deleteformation(formation.id)" class="btn btn-outline-danger mx-1">Delete</button>
+                        </td>
+                        </tr>
+                      
+                
+                      <h4 class="card-title">Angular</h4>
                       <p class="card-category">
                           <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
                   </div>

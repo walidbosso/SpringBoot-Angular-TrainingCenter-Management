@@ -40,19 +40,19 @@ public class FormationController {
 	}
 	
 	@PostMapping("/add")
-	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public Formation addFormation(@RequestBody Formation formation) {
 		return formationService.addFormation(formation);
 	}
 	
 	@PutMapping("/update")
-	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public Formation updateFormation(@RequestBody Formation formation) {
 		return formationService.updateFormation(formation);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public void deleteFormation(@PathVariable Long id) {
 		formationService.deleteFormation(id);
 	}
