@@ -10,6 +10,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthComponent } from './auth/auth.component';
 import { HomeHeaderComponent } from './components/home-header/home-header.component';
 import { HomeComponent } from './home/home.component';
+import { EntrepriseModule } from './Admin/entreprise/entreprise.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { HomeComponent } from './home/home.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    EntrepriseModule
   ],
   declarations: [
     AppComponent,
