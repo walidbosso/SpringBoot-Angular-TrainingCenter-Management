@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../Admin/formation/dashboard/dashboard.component';
 import { TableListFormatorComponent } from '../../Admin/list-formator/list-formator.component';
-import { TableListIndividuComponent } from '../../Admin/list-Idividu/list-Idividu.component';
-import { ListEntrepriseComponent } from '../../Admin/entreprise/list-entreprise/list-entreprise.component';
+import { AllIndividusComponent } from 'app/Admin/Individu/all-individus/all-individus.component';
+import { ListEntrepriseComponent } from '../../Admin/entreprise/list-Entreprise/list-Entreprise.component';
 import { CalendarComponent } from '../../Admin/calendar/calendar.component';
 import { Logout } from '../../Admin/logout/logout.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -15,6 +15,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { IndividuModule } from 'app/Admin/Individu/individu.module';
 
 @NgModule({
   imports: [
@@ -28,11 +29,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    IndividuModule
   ],
   declarations: [
     DashboardComponent,
     TableListFormatorComponent,
-    TableListIndividuComponent,
     ListEntrepriseComponent,
     CalendarComponent,
     Logout,
