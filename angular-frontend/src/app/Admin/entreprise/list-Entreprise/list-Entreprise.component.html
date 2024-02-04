@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Liste des entreprises</h4>
-                        <p class="card-category">  <a routerLink="/entreprise/create"
+                        <p class="card-category">  <a routerLink="/admin/entreprise/create"
                             class="btn btn-outline-primary float-right"
                             >Ajouter Entreprise</a></p>
                     </div>
@@ -44,9 +44,9 @@
                                     <td>{{entreprise.url}}</td>
                                     <td>{{entreprise.email}}</td>
                                     <td>
-                                    <a [routerLink]="['/entreprise',entreprise.id,'details']"
+                                    <a [routerLink]="['/admin/entreprise',entreprise.id,'details']"
                                     class="btn btn-outline-info mx-1">Details</a>
-                                    <a [routerLink]="['/entreprise',entreprise.id,'edit']"
+                                    <a [routerLink]="['/admin/entreprise',entreprise.id,'edit']"
                                     class="btn btn-outline-success mx-1">Edit</a>
                                     <button (click)="deleteEntreprise(entreprise.id)" class="btn btn-outline-danger mx-1">Delete</button>
                                     </td>
