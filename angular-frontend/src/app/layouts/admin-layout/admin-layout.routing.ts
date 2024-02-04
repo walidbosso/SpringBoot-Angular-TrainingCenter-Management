@@ -12,63 +12,49 @@ import { CreateFormationComponent } from 'app/Admin/formation/create-formation/c
 import { DateFormationComponent } from 'app/Admin/formation/date-formation/date-formation.component';
 import { CategoryFormationComponent } from 'app/Admin/formation/category-formation/category-formation.component';
 import { CalendarComponent } from 'app/Admin/calendar/calendar.component';
+
+
+
 import { Logout } from '../../Admin/logout/logout.component';
 import { AdminLayoutComponent } from './admin-layout.component';
-
-
-   
-
 
 export const AdminLayoutRoutes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
     children: [
-      {
-        path: '', redirectTo: 'dashboard', pathMatch: 'full',
-      },
-      {
-        path: 'dashboard', component: DashboardComponent,
-      },
-      {
-        path: 'list-formator', component: TableListFormatorComponent,
-      },
-      {
-        path: 'individu',
-        loadChildren: ()=> import("../../Admin/Individu/individu.module").then(m=> m.IndividuModule)
-      },
-      {
-        path: 'entreprise', redirectTo: 'entreprise/get', pathMatch: 'full'
-      },
-      {
-        path: 'entreprise/get', component: ListEntrepriseComponent
-      },
-      {
-        path: 'entreprise/create', component: CreateEntrepriseComponent
-      },
-      {
-        path: 'entreprise/:id/edit', component: EditEntrepriseComponent
-      },
-      {
-        path: 'entreprise/:id/details', component: OneEntrepriseComponent
-      },
-      {
-        path: 'calendar', component: CalendarComponent,
-      },
-      {
-        path: 'logout', component: Logout,
-      },
-       // FORMATION
-    {path: 'formation', redirectTo:'formation/get', pathMatch:'full'},
-    { path: 'formation/:id/details',      component: OneFormationComponent },
-    { path: 'formation/:id/edit',      component: EditFormationComponent },
-    { path: 'formation/create',      component: CreateFormationComponent },
-    // { path: 'formation',      component: DateFormationComponent },
-    // { path: 'formation',      component: CategoryFormationComponent },
-    
+        {
+          path: '', redirectTo: 'dashboard', pathMatch: 'full',
+        },
+        { path: 'calendar',  component: CalendarComponent },    
+        { path: 'list-formator',  component: TableListFormatorComponent },
+        { path: 'logout', component: Logout },
+        {
+            path: 'individu',
+            loadChildren: ()=> import("../../Admin/Individu/individu.module").then(m=> m.IndividuModule)
+        },
+
+        // FORMATION
+        { path: 'dashboard',      component: DashboardComponent },
+        { path: 'formation', redirectTo:'dashboard', pathMatch:'full'},
+        { path: 'formation/:id/details',      component: OneFormationComponent },
+        { path: 'formation/:id/edit',      component: EditFormationComponent },
+        { path: 'formation/create',      component: CreateFormationComponent },
+        // { path: 'formation',      component: DateFormationComponent },
+        // { path: 'formation',      component: CategoryFormationComponent },
 
 
+        // ENTREPRISE
+        { path: 'entreprise', redirectTo:'entreprise/get', pathMatch:'full'},
+        { path: 'entreprise/get', component:ListEntrepriseComponent },
+        { path: 'entreprise/create', component:CreateEntrepriseComponent },
+        { path: 'entreprise/:id/edit', component:EditEntrepriseComponent},
+        { path: 'entreprise/:id/details', component:OneEntrepriseComponent},
 
     ],
   },
+
+  
+
+
 ];

@@ -6,7 +6,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../Admin/formation/dashboard/dashboard.component';
 import { TableListFormatorComponent } from '../../Admin/list-formator/list-formator.component';
 import { AllIndividusComponent } from 'app/Admin/Individu/all-individus/all-individus.component';
-import { ListEntrepriseComponent } from '../../Admin/entreprise/list-Entreprise/list-Entreprise.component';
+import { ListEntrepriseComponent } from '../../Admin/entreprise/list-entreprise/list-entreprise.component';
 import { CalendarComponent } from '../../Admin/calendar/calendar.component';
 import { Logout } from '../../Admin/logout/logout.component';
 import {MatButtonModule} from '@angular/material/button';

@@ -7,7 +7,7 @@ import axios from 'axios';
 export class EntrepriseService {
 
   constructor() { }
-// GET ALL
+    // GET ALL
   getAllEntreprises(): Promise<any>{
     const headers = { 'Content-Type': 'application/json' };
 
