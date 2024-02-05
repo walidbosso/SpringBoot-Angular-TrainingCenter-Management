@@ -32,8 +32,8 @@ export class FormationService {
         cout: request.cout,
         dateDebut: request.dateDebut,
         dateFin: request.dateFin,
-        formateur_id: request.formateur_id,
-        entreprise_id: request.entreprise_id,
+        formateur: request.formateur,
+        entreprise: request.entreprise,
      
       }
       return axios.post(`/formation/add`, reqData,{ headers });
@@ -52,8 +52,8 @@ updateFormation(request: any): Promise<any>{
     cout: request.cout,
     dateDebut: request.dateDebut,
     dateFin: request.dateFin,
-    formateur_id: request.formateur_id,
-    entreprise_id: request.entreprise_id,
+    formateur: request.formateur, 
+    entreprise: request.entreprise,
   }
   return axios.put(`/formation/update`, reqData, { headers });
   }

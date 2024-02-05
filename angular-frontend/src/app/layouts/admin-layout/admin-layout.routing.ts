@@ -41,8 +41,8 @@ export const AdminLayoutRoutes: Routes = [
         { path: 'formation/:id/details',      component: OneFormationComponent },
         { path: 'formation/:id/edit',      component: EditFormationComponent },
         { path: 'formation/create',      component: CreateFormationComponent },
-        { path: 'formation',      component: DateFormationComponent },
-        { path: 'formation',      component: CategoryFormationComponent },
+        { path: 'formation/date/:date',      component: DateFormationComponent },
+        { path: 'formation/category/:category',      component: CategoryFormationComponent },
 
 
         // ENTREPRISE

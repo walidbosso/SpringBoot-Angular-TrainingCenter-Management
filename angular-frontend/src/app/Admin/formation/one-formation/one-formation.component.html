@@ -1,1 +1,32 @@
-<p>one-formation works!</p>
+<div class="container">
+    <h2 class="text-center mt-5 mb-5">Formation Detail</h2>
+    <div class="card">
+    <div class="card-header">
+    <a class="btn btn-outline-info float-right"
+    routerLink="/admin/dashboard">Toutes les formations</a>
+    </div>
+    <div class="card-body">
+    <b class="text-muted">Nom:</b>
+    <p>{{formation.nom}}</p>
+    <b class="text-muted">categorie:</b>
+    <p>{{formation.categorie}}</p>
+    <b class="text-muted">objectif:</b>
+    <p>{{formation.objectif}}</p>
+    <b class="text-muted">description:</b>
+    <p>{{formation.description}}</p>
+    <b class="text-muted">duree:</b>
+    <p>{{formation.duree}}</p>
+    <b class="text-muted">cout:</b>
+    <p>{{formation.cout}}</p>
+    <b class="text-muted">dateDebut:</b>
+    <p>{{formation.dateDebut}}</p>
+    <b class="text-muted">dateFin:</b>
+    <p>{{formation.dateFin}}</p>
+    <b class="text-muted">formateur_id:</b>
+    <p>{{formation.formateur_id}}</p>
+    <b class="text-muted">entreprise:</b>
+    <p>{{formation.entreprise.nom}}</p>
+    </div>
+    </div>
+    </div>
+    

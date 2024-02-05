@@ -7,7 +7,7 @@
                         <h4 class="card-title ">Ajouter une entreprise</h4>
                         <div class="card-header">
                             <!-- if we know the link we type normally, if like delete a list we use [] -->
-                            <a  class="btn btn-outline-info float-right" routerLink="/entreprise/get">All Entreprises</a>
+                            <a  class="btn btn-outline-info float-right" routerLink="/admin/entreprise/get">All Entreprises</a>
                         </div></div>
        
         <div class="card-body">
@@ -55,10 +55,11 @@
                     
                 
                     <button [disabled]="isSubmitting"
-                    (click)="addEntreprise()"
-                    type="button"
-                    class="form-control btn btn-outline-primary mt-3">
-                    Ajouter    </button>
+                        (click)="addEntreprise()"
+                        type="button"
+                        class="form-control btn btn-outline-primary mt-3">
+                        Ajouter    
+                    </button>
                  </div>
             </form>
         </div>

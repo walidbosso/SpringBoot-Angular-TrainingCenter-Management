@@ -7,18 +7,20 @@ import { CreateEntrepriseComponent } from './create-entreprise/create-entreprise
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OneEntrepriseComponent } from './one-entreprise/one-entreprise.component';
 import { EditEntrepriseComponent } from './edit-entreprise/edit-entreprise.component';
+import { ListEntrepriseComponent } from './list-entreprise/list-entreprise.component';
 
 
 @NgModule({
   declarations: [
     //COMPONENTS
-    // ListEntrepriseComponent,
+    ListEntrepriseComponent,
     CreateEntrepriseComponent,
     OneEntrepriseComponent,
     EditEntrepriseComponent
 
   ],
   imports: [
+    //MODULES
     CommonModule,
     EntrepriseRoutingModule,
     //take data and submit it in form

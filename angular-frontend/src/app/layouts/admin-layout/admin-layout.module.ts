@@ -36,7 +36,7 @@ import { EntrepriseModule } from 'app/Admin/entreprise/entreprise.module';
   declarations: [
     DashboardComponent,
     TableListFormatorComponent,
-    ListEntrepriseComponent,
+    // ListEntrepriseComponent,
     CalendarComponent,
     Logout,
 

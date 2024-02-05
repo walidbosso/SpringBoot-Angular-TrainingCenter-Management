@@ -1,1 +1,100 @@
-<p>edit-formation works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Modifier une formation</h4>
+                        <div class="card-header">
+                            <!-- if we know the link we type normally, if like delete a list we use [] -->
+                            <a  class="btn btn-outline-info float-right" routerLink="/admin/dashboard">Toutes les formations</a>
+                        </div></div>
+       
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+
+                    <!-- NOM -->
+                    <label for="nom">Nom Formation</label>
+                    <!-- ngModel same name in ts -->
+                    <input                   
+                    [(ngModel)]="formation.nom"
+                    class="form-control"  
+                    type="text" name="nom" id="nom" required>
+                   
+                    <label for="categorie">Categorie</label>
+
+                    <textarea         
+                    rows="4"            
+                    [(ngModel)]="formation.categorie"
+                    class="form-control"  
+                    type="text" name="categorie" id="categorie"></textarea>
+
+
+                    <label for="objectif">Objectif</label>
+                    <input                     
+                    [(ngModel)]="formation.objectif"
+                    class="form-control"  
+                    type="text" name="objectif" id="objectif">
+
+                    <label for="duree">Duree</label>
+                    <input                     
+                    [(ngModel)]="formation.duree"
+                    class="form-control"  
+                    type="number" name="duree" id="duree">
+
+                    <label for="description">Description</label>
+                    <input                     
+                    [(ngModel)]="formation.description"
+                    class="form-control"  
+                    type="text" name="description" id="description">
+
+                    <label for="cout">Cout</label>
+                    <input                     
+                    [(ngModel)]="formation.cout"
+                    class="form-control"  
+                    type="email" name="cout" id="cout" required>
+
+                    <label for="dateDebut">Date de debut de formation:</label>
+                    <input                     
+                    [(ngModel)]="formation.dateDebut"
+                    class="form-control"  
+                    type="date" name="dateDebut" id="dateDebut" required>
+
+                    <label for="dateFin">Date de fin de formation:</label>
+                    <input                     
+                    [(ngModel)]="formation.dateFin"
+                    class="form-control"  
+                    type="date" name="dateFin" id="dateFin" required>
+
+                    <label for="formateur_id">formateur_id</label>
+                    <input                     
+                    [(ngModel)]="formation.formateur_id"
+                    class="form-control"  
+                    type="number" name="formateur_id" id="formateur_id" required>
+
+                    <label for="entreprise">Entreprise</label>
+                    <select class="form-control btn btn-outline-primary mt-3" id="entreprise" (change)="onEntrepriseSelected($event.target.value)">
+                        <option [value]="formation.entreprise.id">
+                            {{ formation.entreprise.nom }}
+                          </option>
+                        <option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
+                        {{ entreprise.nom }}
+                      </option>
+                    </select>
+                                        
+                
+                    <button [disabled]="isSubmitting"
+                    (click)="editFormation()"  
+                    type="button"
+                    class="form-control btn btn-outline-primary mt-3">
+                    Modifier la formation    </button>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+</div> </div>
+
