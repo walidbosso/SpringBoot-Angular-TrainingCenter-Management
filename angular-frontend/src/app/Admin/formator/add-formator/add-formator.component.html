@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header card-header-danger sticky-top fixed">
                         <h4 class="card-title d-inline-block">Ajouter Un Formateur</h4>
-                      <button class="btn btn-success"  routerLink="/formateur/get" >
+                      <button class="btn btn-success"  routerLink="/admin/formateur/get" >
                         Liste Des Formateurs
                       </button>
                     </div>
@@ -13,22 +13,32 @@
                     <div class="card-body ">
                         <form action="">
                             <div class="form-group">
-
                                 <!-- NOM -->
-                                <label for="nom">Nom</label>
+                                <label for="name">Nom</label>
                                 <!-- ngModel same name in ts -->
-                                <input [(ngModel)]="name" class="form-control" type="text" name="nom" id="nom" required>
+                                <input [(ngModel)]="name" class="form-control" type="text" name="name" id="name" required>
                             </div>
                             <div class="form-group">
                                 <!-- email -->
                                 <label for="email">E-mail</label>
-                                <input [(ngModel)]="email" class="form-control" type="text" name="email" id="email"
+                                <input [(ngModel)]="email" class="form-control" type="email" name="email" id="email"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <!-- password -->
+                                <label for="password">Password</label>
+                                <input [(ngModel)]="password" class="form-control" type="password" name="password" id="password"
                                     required>
                             </div>
                             <div class="form-group">
                                 <!-- competences -->
                                 <label for="competences">Competences</label>
                                 <input [(ngModel)]="competences" class="form-control" type="text" name="competences" id="competences">
+                            </div>  
+                            <div class="form-group">
+                                <!-- remarques -->
+                                <label for="remarques">Remarques</label>
+                                <input [(ngModel)]="remarques" class="form-control" type="text" name="remarques" id="remarques">
                             </div>  
                             <div class="form-group text-center">
                                 <button [disabled]="isSubmitting" (click)="addFormator()" type="button"

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -22,7 +22,7 @@ import { EntrepriseModule } from './Admin/entreprise/entreprise.module';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    EntrepriseModule
+    // EntrepriseModule
   ],
   declarations: [
     AppComponent,

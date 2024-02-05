@@ -27,31 +27,31 @@ public class FormateurController {
 	private FormateurService formateurService;
 	
 	@GetMapping("/get")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public List<UserInfo> getAllFormateurs(){
 		return formateurService.getAllFormateurs();
 	}
 	
 	@GetMapping("/get/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public UserInfo getFormateurById(@PathVariable Integer id) {
 		return formateurService.getFormateurById(id);
 	}
 	
 	@PostMapping("/add")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public UserInfo addFormateur(@RequestBody UserInfo formateur) {
 		return formateurService.addFormateur(formateur);
 	}
 	
 	@PutMapping("/update")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public UserInfo updateFormateur(@RequestBody UserInfo formateur) {
 		return formateurService.updateFormateur(formateur);
 	}
 
 	@DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public void deleteFormateur(@PathVariable Integer id) {
 		formateurService.deleteFormateur(id);
 	}

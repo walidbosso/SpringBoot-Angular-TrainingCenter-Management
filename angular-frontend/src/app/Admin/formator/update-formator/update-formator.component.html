@@ -5,46 +5,66 @@
               <div class="card">
                   <div class="card-header card-header-danger sticky-top fixed">
                       <h4 class="card-title d-inline-block">Modifier Un Formateur</h4>
-                      <button class="btn btn-success"  routerLink="/formateur/get" >
+                      <button class="btn btn-success"  routerLink="/admin/formateur/get" >
                         Liste Des Formateurs
                       </button>
                   </div>
      
       <div class="card-body">
           <form action="">
-              <div class="form-group">
-
+                 <div class="form-group">
                   <!-- NOM -->
                   <label for="name">Nom</label>
                   <!-- ngModel same name in ts -->
                   <input                     
                   [(ngModel)]="formator.name"
                   class="form-control"  
-                  type="text" name="nom" id="nom">
-                 
-                  <!-- ADDRESS -->
-                  <label for="email">E-mail</label>
+                  type="text" name="name" id="name">
+                  </div>
 
-                  <textarea         
-                  rows="4"            
+                  <div class="form-group">
+                  <!-- email -->
+                  <label for="email">E-mail</label>
+                  <input                     
                   [(ngModel)]="formator.email"
                   class="form-control"  
-                  type="email" name="email" id="email"></textarea>
+                  type="email" name="email" id="email">
+                  </div>  
 
-                  <!-- email -->
-                  <label for="competences">Competences</label>
+                  <div class="form-group">
+                  <label for="password">Password</label>
+                  <!-- ngModel same name in ts -->
                   <input                     
+                  [(ngModel)]="formator.password"
+                  class="form-control"  
+                  type="password" name="password" id="password">
+                  </div>
+
+                  <div class="form-group">
+                  <!-- competences -->
+                  <label for="competences">Competences</label>
+                  <input            
                   [(ngModel)]="formator.competences"
                   class="form-control"  
-                  type="competences" name="competences" id="competences">
-                  
-              
+                  type="text" name="competences" id="competences"/>
+                  </div>
+
+                  <div class="form-group">
+                  <!--remarques-->
+                  <label for="remarques">Remarques</label>
+                  <input          
+                  [(ngModel)]="formator.remarques"
+                  class="form-control"  
+                  type="text" name="remarques" id="remarques">
+                  </div>
+
+                  <div class="form-group text-center">
                   <button [disabled]="isSubmitting"
                   (click)="updateFormator()" 
                   type="button"
                   class="btn btn-outline-primary mt-3">
                   Modifier</button>
-               </div>
+                </div>
           </form>
       </div>
   </div>

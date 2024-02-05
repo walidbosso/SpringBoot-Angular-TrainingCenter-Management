@@ -1,9 +1,6 @@
 // formation.service.ts
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Formator } from 'app/Admin/formator/model/formator.model';
 import axios from 'axios';
 
 @Injectable({
@@ -43,19 +40,21 @@ export class FormatorService {
 
   getFormateurById(id: number): Promise<any> {
     const headers = { 'Content-Type': 'application/json' };
-    return axios.get(`/formateur/get/${id}`);
+    return axios.get('/formateur/get/' +id);
   }
 
   // POST ADD 
   addFormateur(request: any): Promise<any> {
     const headers = { 'Content-Type': 'application/json' };
     let reqData = {
-      nom: request.nom,
+      name: request.name,
       email: request.email,
-      competances: request.competances,
+      password: request.password,
+      competences: request.competences,
+      remarques: request.remarques,
 
     }
-    return axios.post(`/formateur/add`, reqData, { headers });
+    return axios.post('/formateur/add', reqData, { headers });
   }
 
   // put update
@@ -63,16 +62,19 @@ export class FormatorService {
     const headers = { 'Content-Type': 'application/json' };
     let reqData = {
       id: request.id,
-      nom: request.nom,
+      name: request.name,
       email: request.email,
-      competances: request.competances,
+      password: request.password,
+      competences: request.competences,
+      remarques: request.remarques,
+      roles: "ROLE_FORMATEUR",
     }
-    return axios.put(`/formateur/update`, reqData, { headers });
+    return axios.put('/formateur/update', reqData, { headers });
   }
 
   // DELETE
   deleteFormateur(id: number): Promise<any> {
-    return axios.delete(`/formateur/delete/${id}`);
+    return axios.delete('/formateur/delete/' +id);
   }
 
 }

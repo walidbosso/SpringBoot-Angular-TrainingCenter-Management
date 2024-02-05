@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormatorService } from 'app/services/formators.service';
-import { Formator } from '../model/formator.model';
+import { Formator } from 'app/model/formator.model';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,8 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class TableListFormatorComponent implements OnInit {
   formators: Formator[] = [];
-
-  constructor(private formatorService: FormatorService, private router: Router) { }
+  constructor(private formatorService: FormatorService) { }
 
   ngOnInit(): void {
     this.loadFormators();
@@ -19,17 +17,15 @@ export class TableListFormatorComponent implements OnInit {
 
   loadFormators() {
     this.formatorService.getAllFormateurs()
-    .then((response)=>{
-      console.log(response);
-      this.formators=response.data;
-    })
-    .catch((error)=>{
-      return error;
-    }); 
-  }
-
-  updateFormator(id: number) {
-    this.router.navigate(['update', id]);
+      .then((response) => {
+        console.log("dkhol")
+        console.log(response);
+        this.formators = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
   }
 
   deleteFormator(id: number) {

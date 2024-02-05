@@ -33,12 +33,12 @@ public class SecurityConfig {
 			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", 
 					"/Formation/date/**","formation/get/**").permitAll() 
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
+			.requestMatchers("/formation/**").permitAll()
 			.requestMatchers("/auth/assistant/**").authenticated() 
 			.requestMatchers("/auth/admin/**").authenticated() 	
 			.requestMatchers("/auth/formateur/**").authenticated() 
 //			.requestMatchers("/auth/individu/**").authenticated() 
-			.requestMatchers("/formateur/**").authenticated()
-			.requestMatchers("/formation/**").authenticated()
+			.requestMatchers("/formateur/**").permitAll()
 			.requestMatchers("/individu/**").authenticated()
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
