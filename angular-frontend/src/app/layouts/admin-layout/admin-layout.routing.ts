@@ -28,7 +28,7 @@ export const AdminLayoutRoutes: Routes = [
         { path: 'logout', component: Logout },
         {
             path: 'individu',
-            loadChildren: ()=> import("../../Admin/Individu/individu.module").then(m=> m.IndividuModule)
+            loadChildren: ()=> import("../../Admin/individu/individu.module").then(m=> m.IndividuModule)
         },
         // {
         //     path: 'formation',

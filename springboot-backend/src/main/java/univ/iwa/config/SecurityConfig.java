@@ -39,7 +39,7 @@ public class SecurityConfig {
 			.requestMatchers("/auth/formateur/**").authenticated() 
 //			.requestMatchers("/auth/individu/**").authenticated() 
 			.requestMatchers("/formateur/**").authenticated()
-			.requestMatchers("/individu/**").authenticated()
+			.requestMatchers("/individu/**").permitAll() // changed from .authenticated()
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
 			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class) ;	

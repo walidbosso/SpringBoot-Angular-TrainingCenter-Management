@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../Admin/formation/dashboard/dashboard.component';
 import { TableListFormatorComponent } from '../../Admin/list-formator/list-formator.component';
-import { AllIndividusComponent } from 'app/Admin/Individu/all-individus/all-individus.component';
 import { ListEntrepriseComponent } from '../../Admin/entreprise/list-entreprise/list-entreprise.component';
 import { CalendarComponent } from '../../Admin/calendar/calendar.component';
 import { Logout } from '../../Admin/logout/logout.component';
@@ -15,7 +14,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-import { IndividuModule } from 'app/Admin/Individu/individu.module';
+import { IndividuModule } from 'app/Admin/individu/individu.module';
 import { EntrepriseModule } from 'app/Admin/entreprise/entreprise.module';
 
 @NgModule({
