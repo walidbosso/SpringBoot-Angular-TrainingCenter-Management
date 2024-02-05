@@ -1,9 +1,9 @@
 export interface Entreprise {
-    id: number;
+  id: number;
   nom: string;
   address: string;
   tel: string;
   url: string;
   email: string;
-//   formations?: Formation[];
+  //   formations?: Formation[];
 }

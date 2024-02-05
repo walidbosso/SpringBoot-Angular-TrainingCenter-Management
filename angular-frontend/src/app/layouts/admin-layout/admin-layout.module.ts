@@ -12,15 +12,14 @@ import { UpdateFormatorComponent } from 'app/Admin/formator/update-formator/upda
 
 import { CalendarComponent } from '../../Admin/calendar/calendar.component';
 import { Logout } from '../../Admin/logout/logout.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatRippleModule} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSelectModule} from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatRippleModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 import { IndividuModule } from 'app/Admin/Individu/individu.module';
 import { EntrepriseModule } from 'app/Admin/entreprise/entreprise.module';
-
 
 @NgModule({
   imports: [
@@ -35,7 +34,7 @@ import { EntrepriseModule } from 'app/Admin/entreprise/entreprise.module';
     MatSelectModule,
     MatTooltipModule,
     IndividuModule,
-    EntrepriseModule
+    EntrepriseModule,
   ],
   declarations: [
     DashboardComponent,
@@ -46,8 +45,6 @@ import { EntrepriseModule } from 'app/Admin/entreprise/entreprise.module';
     ListEntrepriseComponent,
     CalendarComponent,
     Logout,
-
-  ]
+  ],
 })
-
 export class AdminLayoutModule {}

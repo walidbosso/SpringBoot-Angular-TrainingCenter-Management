@@ -1,104 +1,150 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Ajouter une formation</h4>
-                        <div class="card-header">
-                            <!-- if we know the link we type normally, if like delete a list we use [] -->
-                            <a  class="btn btn-outline-info float-right" routerLink="/admin/dashboard">Toutes les formations</a>
-                        </div></div>
-       
-        <div class="card-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Ajouter une formation</h4>
+            <div class="card-header">
+              <!-- if we know the link we type normally, if like delete a list we use [] -->
+              <a
+                class="btn btn-outline-info float-right"
+                routerLink="/admin/dashboard"
+                >Toutes les formations</a
+              >
+            </div>
+          </div>
+
+          <div class="card-body">
             <form action="">
-                <div class="form-group">
+              <div class="form-group">
+                <!-- NOM -->
+                <label for="nom">Nom Formation</label>
+                <!-- ngModel same name in ts -->
+                <input
+                  [(ngModel)]="nom"
+                  class="form-control"
+                  type="text"
+                  name="nom"
+                  id="nom"
+                  required
+                />
 
-                    <!-- NOM -->
-                    <label for="nom">Nom Formation</label>
-                    <!-- ngModel same name in ts -->
-                    <input                   
-                    [(ngModel)]="nom"
-                    class="form-control"  
-                    type="text" name="nom" id="nom" required>
-                   
-                    <!-- ADDRESS -->
-                    <label for="categorie">Categorie</label>
+                <!-- Categorie -->
+                <label for="categorie">Categorie</label>
 
-                    <textarea         
-                    rows="4"            
-                    [(ngModel)]="categorie"
-                    class="form-control"  
-                    type="text" name="categorie" id="categorie"></textarea>
+                <textarea
+                  rows="4"
+                  [(ngModel)]="categorie"
+                  class="form-control"
+                  type="text"
+                  name="categorie"
+                  id="categorie"
+                ></textarea>
 
-                    <!-- tel -->
+                <!-- Objectif -->
 
-                    <label for="objectif">Objectif</label>
-                    <input                     
-                    [(ngModel)]="objectif"
-                    class="form-control"  
-                    type="text" name="objectif" id="objectif">
+                <label for="objectif">Objectif</label>
+                <input
+                  [(ngModel)]="objectif"
+                  class="form-control"
+                  type="text"
+                  name="objectif"
+                  id="objectif"
+                />
 
-                    <!-- URL -->
-                    <label for="duree">Duree</label>
-                    <input                     
-                    [(ngModel)]="duree"
-                    class="form-control"  
-                    type="number" name="duree" id="duree">
+                <!-- Duree -->
+                <label for="duree">Duree</label>
+                <input
+                  [(ngModel)]="duree"
+                  class="form-control"
+                  type="number"
+                  name="duree"
+                  id="duree"
+                />
 
-                    <!-- URL -->
-                    <label for="description">Description</label>
-                    <input                     
-                    [(ngModel)]="description"
-                    class="form-control"  
-                    type="text" name="description" id="description">
+                <!-- Description -->
+                <label for="description">Description</label>
+                <input
+                  [(ngModel)]="description"
+                  class="form-control"
+                  type="text"
+                  name="description"
+                  id="description"
+                />
 
-                    <!-- email -->
-                    <label for="cout">Cout</label>
-                    <input                     
-                    [(ngModel)]="cout"
-                    class="form-control"  
-                    type="email" name="cout" id="cout" required>
+                <!-- Cout -->
+                <label for="cout">Cout</label>
+                <input
+                  [(ngModel)]="cout"
+                  class="form-control"
+                  type="number"
+                  name="cout"
+                  id="cout"
+                  required
+                />
 
-                    <label for="dateDebut">Date de debut de formation:</label>
-                    <input                     
-                    [(ngModel)]="dateDebut"
-                    class="form-control"  
-                    type="date" name="dateDebut" id="dateDebut" required>
+                <label for="dateDebut">Date de debut de formation:</label>
+                <input
+                  [(ngModel)]="dateDebut"
+                  class="form-control"
+                  type="date"
+                  name="dateDebut"
+                  id="dateDebut"
+                  required
+                />
 
-                    <label for="dateFin">Date de fin de formation:</label>
-                    <input                     
-                    [(ngModel)]="dateFin"
-                    class="form-control"  
-                    type="date" name="dateFin" id="dateFin" required>
+                <label for="dateFin">Date de fin de formation:</label>
+                <input
+                  [(ngModel)]="dateFin"
+                  class="form-control"
+                  type="date"
+                  name="dateFin"
+                  id="dateFin"
+                  required
+                />
 
-                     <label for="formateur">Nom de formateur</label>
-                    <select class="form-control btn btn-outline-primary mt-3" id="formateur" 
-                    (change)="onFormateurSelected($event.target.value)">
-                      <option *ngFor="let formateur of formateurs" [value]="formateur.id">
-                        {{ formateur.name }}
-                      </option>
-                    </select>
+                <label for="formateur">Select nom de formateur:</label>
+                <select
+                  class="form-control btn btn-outline-primary mt-3"
+                  id="formateur"
+                  (change)="onFormateurSelected($event.target.value)"
+                >
+                  <option
+                    *ngFor="let formateur of formateurs"
+                    [value]="formateur.id"
+                  >
+                    {{ formateur.name }}
+                  </option>
+                </select>
 
-                    <label for="entreprise">Nom de Entreprise</label>
-                    <select class="form-control btn btn-outline-primary mt-3" id="entreprise" (change)="onEntrepriseSelected($event.target.value)">
-                      <option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
-                        {{ entreprise.nom }}
-                      </option>
-                    </select>
-                                        
-                
-                    <button [disabled]="isSubmitting"
-                    (click)="addFormation()"  
-                    type="button"
-                    class="form-control btn btn-outline-primary mt-3">
-                    Ajouter la Formation   </button>
-                 </div>
+                <label for="entreprise">Select Nom de Entreprise:</label>
+                <select
+                  class="form-control btn btn-outline-primary mt-3"
+                  id="entreprise"
+                  (change)="onEntrepriseSelected($event.target.value)"
+                >
+                  <option
+                    *ngFor="let entreprise of entreprises"
+                    [value]="entreprise.id"
+                  >
+                    {{ entreprise.nom }}
+                  </option>
+                </select>
+
+                <button
+                  [disabled]="isSubmitting"
+                  (click)="addFormation()"
+                  type="button"
+                  class="form-control btn btn-outline-primary mt-3"
+                >
+                  Ajouter la Formation
+                </button>
+              </div>
             </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-</div>
-
-</div> </div>
-

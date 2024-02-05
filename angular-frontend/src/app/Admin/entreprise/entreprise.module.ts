@@ -9,15 +9,13 @@ import { OneEntrepriseComponent } from './one-entreprise/one-entreprise.componen
 import { EditEntrepriseComponent } from './edit-entreprise/edit-entreprise.component';
 import { ListEntrepriseComponent } from './list-entreprise/list-entreprise.component';
 
-
 @NgModule({
   declarations: [
     //COMPONENTS
     // ListEntrepriseComponent,
     CreateEntrepriseComponent,
     OneEntrepriseComponent,
-    EditEntrepriseComponent
-
+    EditEntrepriseComponent,
   ],
   imports: [
     //MODULES
@@ -26,7 +24,7 @@ import { ListEntrepriseComponent } from './list-entreprise/list-entreprise.compo
     //take data and submit it in form
     FormsModule,
     //works together with
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class EntrepriseModule { }
+export class EntrepriseModule {}

@@ -1,32 +1,32 @@
 <div class="container">
-    <h2 class="text-center mt-5 mb-5">Formation Detail</h2>
-    <div class="card">
+  <h2 class="text-center mt-5 mb-5">Formation Detail</h2>
+  <div class="card">
     <div class="card-header">
-    <a class="btn btn-outline-info float-right"
-    routerLink="/admin/dashboard">Toutes les formations</a>
+      <a class="btn btn-outline-info float-right" routerLink="/admin/dashboard"
+        >Toutes les formations</a
+      >
     </div>
     <div class="card-body">
-    <b class="text-muted">Nom:</b>
-    <p>{{formation.nom}}</p>
-    <b class="text-muted">categorie:</b>
-    <p>{{formation.categorie}}</p>
-    <b class="text-muted">objectif:</b>
-    <p>{{formation.objectif}}</p>
-    <b class="text-muted">description:</b>
-    <p>{{formation.description}}</p>
-    <b class="text-muted">duree:</b>
-    <p>{{formation.duree}}</p>
-    <b class="text-muted">cout:</b>
-    <p>{{formation.cout}}</p>
-    <b class="text-muted">dateDebut:</b>
-    <p>{{formation.dateDebut}}</p>
-    <b class="text-muted">dateFin:</b>
-    <p>{{formation.dateFin}}</p>
-    <b class="text-muted">formateur:</b>
-    <p>{{formation.formateur.name}}</p>
-    <b class="text-muted">entreprise:</b>
-    <p>{{formation.entreprise.nom}}</p>
+      <b class="text-muted">Nom:</b>
+      <p>{{ formation.nom }}</p>
+      <b class="text-muted">Categorie:</b>
+      <p>{{ formation.categorie }}</p>
+      <b class="text-muted">Objectif:</b>
+      <p>{{ formation.objectif }}</p>
+      <b class="text-muted">Description:</b>
+      <p>{{ formation.description }}</p>
+      <b class="text-muted">Duree:</b>
+      <p>{{ formation.duree }}</p>
+      <b class="text-muted">Cout:</b>
+      <p>{{ formation.cout }}</p>
+      <b class="text-muted">Date de debut de formation:</b>
+      <p>{{ formation.dateDebut }}</p>
+      <b class="text-muted">Date de fin de formation:</b>
+      <p>{{ formation.dateFin }}</p>
+      <b class="text-muted">Nom de formateur associe avec cette formation:</b>
+      <p>{{ formation.formateur.name }}</p>
+      <b class="text-muted">Entreprise qui benefice de cette formation:</b>
+      <p>{{ formation.entreprise.nom }}</p>
     </div>
-    </div>
-    </div>
-    
+  </div>
+</div>

@@ -1,65 +1,64 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Liste des entreprises</h4>
-                        <p class="card-category">  <a routerLink="/admin/entreprise/create"
-                            class="btn btn-outline-primary float-right"
-                            >Ajouter Entreprise</a></p>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Nom
-                                    </th>
-                                    <th>
-                                        Addresse
-                                    </th>
-                                    <th>
-                                        Telephone
-                                    </th>
-                                    <th>
-                                        Site Web
-                                    </th>
-                                    <th>
-                                        E-Mail
-                                    </th>
-                                    <th class="text-right" style="padding-right: 70px;">
-                                        Action
-                                    </th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let entreprise of entreprises">
-                                    <td>{{entreprise.id}}</td>
-                                    <td>{{entreprise.nom}}</td>
-                                    <td>{{entreprise.address}}</td>
-                                    <td>{{entreprise.tel}}</td>
-                                    <td>{{entreprise.url}}</td>
-                                    <td>{{entreprise.email}}</td>
-                                    <td class="text-right">
-                                    <a [routerLink]="['/entreprise',entreprise.id,'details']"
-                                    class="btn btn-outline-info mx-1">Details</a>
-                                    <button [routerLink]="['/entreprise',entreprise.id,'edit']"
-                                    class="btn btn-warning btn-sm mr-2">Edit</button>
-                                    <button (click)="deleteEntreprise(entreprise.id)" class="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                    </tr>
-                                  
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Liste des entreprises</h4>
+            <p class="card-category">
+              <a
+                routerLink="/admin/entreprise/create"
+                class="btn btn-outline-primary float-right"
+                >Ajouter Entreprise</a
+              >
+            </p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th>ID</th>
+                  <th>Nom</th>
+                  <th>Addresse</th>
+                  <th>Telephone</th>
+                  <th>Site Web</th>
+                  <th>E-Mail</th>
+                  <th class="text-right" style="padding-right: 70px">Action</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let entreprise of entreprises">
+                    <td>{{ entreprise.id }}</td>
+                    <td>{{ entreprise.nom }}</td>
+                    <td>{{ entreprise.address }}</td>
+                    <td>{{ entreprise.tel }}</td>
+                    <td>{{ entreprise.url }}</td>
+                    <td>{{ entreprise.email }}</td>
+                    <td class="text-right">
+                      <a
+                        [routerLink]="['/entreprise', entreprise.id, 'details']"
+                        class="btn btn-outline-info mx-1"
+                        >Details</a
+                      >
+                      <button
+                        [routerLink]="['/entreprise', entreprise.id, 'edit']"
+                        class="btn btn-warning btn-sm mr-2"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        (click)="deleteEntreprise(entreprise.id)"
+                        class="btn btn-danger btn-sm"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-           
+          </div>
         </div>
+      </div>
     </div>
   </div>
-  
+</div>

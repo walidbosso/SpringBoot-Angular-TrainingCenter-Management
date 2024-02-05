@@ -6,20 +6,18 @@ import { RouterModule, Routes } from '@angular/router';
 // import { CreateFormationComponent } from './create-formation/create-formation.component';
 
 const routes: Routes = [
-
- // FORMATION
-//  { path: 'dashboard',      component: DashboardComponent },
-//  { path: 'formation', redirectTo:'dashboard', pathMatch:'full'},
-//  { path: 'formation/:id/details',      component: OneFormationComponent },
-//  { path: 'formation/:id/edit',      component: EditFormationComponent },
-//  { path: 'formation/create',      component: CreateFormationComponent },
- // { path: 'formation',      component: DateFormationComponent },
- // { path: 'formation',      component: CategoryFormationComponent },
-
+  // FORMATION
+  //  { path: 'dashboard',      component: DashboardComponent },
+  //  { path: 'formation', redirectTo:'dashboard', pathMatch:'full'},
+  //  { path: 'formation/:id/details',      component: OneFormationComponent },
+  //  { path: 'formation/:id/edit',      component: EditFormationComponent },
+  //  { path: 'formation/create',      component: CreateFormationComponent },
+  // { path: 'formation',      component: DateFormationComponent },
+  // { path: 'formation',      component: CategoryFormationComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class FormationRoutingModule { }
+export class FormationRoutingModule {}

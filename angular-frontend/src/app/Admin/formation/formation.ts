@@ -1,8 +1,8 @@
-import { Formator } from "app/model/formator.model";
-import { Entreprise } from "../entreprise/entreprise";
+import { Formator } from 'app/model/formator.model';
+import { Entreprise } from '../entreprise/entreprise';
 
 export interface Formation {
-    id: number;
+  id: number;
   nom: string;
   categorie: string;
   objectif: string;

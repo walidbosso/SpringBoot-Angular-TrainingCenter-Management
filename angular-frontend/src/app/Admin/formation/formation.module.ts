@@ -10,7 +10,6 @@ import { EditFormationComponent } from './edit-formation/edit-formation.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OneFormationComponent } from './one-formation/one-formation.component';
 
-
 @NgModule({
   declarations: [
     CategoryFormationComponent,
@@ -20,7 +19,7 @@ import { OneFormationComponent } from './one-formation/one-formation.component';
     CreateFormationComponent,
     EditFormationComponent,
     // DashboardComponent,
-    OneFormationComponent
+    OneFormationComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +27,7 @@ import { OneFormationComponent } from './one-formation/one-formation.component';
     //take data and submit it in form
     FormsModule,
     //works together with
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class FormationModule { }
+export class FormationModule {}
