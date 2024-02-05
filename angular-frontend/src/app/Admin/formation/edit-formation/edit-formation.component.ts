@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { EntrepriseService } from 'app/Admin/entreprise/entreprise.service';
 import { Entreprise } from 'app/Admin/entreprise/entreprise';
+import { Formator } from 'app/model/formator.model';
+import { FormatorService } from 'app/services/formators.service';
 
 @Component({
   selector: 'app-edit-formation',
@@ -14,23 +16,26 @@ import { Entreprise } from 'app/Admin/entreprise/entreprise';
 export class EditFormationComponent {
   entreprises: Entreprise[]=[] ;
   entreprise: Entreprise;
+  formateurs: Formator[]=[] ;
+  formateur: Formator;
   formateur_id: number=0;
   formation: Formation = { 
-    id: 0, nom: '', categorie: '' ,objectif:'' ,description:'', duree:'', cout:0, dateDebut:new Date(), dateFin: new Date(),formateur_id:0,entreprise:null
+    id: 0, nom: '', categorie: '' ,objectif:'' ,description:'', duree:'', cout:0, dateDebut:new Date(), dateFin: new Date(),formateur:null,entreprise:null
   };  isSubmitting: boolean = false;
 
-  constructor(public formationService: FormationService, private route:ActivatedRoute,public entrepriseService:EntrepriseService){
+  constructor(public formationService: FormationService, private route:ActivatedRoute,public entrepriseService:EntrepriseService,public formatorService:FormatorService){
  
     this.formation = {
     // It uses this.route.snapshot.params['id'] to retrieve the route 
     // 'formations/:id/edit'
     id: this.route.snapshot.params['id'],
-    nom: '', categorie: '' ,objectif:'' ,description:'', duree:'', cout:0, dateDebut:new Date(), dateFin: new Date(),formateur_id:0,entreprise:null
+    nom: '', categorie: '' ,objectif:'' ,description:'', duree:'', cout:0, dateDebut:new Date(), dateFin: new Date(),formateur:null,entreprise:null
     }
 
 }
   ngOnInit(): void{
     this.getAllEntreprises();
+    this.getAllFormateurs();
     this.formationService.getFormationById(this.route.snapshot.params['id'])
     .then((response)=>{
       //console.log(response);
@@ -61,6 +66,24 @@ export class EditFormationComponent {
         console.log(selectedEntreprise);
         this.formation.entreprise = selectedEntreprise;
       }
+      getAllFormateurs(){
+        this.formatorService.getAllFormateurs()
+        .then((response)=>{
+          console.log(response);
+          this.formateurs=response.data;
+        })
+        .catch((error)=>{
+          return error;
+        });  
+        }
+        onFormateurSelected(formateurId: string) {
+          console.log(formateurId);
+          // this.entreprise_id = parseInt(entrepriseId);
+          // Find the selected entreprise from the array and assign it to the variable
+          const selectedFormateur = this.formateurs.find(formateur => formateur.id === parseInt(formateurId)) || null;
+          console.log(selectedFormateur);
+          this.formation.formateur = selectedFormateur;
+        }
 //FORM CALLS THIS FUNCTION with data from inputs
 editFormation(){
   

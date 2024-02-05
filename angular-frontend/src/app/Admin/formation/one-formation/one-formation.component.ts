@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OneFormationComponent {
   formation: Formation = { 
-    id: 0, nom: '', categorie: '' ,objectif:'' ,description:'', duree:'', cout:0, dateDebut:new Date(), dateFin: new Date(),formateur_id:0,entreprise:null
+    id: 0, nom: '', categorie: '' ,objectif:'' ,description:'', duree:'', cout:0, dateDebut:new Date(), dateFin: new Date(),formateur:null,entreprise:null
   };
 isSubmitting: boolean = false;
 
@@ -20,7 +20,7 @@ this.formation = {
 // It uses this.route.snapshot.params['id'] to retrieve the route 
 // 'formations/:id/edit'
 id: this.route.snapshot.params['id'],
-nom: '', categorie: '' ,objectif:'' ,description:'', duree:'', cout:0, dateDebut:new Date(), dateFin: new Date(),formateur_id:0,entreprise:null
+nom: '', categorie: '' ,objectif:'' ,description:'', duree:'', cout:0, dateDebut:new Date(), dateFin: new Date(),formateur:null,entreprise:null
 }
 }
 ngOnInit(): void{

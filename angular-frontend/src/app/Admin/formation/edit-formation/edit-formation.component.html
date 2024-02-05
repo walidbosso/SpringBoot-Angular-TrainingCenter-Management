@@ -67,11 +67,15 @@
                     class="form-control"  
                     type="date" name="dateFin" id="dateFin" required>
 
-                    <label for="formateur_id">formateur_id</label>
-                    <input                     
-                    [(ngModel)]="formation.formateur_id"
-                    class="form-control"  
-                    type="number" name="formateur_id" id="formateur_id" required>
+                    <label for="formateur">formateur</label>
+                    <select class="form-control btn btn-outline-primary mt-3" id="formateur" (change)="onFormateurSelected($event.target.value)">
+                        <option [value]="formation.formateur.id">
+                            {{ formation.formateur.name }}
+                          </option>
+                        <option *ngFor="let formateur of formateurs" [value]="formateur.id">
+                        {{ formateur.name }}
+                      </option>
+                    </select>
 
                     <label for="entreprise">Entreprise</label>
                     <select class="form-control btn btn-outline-primary mt-3" id="entreprise" (change)="onEntrepriseSelected($event.target.value)">

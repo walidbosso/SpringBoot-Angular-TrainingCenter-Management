@@ -1,3 +1,4 @@
+import { Formator } from "app/model/formator.model";
 import { Entreprise } from "../entreprise/entreprise";
 
 export interface Formation {
@@ -10,6 +11,6 @@ export interface Formation {
   cout: number;
   dateDebut: Date;
   dateFin: Date;
-  formateur_id: number;
+  formateur: Formator;
   entreprise: Entreprise;
 }
