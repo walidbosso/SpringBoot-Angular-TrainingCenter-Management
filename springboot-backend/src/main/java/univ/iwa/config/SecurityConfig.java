@@ -34,12 +34,12 @@ public class SecurityConfig {
 					"/Formation/date/**","formation/get/**").permitAll() 
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
 			.requestMatchers("/formation/**").permitAll()
-			.requestMatchers("/auth/assistant/**").authenticated() 
-			.requestMatchers("/auth/admin/**").authenticated() 	
-			.requestMatchers("/auth/formateur/**").authenticated() 
-//			.requestMatchers("/auth/individu/**").authenticated() 
 			.requestMatchers("/formateur/**").permitAll()
-			.requestMatchers("/individu/**").authenticated()
+			.requestMatchers("/auth/assistant/**").permitAll()
+			.requestMatchers("/auth/admin/**").permitAll()	
+			.requestMatchers("/auth/formateur/**").permitAll()
+//			.requestMatchers("/auth/individu/**").authenticated() 
+			.requestMatchers("/individu/**").permitAll()
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
 			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class) ;	

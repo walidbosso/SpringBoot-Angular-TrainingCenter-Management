@@ -62,7 +62,13 @@ public class UserInfoService implements UserDetailsService {
 		formateur.setRoles("ROLE_FORMATEUR");
 		formateur.setPassword(encoder.encode("1234"));
 		repository.save(formateur);
-		return "formateur added successfully";
+		UserInfo formateur2 = new UserInfo();
+		formateur2.setId(4);
+		formateur2.setName("formateur2");
+		formateur2.setRoles("ROLE_FORMATEUR");
+		formateur2.setPassword(encoder.encode("1234"));
+		repository.save(formateur2);
+		return "2 formateurs added successfully";
 	}
 	
 } 
