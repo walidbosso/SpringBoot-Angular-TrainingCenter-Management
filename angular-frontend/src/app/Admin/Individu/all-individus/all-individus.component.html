@@ -5,21 +5,44 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header card-header-danger">
-              <h4 class="card-title">Simple Table</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
+              <h4 class="card-title">List Des Individus</h4>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table">
-                  <thead class="text-primary">
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Country</th>
-                    <th>City</th>
-                    <th>Salary</th>
+                  <thead class="text-primary text-center">
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>E-mail</th>
+                    <th>Telephone</th>
+                    <th>Ville</th>
+                    <th>Date De Naissance</th>
+                    <th>Action</th>
                   </thead>
-                  <tbody>
-                    
+                  <tbody class="text-center">
+                    <tr *ngFor="let individu of individus">
+                      <td>{{ increment() }}</td>
+                      <td>{{ individu.nom }}</td>
+                      <td>{{ individu.prenom }}</td>
+                      <td>{{ individu.email }}</td>
+                      <td>{{ individu.tele }}</td>
+                      <td>{{ individu.ville }}</td>
+                      <td>{{ individu.dateNaissance }}</td>
+                      <td class="text-center">
+                        <a
+                          [routerLink]="['/admin/individu', individu.id, 'update']"
+                          class="btn btn-outline-success mx-1"
+                          >Edit</a
+                        >
+                        <button
+                          (click)="deleteIndividu(individu.id)"
+                          class="btn btn-outline-danger mx-1"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

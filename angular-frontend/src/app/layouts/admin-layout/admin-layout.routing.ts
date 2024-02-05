@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from '../../Admin/formation/dashboard/dashboard.component';
 import { ListEntrepriseComponent } from '../../Admin/entreprise/list-entreprise/list-entreprise.component';
-
 import { TableListFormatorComponent } from '../../Admin/formator/list-formator/list-formator.component';
 import { CreateFormatorComponent } from '../../Admin/formator/add-formator/add-formator.component';
 import { UpdateFormatorComponent } from '../../Admin/formator/update-formator/update-formator.component';
@@ -33,14 +32,10 @@ export const AdminLayoutRoutes: Routes = [
       {
         path: 'individu',
         loadChildren: () =>
-          import('../../Admin/Individu/individu.module').then(
+          import('../../Admin/individu/individu.module').then(
             (m) => m.IndividuModule
           ),
       },
-      // {
-      //     path: 'formation',
-      //     loadChildren: ()=> import("../../Admin/formation/formation.module").then(m=> m.FormationModule)
-      // },
 
       // FORMATION
       { path: 'dashboard', component: DashboardComponent },
