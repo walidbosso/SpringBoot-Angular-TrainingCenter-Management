@@ -23,7 +23,7 @@ import { environment } from './environments/environment.prod';
 import 'hammerjs';
 import axios from 'axios';
 
-axios.defaults.baseURL=environment.apiUrl;
+axios.defaults.baseURL = environment.apiUrl;
 
 if (environment.production) {
   enableProdMode();

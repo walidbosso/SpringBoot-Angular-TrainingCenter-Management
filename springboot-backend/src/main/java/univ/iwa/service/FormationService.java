@@ -32,6 +32,7 @@ public class FormationService {
 	
 	//TACHE2
 	public Formation addFormation( Formation formation) {
+		System.out.print(formation);
 		return formationRepository.save(formation);
 	}
 	

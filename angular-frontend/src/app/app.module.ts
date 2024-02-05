@@ -12,7 +12,6 @@ import { HomeHeaderComponent } from './components/home-header/home-header.compon
 import { HomeComponent } from './home/home.component';
 import { EntrepriseModule } from './Admin/entreprise/entreprise.module';
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -29,9 +28,9 @@ import { EntrepriseModule } from './Admin/entreprise/entreprise.module';
     AdminLayoutComponent,
     AuthComponent,
     HomeHeaderComponent,
-    HomeComponent
+    HomeComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
