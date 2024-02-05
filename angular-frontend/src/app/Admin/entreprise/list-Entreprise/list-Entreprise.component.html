@@ -35,12 +35,12 @@
                     <td>{{ entreprise.email }}</td>
                     <td class="text-right">
                       <a
-                        [routerLink]="['/entreprise', entreprise.id, 'details']"
+                        [routerLink]="['/admin/entreprise', entreprise.id, 'details']"
                         class="btn btn-outline-info mx-1"
                         >Details</a
                       >
                       <button
-                        [routerLink]="['/entreprise', entreprise.id, 'edit']"
+                        [routerLink]="['/admin/entreprise', entreprise.id, 'edit']"
                         class="btn btn-warning btn-sm mr-2"
                       >
                         Edit
