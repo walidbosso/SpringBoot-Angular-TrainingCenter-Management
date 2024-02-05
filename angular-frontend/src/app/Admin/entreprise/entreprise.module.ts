@@ -13,7 +13,7 @@ import { ListEntrepriseComponent } from './list-entreprise/list-entreprise.compo
 @NgModule({
   declarations: [
     //COMPONENTS
-    ListEntrepriseComponent,
+    // ListEntrepriseComponent,
     CreateEntrepriseComponent,
     OneEntrepriseComponent,
     EditEntrepriseComponent

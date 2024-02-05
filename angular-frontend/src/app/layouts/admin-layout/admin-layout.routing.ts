@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
-
 import { DashboardComponent } from '../../Admin/formation/dashboard/dashboard.component';
-import { TableListFormatorComponent } from '../../Admin/list-formator/list-formator.component';
 import { ListEntrepriseComponent } from '../../Admin/entreprise/list-entreprise/list-entreprise.component';
+
+import { TableListFormatorComponent } from '../../Admin/formator/list-formator/list-formator.component';
+import { CreateFormatorComponent } from '../../Admin/formator/add-formator/add-formator.component';
+import { UpdateFormatorComponent } from '../../Admin/formator/update-formator/update-formator.component';
 import { CreateEntrepriseComponent } from 'app/Admin/entreprise/create-entreprise/create-entreprise.component';
 import { EditEntrepriseComponent } from 'app/Admin/entreprise/edit-entreprise/edit-entreprise.component';
 import { OneEntrepriseComponent } from 'app/Admin/entreprise/one-entreprise/one-entreprise.component';
@@ -45,6 +47,12 @@ export const AdminLayoutRoutes: Routes = [
         { path: 'formation/category/:category',      component: CategoryFormationComponent },
 
 
+        //FORMATEUR
+        { path: 'formateur',  redirectTo:'formateur/get', pathMatch:'full' },
+        { path: 'formateur/get',  component: TableListFormatorComponent },
+        { path: 'formateur/add',  component: CreateFormatorComponent },
+        { path: 'formateur/:id/update',  component: UpdateFormatorComponent },
+
         // ENTREPRISE
         { path: 'entreprise', redirectTo:'entreprise/get', pathMatch:'full'},
         { path: 'entreprise/get', component:ListEntrepriseComponent },
@@ -54,7 +62,5 @@ export const AdminLayoutRoutes: Routes = [
 
     ],
   },
-
-  
 
 ];

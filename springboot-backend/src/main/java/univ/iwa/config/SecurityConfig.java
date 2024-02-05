@@ -38,7 +38,7 @@ public class SecurityConfig {
 			.requestMatchers("/auth/admin/**").authenticated() 	
 			.requestMatchers("/auth/formateur/**").authenticated() 
 //			.requestMatchers("/auth/individu/**").authenticated() 
-			.requestMatchers("/formateur/**").authenticated()
+			.requestMatchers("/formateur/**").permitAll()
 			.requestMatchers("/individu/**").authenticated()
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
