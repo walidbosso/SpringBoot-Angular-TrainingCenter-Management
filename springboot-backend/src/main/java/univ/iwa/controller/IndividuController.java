@@ -18,7 +18,7 @@ import univ.iwa.model.Individu;
 import univ.iwa.service.IndividuService;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping("/individu")
 public class IndividuController {
 	
@@ -26,33 +26,32 @@ public class IndividuController {
 	private IndividuService individuService;
 	
 	@GetMapping("/get")
-//	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public List<Individu> getAllIndividus() {
 		return individuService.getAllIndividus();
 	}
 	
 	@GetMapping("/get/{id}")
-//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Individu getIndividuById(@PathVariable Long id) {
 		return individuService.getIndividuById(id);
 	}
 	
 	@PostMapping("/add")
-//	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Individu addIndividu(@RequestBody Individu individu) {
 		return individuService.addIndividu(individu);
 	}
 	
 	@PutMapping("/update")
-//	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Individu updateIndividu(@RequestBody Individu individu) {
 		return individuService.updateIndividu(individu);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-//	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public void deleteIndividu(@PathVariable Long id) {
 		individuService.deleteIndividu(id);
 	}
-
 }

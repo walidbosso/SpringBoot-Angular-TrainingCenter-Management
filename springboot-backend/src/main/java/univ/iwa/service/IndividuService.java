@@ -27,6 +27,7 @@ public class IndividuService {
 	}
 	
 	public Individu updateIndividu(Individu individu) {
+		System.out.println("Hello : " + individu);
 		return individuRepository.save(individu);
 	}
 	

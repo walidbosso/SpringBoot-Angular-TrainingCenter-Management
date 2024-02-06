@@ -19,7 +19,7 @@ import univ.iwa.model.Formation;
 import univ.iwa.service.FormateurService;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping("/formateur")
 public class FormateurController {
 	
