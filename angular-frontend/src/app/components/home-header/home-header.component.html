@@ -4,12 +4,10 @@
     id="kt_app_header_container">
         <!--begin::Logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
-            <a href="../../demo1/dist/index.html">
-                <img alt="Logo" src="assets/media/logos/default.svg" 
+            <a href="#/home">
+                <img alt="Logo" src="assets/img/angular.png" 
                 class="h-20px h-lg-30px app-sidebar-logo-default theme-light-show" />
-                <img alt="Logo" src="assets/media/logos/default-dark.svg" 
-                class="h-20px h-lg-30px app-sidebar-logo-default theme-dark-show" />
-            </a>
+                            </a>
         </div>
         <!--end::Logo-->
         <!--begin::Header wrapper-->
@@ -31,10 +29,10 @@
                     data-kt-menu-placement="bottom-start" 
                     class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                         <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Dashboards</span>
+                        <a href="#/admin/dashboard">
+                            <span class="menu-title menu-link">Admin Dashboard</span>
                             <span class="menu-arrow d-lg-none"></span>
-                        </span>
+                        </a>
                         <!--end:Menu link-->
 
                     </div>
@@ -43,7 +41,7 @@
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-0 me-lg-2">
                         <!--begin:Menu link-->
                         <span class="menu-link">
-                            <span class="menu-title">Pages</span>
+                            <span class="menu-title  menu-link">Profile</span>
                             <span class="menu-arrow d-lg-none"></span>
                         </span>
                         <!--end:Menu link-->
@@ -55,10 +53,10 @@
                      data-kt-menu-placement="bottom-start" 
                      class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                         <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Apps</span>
+                        <a href="#/admin/calendar">
+                            <span class="menu-title  menu-link">Calendrier</span>
                             <span class="menu-arrow d-lg-none"></span>
-                        </span>
+                        </a>
                         <!--end:Menu link-->
 
                     </div>
@@ -67,10 +65,10 @@
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" 
                     data-kt-menu-placement="bottom-start" class="menu-item here show">
                         <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Layouts</span>
+                        <a href="#/admin/home">
+                            <span class="menu-title  menu-link">Formations</span>
                             <span class="menu-arrow d-lg-none"></span>
-                        </span>
+                        </a>
                         <!--end:Menu link-->
 
                     </div>
@@ -78,15 +76,16 @@
                     <!--begin:Menu item-->
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" 
                     data-kt-menu-placement="bottom-start" 
-                    class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-                        <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Help</span>
-                            <span class="menu-arrow d-lg-none"></span>
-                        </span>
-                        <!--end:Menu link-->
-
-                    </div>
+                    class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 ms-auto me-lg-2">
+                    <!--begin:Menu link-->
+                    <a href="#/auth/login">
+                        <!-- ngIf notoken register/login  -->
+                        <span class="menu-title  menu-link">Login</span>
+                        <span class="menu-arrow d-lg-none"></span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                
                     <!--end:Menu item-->
                 </div>
                 <!--end::Menu-->

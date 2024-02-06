@@ -17,6 +17,12 @@ export class FormationService {
     const headers = { 'Content-Type': 'application/json' };
     return axios.get(`/formation/get/${id}`, { headers });
   }
+  
+  findByCategorie(categorie: string): Promise<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    console.log("Service categorie dans /categorie "+categorie)
+    return axios.get(`/formation/categorie/${categorie}`, { headers });
+  }
 
   // POST ADD
   addFormation(request: any): Promise<any> {

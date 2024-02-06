@@ -30,8 +30,9 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { 
 		http.authorizeHttpRequests((auth)->auth
+	
 			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", 
-					"/Formation/date/**","formation/get/**").permitAll() 
+					"/Formation/date/**","formation/get/**", "formation/categorie/**").permitAll() 
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
 			.requestMatchers("/formation/**").permitAll()
 			.requestMatchers("/formateur/**").permitAll()
@@ -43,7 +44,7 @@ public class SecurityConfig {
 
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
-			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class) ;	
+			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);	
 		return http.build();
 	} 
 	// Password Encoding 

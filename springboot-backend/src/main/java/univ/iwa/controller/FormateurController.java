@@ -55,7 +55,7 @@ public class FormateurController {
 	public void deleteFormateur(@PathVariable Integer id) {
 		formateurService.deleteFormateur(id);
 	}
-	/*
+	
 	@PostMapping("add/{idFormateur}/formation/{idFormation}")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 	public Formation addFormateurToFormation(@PathVariable Integer idFormateur, @RequestBody Formation m, @PathVariable Long idFormation) {
@@ -67,7 +67,7 @@ public class FormateurController {
 	public List<Formation> getFormationsByFormateurId(@PathVariable Integer id) {
 		return formateurService.getFormationsByFormateurId(id);
 	}
-	*/
+	
 }
 
 
