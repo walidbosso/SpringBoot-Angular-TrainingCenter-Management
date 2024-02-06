@@ -33,10 +33,18 @@ public class FormationController {
 	public List<Formation> getAllFormations(){
 		return formationService.getAllFormations();
 	}
+
 	
 	@GetMapping("/get/{id}")
 	public Formation getFormationById(@PathVariable Long id) {
 		return formationService.getFormationById(id); 
+	}
+	
+	@GetMapping("/categorie/{categorie}")
+	public List<Formation> findByCategorie(@PathVariable String categorie) {
+		System.out.println(categorie);
+	    return formationService.findByCategorie(categorie);
+
 	}
 	
 	@PostMapping("/add")
@@ -57,27 +65,30 @@ public class FormationController {
 		formationService.deleteFormation(id);
 	}
 	
-	/*
-	@DeleteMapping("Formation/delete")
-	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	public List<Formation> deleteFormationsLessThanNow() {
-		return formationService.deleteFormationsLessThanNow();
-	}
 	
-	@GetMapping("formation/date/{date}")
-	public List<Formation> findByDateFormationquals(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-	    return formationService.findByDateFormationquals(date);
+//	@DeleteMapping("/delete")
+//	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//	public List<Formation> deleteFormationsLessThanNow() {
+//		return formationService.deleteFormationsLessThanNow();
+//	}
+//	
+//	@GetMapping("/date/{date}")
+//	public List<Formation> findByDateFormationquals(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+//	    return formationService.findByDateFormationEquals(date);
+//
+//	}
 
-	}
 	
-	@DeleteMapping("Formation/delete/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
-	public void deleteFormation(@PathVariable Long id) {
-		formationService.deleteFormation(id);
-	}
+
 	
-	public List<Formation> getAllFormations(int page, int size, String feild){
-		return formationService.getAllFormations(page, size, feild);
-	}
-	*/
+//	@DeleteMapping("/delete/{id}")
+//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+//	public void deleteFormation(@PathVariable Long id) {
+//		formationService.deleteFormation(id);
+//	}
+//	
+//	public List<Formation> getAllFormations(int page, int size, String feild){
+//		return formationService.getAllFormations(page, size, feild);
+//	}
+	
 }

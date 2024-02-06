@@ -52,34 +52,40 @@ public class FormationService {
         formationRepository.deleteById(id);
 	}
 	
-	/*
-	//TACHE7	
-    public List<Formation> findByDebut(Date date) {
-        List<Formation> formations = formationRepository.findByDebut(date);
-        return formations;
-    }
+//	
+//	//TACHE7	
+//    public List<Formation> findByDebut(Date date) {
+//        List<Formation> formations = formationRepository.findByDebut(date);
+//        return formations;
+//    }
+//    
+//	//TACHE7
+//    public List<Formation> findByVille(String ville) {
+//        List<Formation> Formation = formationRepository.findByVille(ville);
+//        return Formation;
+//    }
     
-	//TACHE7
-    public List<Formation> findByVille(String ville) {
-        List<Formation> Formation = formationRepository.findByVille(ville);
+  //TACHE7
+    public List<Formation> findByCategorie(String categorie) {
+        List<Formation> Formation = formationRepository.findByCategorie(categorie);
         return Formation;
     }
 	
-	public List<Formation> findByDateFormationquals(  LocalDate date) {
-	    Date convertedDate = java.sql.Date.valueOf(date);
-		return formationRepository.findByDebutEquals(convertedDate); 
-	}
+//	public List<Formation> findByDateFormationEquals(  LocalDate date) {
+//	    Date convertedDate = java.sql.Date.valueOf(date);
+//		return formationRepository.findByDebutEquals(convertedDate); 
+//	}
 	
-	public List<Formation> deleteFormationsLessThanNow() {
-		List<Formation> Formations= formationRepository.findByFinLessThan(new Date());
-		formationRepository.deleteAll(Formations);
-		return Formations;
-	}	
+//	public List<Formation> deleteFormationsLessThanNow() {
+//		List<Formation> Formations= formationRepository.findByFinLessThan(new Date());
+//		formationRepository.deleteAll(Formations);
+//		return Formations;
+//	}	
 	
 	public List<Formation> getAllFormations(int page, int size, String feild){
 		Pageable pg= PageRequest.of(page, size, Sort.by(feild));
 		Page<Formation> FormationsPage = formationRepository.findAll(pg); 
 		return FormationsPage.getContent();
 	}
-	*/
+	
 }

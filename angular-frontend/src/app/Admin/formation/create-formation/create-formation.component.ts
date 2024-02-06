@@ -53,7 +53,7 @@ export class CreateFormationComponent {
       .then((response) => {
         console.log('getAllEntreprises ' + response.data);
         this.entreprises = response.data;
-        this.entreprise = this.entreprises[0] || null;
+        // this.entreprise = this.entreprises[0] || null;
       })
       .catch((error) => {
         return error;
@@ -65,7 +65,7 @@ export class CreateFormationComponent {
       .then((response) => {
         console.log('getAllFormateurs ' + response.data);
         this.formateurs = response.data;
-        this.formateur = this.formateurs[0] || null;
+        // this.formateur = this.formateurs[0] || null;
       })
       .catch((error) => {
         return error;
@@ -129,8 +129,8 @@ export class CreateFormationComponent {
         this.cout = 0;
         this.dateDebut = null;
         this.dateFin = null;
-        this.formateur = this.formateurs[0];
-        this.entreprise = this.entreprises[0];
+        this.formateur = null;
+        this.entreprise = null;
 
         return response;
       }) //response

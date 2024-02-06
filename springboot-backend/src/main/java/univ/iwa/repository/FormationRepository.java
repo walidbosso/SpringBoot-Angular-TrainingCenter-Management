@@ -14,11 +14,13 @@ import univ.iwa.model.UserInfo;
 public interface FormationRepository extends JpaRepository<Formation, Long>{
 	List<Formation> findByFormateur(UserInfo formateur);
 	List<Formation> findByEntreprise(Entreprise entreprise);
-	/*
-	List<Formation> findByFinLessThan(Date d); 
-	List<Formation> findByDebutEquals(Date d); 
 	
-    List<Formation> findByVille(String ville);
-    List<Formation> findByDebut(Date date);
-	*/
+	//YOU CHANGED THE ATTRIBUTS NAME Aymane
+//	List<Formation> findByFinLessThan(Date d); 
+//	List<Formation> findByDebutEquals(Date d); 
+	
+//    List<Formation> findByVille(String ville);
+//    List<Formation> findByDebut(Date date);
+    List<Formation> findByCategorie(String categorie);
+	
 }
