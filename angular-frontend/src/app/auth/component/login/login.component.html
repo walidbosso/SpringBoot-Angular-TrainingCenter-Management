@@ -1,5 +1,7 @@
 <form
   class="form w-100"
+  [formGroup]="loginForm"
+  (ngSubmit)="login()"
   novalidate="novalidate"
   id="kt_sign_in_form"
   data-kt-redirect-url="../../demo1/dist/index.html"
@@ -12,34 +14,46 @@
     <!--end::Title-->
     <!--begin::Subtitle-->
     <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+    <div class="text-gray-500 fw-semibold fs-6"></div>
+    <div *ngIf="msgError != ''" class="alert alert-danger">
+      <div>
+        {{ msgError }}
+      </div>
+    </div>
     <!--end::Subtitle=-->
   </div>
   <!--begin::Heading-->
-  <!--begin::Login options-->
-  <!--end::Login options-->
-  <!--begin::Separator-->
-  <!--end::Separator-->
   <!--begin::Input group=-->
   <div class="fv-row mb-8">
-    <!--begin::Email-->
+    <!--begin::Username-->
+    <div *ngIf="username.invalid && (username.dirty || username.touched)">
+      <label *ngIf="username.errors?.['required']" style="color: red">
+        Username required
+      </label>
+    </div>
     <input
-      [(ngModel)]="user.username"
       type="text"
       placeholder="Username"
       name="username"
+      formControlName="username"
       autocomplete="off"
       class="form-control bg-transparent"
     />
-    <!--end::Email-->
+    <!--end::Username-->
   </div>
   <!--end::Input group=-->
   <div class="fv-row mb-3">
     <!--begin::Password-->
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+      <label *ngIf="password.errors?.['required']" style="color: red">
+        Password required
+      </label>
+    </div>
     <input
-      [(ngModel)]="user.password"
       type="password"
       placeholder="Password"
       name="password"
+      formControlName="password"
       autocomplete="off"
       class="form-control bg-transparent"
       required
@@ -61,7 +75,12 @@
   <!--end::Wrapper-->
   <!--begin::Submit button-->
   <div class="d-grid mb-10">
-    <button (click)="login()" type="submit" id="kt_sign_in_submit" class="btn btn-primary">
+    <button
+      type="submit"
+      id="kt_sign_in_submit"
+      [disabled]="!loginForm.valid"
+      class="btn btn-primary"
+      >
       <!--begin::Indicator label-->
       <span class="indicator-label">Sign In</span>
       <!--end::Indicator label-->
