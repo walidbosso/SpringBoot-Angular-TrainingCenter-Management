@@ -1,32 +1,139 @@
-<div class="container">
-  <h2 class="text-center mt-5 mb-5">Formation Detail</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formation Detail</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Add any additional stylesheets or fonts if needed -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background-color: #344c67;
+      color: #fff;
+    }
+
+    .btn-back {
+      background-color: #0d117b;
+      color: #fff;
+    }
+
+    .btn-back:hover {
+      background-color: #285c9b;
+    }
+
+    .formation-image {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
   <div class="card">
-    <div class="card-header">
-      <a class="btn btn-outline-info float-right" routerLink="/admin/dashboard"
-        >Toutes les formations</a
-      >
+    <div class="card-header text-center">
+      <h2 class="mb-0 pt-6">{{ formation.nom }}</h2>
     </div>
     <div class="card-body">
-      <b class="text-muted">Nom:</b>
-      <p>{{ formation.nom }}</p>
-      <b class="text-muted">Categorie:</b>
-      <p>{{ formation.categorie }}</p>
-      <b class="text-muted">Objectif:</b>
-      <p>{{ formation.objectif }}</p>
-      <b class="text-muted">Description:</b>
-      <p>{{ formation.description }}</p>
-      <b class="text-muted">Duree:</b>
-      <p>{{ formation.duree }}</p>
-      <b class="text-muted">Cout:</b>
-      <p>{{ formation.cout }}</p>
-      <b class="text-muted">Date de debut de formation:</b>
-      <p>{{ formation.dateDebut }}</p>
-      <b class="text-muted">Date de fin de formation:</b>
-      <p>{{ formation.dateFin }}</p>
-      <b class="text-muted">Nom de formateur associe avec cette formation:</b>
-      <p>{{ formation.formateur.name }}</p>
-      <b class="text-muted">Entreprise qui benefice de cette formation:</b>
-      <p>{{ formation.entreprise.nom }}</p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="text-muted">Categorie:</label>
+            <p>{{ formation.categorie }}</p>
+          </div>
+
+          <div class="form-group">
+            <label class="text-muted">Objectif:</label>
+            <p>{{ formation.objectif }}</p>
+          </div>
+
+          <div class="form-group">
+            <label class="text-muted">Description:</label>
+            <p>{{ formation.description }}</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="img">
+          
+              <img class="pt-4"
+                *ngIf="formation.imageName !== null; else defaultImage"
+                [src]="'http://localhost:8080/formation/' + formation.id + '/image'"
+                width="200"
+                height="150"
+              />
+              <ng-template #defaultImage>
+                <img class="pt-4" src="/assets/img/angular.png" width="200" height="150" />
+              </ng-template>
+       
+            
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="text-muted">Duree:</label>
+            <p>{{ formation.duree }}</p>
+          </div>
+
+          <div class="form-group">
+            <label class="text-muted">Cout:</label>
+            <p>{{ formation.cout }}</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="text-muted">Date de debut de formation:</label>
+            <p>{{ formation.dateDebut }}</p>
+          </div>
+
+          <div class="form-group">
+            <label class="text-muted">Date de fin de formation:</label>
+            <p>{{ formation.dateFin }}</p>
+          </div>
+        </div>
+      </div>
+
+
+  
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="text-muted">Nom de formateur associe avec cette formation::</label>
+            <p>{{ formation.formateur.name }}</p>
+          </div>
+
+          <div class="form-group">
+            <label class="text-muted">Entreprise qui benefice de cette formation:</label>
+            <p>{{ formation.entreprise.nom }}</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
+
+  <button class="btn btn-back mt-3" routerLink="/admin/dashboard">Retour</button>
 </div>
+
+<!-- Bootstrap and other script imports -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

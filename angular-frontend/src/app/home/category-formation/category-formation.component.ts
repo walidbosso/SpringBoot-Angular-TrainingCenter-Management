@@ -20,7 +20,7 @@ export class CategoryFormationComponent implements OnInit {
       .findByCategorie(this.route.snapshot.params['categorie'])
       .then((response) => {
         console.log(response);
-        this.formations = response.data;
+        this.formations = response.data.sort((a, b) => new Date(a.dateDebut).getTime() - new Date(b.dateDebut).getTime());
       })
       .catch((error) => {
         console.log("findByCategorie ERROR category ts "+ error);
