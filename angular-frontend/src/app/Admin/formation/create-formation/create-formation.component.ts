@@ -76,7 +76,7 @@ export class CreateFormationComponent {
       .getAllEntreprises()
       .then((response) => {
         console.log('getAllEntreprises ' + response.data);
-        this.entreprises = response.data;
+        this.entreprises = response.data.sort((a, b) => a.nom.localeCompare(b.nom));
         // this.entreprise = this.entreprises[0] || null;
       })
       .catch((error) => {
@@ -88,7 +88,7 @@ export class CreateFormationComponent {
       .getAllFormateurs()
       .then((response) => {
         console.log('getAllFormateurs ' + response.data);
-        this.formateurs = response.data;
+        this.formateurs = response.data.sort((a, b) => a.name.localeCompare(b.name));
         // this.formateur = this.formateurs[0] || null;
       })
       .catch((error) => {

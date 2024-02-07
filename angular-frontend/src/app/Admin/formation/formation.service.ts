@@ -79,6 +79,8 @@ export class FormationService {
       dateFin: request.dateFin,
       formateur: request.formateur,
       entreprise: request.entreprise,
+      imageName:request.imageName,
+      imageData:request.imageData,
     };
     return axios.put(`/formation/update`, reqData, { headers });
   }

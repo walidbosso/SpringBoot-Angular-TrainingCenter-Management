@@ -21,7 +21,7 @@ export class CardHomeComponent implements OnInit {
       .getAllFormations()
       .then((response) => {
         console.log(response);
-        this.formations = response.data;
+        this.formations = response.data.sort((a, b) => new Date(a.dateDebut).getTime() - new Date(b.dateDebut).getTime());
         // console.log(this.formations[0].formateur.name);
       })
       .catch((error) => {
