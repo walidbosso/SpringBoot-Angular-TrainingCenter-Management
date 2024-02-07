@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Individu } from 'app/model/individu.model';
 import { IndividuService } from 'app/services/individu.service';
+import { UserAuthsService } from 'app/services/user-auths.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,12 +11,17 @@ import Swal from 'sweetalert2';
 })
 export class AllIndividusComponent implements OnInit {
   individus: Individu[] = [];
+  permission: boolean;
   index: number = 0;
 
-  constructor(public individuService: IndividuService) {}
+  constructor(
+    private individuService: IndividuService,
+    private userAuthsService: UserAuthsService
+  ) {}
 
   ngOnInit(): void {
     this.getAllIndividus();
+    this.permission = this.userAuthsService.isAdmin();
   }
 
   // This method is used to generate rows numbers in the individus list instead of displaying the id 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormatorService } from 'app/services/formators.service';
 import { Formator } from 'app/model/formator.model';
 import Swal from 'sweetalert2';
+import { UserAuthsService } from 'app/services/user-auths.service';
 
 @Component({
   selector: 'app-list-formator',
@@ -9,10 +10,16 @@ import Swal from 'sweetalert2';
 })
 export class TableListFormatorComponent implements OnInit {
   formators: Formator[] = [];
-  constructor(private formatorService: FormatorService) { }
+  permission: boolean;
+
+  constructor(
+    private formatorService: FormatorService,
+    private userAuthsService: UserAuthsService
+  ) {}
 
   ngOnInit(): void {
     this.loadFormators();
+    this.permission = this.userAuthsService.isAdmin();
   }
 
   loadFormators() {
