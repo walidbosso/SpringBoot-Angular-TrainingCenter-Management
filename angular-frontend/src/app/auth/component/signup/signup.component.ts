@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SignupService } from 'app/services/signup.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-signup',
@@ -9,66 +11,51 @@ import Swal from 'sweetalert2';
 })
 export class SignupComponent {
 
-  name: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  competences: string = '';
-  remarques: string = '';
+  // name: string = '';
+  // email: string = '';
+  // password: string = '';
+  // confirmPassword: string = '';
+  // competences: string = '';
+  // remarques: string = '';
   isSubmitting: boolean = false;
-  emailEmptyError: boolean;
-  emailFormatError: boolean;
 
-  constructor(private signupService: SignupService,
-    private router: Router) {
-
+  ngOnInit(): void {
+    this.signupForm.reset();
   }
-
-  
-
-  signupFormator() {
-    this.emailFormatError = false;
-  this.emailEmptyError = false;
-
-  // Check if the email field is empty
-  if (!this.email) {
-    this.emailEmptyError = true;
-    return; // Stop the form submission
-  }
-
-  // Regular expression to validate email format
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  // Check if the email format is valid
-  if (!emailRegex.test(this.email)) {
-    this.emailFormatError = true;
-    return; // Stop the form submission
+ 
+  signupForm: FormGroup;
+  constructor(private signupService: SignupService, private router: Router) {
+    // Initialize form with form controls and validators
+    this.signupForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
+      competences: new FormControl(''),
+      remarques: new FormControl('')
+    });
   }
   
+  get name() { return this.signupForm.get('name'); }
+  get email() { return this.signupForm.get('email'); }
+  get password() { return this.signupForm.get('password'); }
+  get confirmPassword() { return this.signupForm.get('confirmPassword'); }
+  get competences() { return this.signupForm.get('competences'); }
+  get remarques() { return this.signupForm.get('remarques'); }
+
+signupFormator() {
     this.isSubmitting = true;
-    this.signupService.addFormateur({ name: this.name, email: this.email, password: this.password, competences: this.competences, remarques: this.remarques })
-      .then(response => {
-        console.log(response);
+
+    if (this.signupForm.valid) {
+      console.log(this.signupForm.value);
+        this.signupService.addFormateur(this.signupForm.value).then(
+          (response: any) => {
+            this.router.navigate(['/auth/login']); 
+            return response.data;
+          })  
+      } else {
         this.isSubmitting = false;
-        this.router.navigate(['/auth/login']);
-
-        this.name = '';
-        this.email = '';
-        this.password = '';
-        this.confirmPassword = '';
-        this.competences = '';
-        this.remarques = '';
-
-        return response;
-      })
-  }
-
-  submitForm() {
-    if (this.password !== this.confirmPassword) {
-      console.log('Passwords do not match');
-      return;
-    }
-    console.log('Form submitted successfully');
+      }
   }
 
 }

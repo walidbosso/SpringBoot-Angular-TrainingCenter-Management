@@ -19,6 +19,7 @@ export class SignupService {
       remarques: request.remarques,
 
     }
+    console.log(reqData);
     return axios.post('/formateur/add', reqData, { headers });
   }
   

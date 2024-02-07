@@ -6,6 +6,7 @@ import { Entreprise } from 'app/Admin/entreprise/entreprise';
 import { EntrepriseService } from 'app/Admin/entreprise/entreprise.service';
 import { Formator } from 'app/model/formator.model';
 import { FormatorService } from 'app/services/formators.service';
+import { Formation } from '../formation';
 
 @Component({
   selector: 'app-create-formation',
@@ -13,18 +14,33 @@ import { FormatorService } from 'app/services/formators.service';
   styleUrls: ['./create-formation.component.css'],
 })
 export class CreateFormationComponent {
-  nom: string = '';
+  // nom: string = '';
   entreprises: Entreprise[] = [];
   formateurs: Formator[] = [];
-  entreprise: Entreprise = null;
-  formateur: Formator = null;
-  categorie: string = '';
-  objectif: string = '';
-  description: string = '';
-  duree: number = 12;
-  cout: number = 300;
-  dateDebut: Date = new Date();
-  dateFin: Date = null;
+  selectedImage: File;
+  // entreprise: Entreprise ;
+  // formateur: Formator ;
+  // categorie: string = '';
+  // objectif: string = '';
+  // description: string = '';
+  // duree: number = 12;
+  // cout: number = 300;
+  // dateDebut: Date = new Date();
+  // dateFin: Date = null;
+  formation: Formation = {
+    // id: 0,
+    nom: '',
+    categorie: '',
+    objectif: '',
+    description: '',
+    duree: '',
+    cout: 0,
+    dateDebut: null,
+    dateFin: null,
+    formateur: null,
+    entreprise: null,
+    // image_name:null
+  };
   // formateur_id: number = 0;
   //  entreprise_id: number=0;
 
@@ -46,6 +62,14 @@ export class CreateFormationComponent {
     this.getAllEntreprises();
     this.getAllFormateurs();
   } // on loand we call the function below
+
+  onImageSelected(event: any): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      this.selectedImage = file;
+    }
+  }
 
   getAllEntreprises() {
     this.entrepriseService
@@ -80,7 +104,7 @@ export class CreateFormationComponent {
         (entreprise) => entreprise.id === parseInt(entrepriseId)
       ) || null;
     console.log('selectedEntreprise ' + selectedEntreprise);
-    this.entreprise = selectedEntreprise;
+    this.formation.entreprise = selectedEntreprise;
   }
   onFormateurSelected(formateurId: string) {
     console.log(formateurId);
@@ -91,28 +115,65 @@ export class CreateFormationComponent {
         (formateur) => formateur.id === parseInt(formateurId)
       ) || null;
     console.log('selectedFormateur ' + selectedFormateur);
-    this.formateur = selectedFormateur;
+    this.formation.formateur = selectedFormateur;
   }
+
+  addFormationWithImage(): void {
+    this.isSubmitting = true;
+
+    this.formationService
+      .addFormationWithImage(this.formation, this.selectedImage)
+      .then((response) => {
+        this.isSubmitting = false;
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Formation created successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        this.formation = {
+          nom: '',
+          categorie: '',
+          objectif: '',
+          description: '',
+          duree: '',
+          cout: 0,
+          dateDebut: null,
+          dateFin: null,
+          formateur: null,
+          entreprise: null,
+        };
+
+        // Reset selected image
+        this.selectedImage = null;
+      })
+      .catch((error) => {
+        this.isSubmitting = false;
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Some error occurred',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  }
+  getImageUrl(): any {
+    // console.log(this.selectedImage);
+    return this.selectedImage ? URL.createObjectURL(this.selectedImage) : '';
+  }
+  
+
   addFormation() {
     this.isSubmitting = true;
     this.formationService
-      .addFormation({
-        nom: this.nom,
-        categorie: this.categorie,
-        objectif: this.objectif,
-        description: this.description,
-        duree: this.duree,
-        cout: this.cout,
-        dateDebut: this.dateDebut,
-        dateFin: this.dateFin,
-        formateur: this.formateur,
-        entreprise: this.entreprise,
-      })
+      .addFormation(
+        this.formation
+      )
       .then((response) => {
-        console.log(
-          'add this.entreprise ' + this.entreprise.nom,
-          this.formateur.name
-        );
+        
         this.isSubmitting = false;
         Swal.fire({
           icon: 'success',
@@ -121,17 +182,20 @@ export class CreateFormationComponent {
           timer: 1500,
         });
 
-        this.nom = '';
-        this.categorie = '';
-        this.objectif = '';
-        this.duree = 0;
-        this.description = '';
-        this.cout = 0;
-        this.dateDebut = null;
-        this.dateFin = null;
-        this.formateur = null;
-        this.entreprise = null;
-
+        this.formation = {
+          // id: 0,
+          nom: '',
+          categorie: '',
+          objectif: '',
+          description: '',
+          duree: '',
+          cout: 0,
+          dateDebut: null,
+          dateFin: null,
+          formateur: null,
+          entreprise: null,
+        };
+ 
         return response;
       }) //response
       .catch((error) => {

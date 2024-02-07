@@ -16,13 +16,47 @@
           </div>
 
           <div class="card-body">
-            <form action="">
+            <form action="" (submit)="addFormationWithImage()">
+              <!-- IMAGE -->
+              
               <div class="form-group">
+                
+                
+                <div *ngIf="selectedImage" class="text-center mt-3">
+                  <img width="200" height="150" [src]="getImageUrl()" alt="Selected Image" class="img-fluid rounded" />
+                </div>
+            
+                <!-- File input with styling -->
+                <div class="form-group mt-3">
+                  <label for="imageFile" class="font-weight-bold">Select Image:</label>
+                  <div class="custom-file">
+                    <input
+                      type="file"
+                      class="custom-file-input"
+                      id="imageFile"
+                      name="imageFile"
+                      (change)="onImageSelected($event)"
+                      accept="image/*"
+                    />
+                    <label class="custom-file-label" for="imageFile"><small class="form-text text-muted">
+                    Select a valid image file ( png).
+                  </small></label>
+                  </div>
+                  
+                </div>
+                   
+          
+                
+                <!-- fin image -->
+                
+             
+
+
                 <!-- NOM -->
                 <label for="nom">Nom de Formation</label>
                 <!-- ngModel same name in ts -->
                 <input
-                  [(ngModel)]="nom"
+                  [(ngModel)]="formation.nom"
                   class="form-control"
                   type="text"
                   name="nom"
@@ -35,7 +69,7 @@
 
                 <textarea
                   rows="4"
-                  [(ngModel)]="categorie"
+                  [(ngModel)]="formation.categorie"
                   class="form-control"
                   type="text"
                   name="categorie"
@@ -46,7 +80,7 @@
 
                 <label for="objectif">Objectif</label>
                 <input
-                  [(ngModel)]="objectif"
+                  [(ngModel)]="formation.objectif"
                   class="form-control"
                   type="text"
                   name="objectif"
@@ -56,7 +90,7 @@
                 <!-- Duree -->
                 <label for="duree">Duree</label>
                 <input
-                  [(ngModel)]="duree"
+                  [(ngModel)]="formation.duree"
                   class="form-control"
                   type="number"
                   name="duree"
@@ -66,7 +100,7 @@
                 <!-- Description -->
                 <label for="description">Description</label>
                 <input
-                  [(ngModel)]="description"
+                  [(ngModel)]="formation.description"
                   class="form-control"
                   type="text"
                   name="description"
@@ -76,7 +110,7 @@
                 <!-- Cout -->
                 <label for="cout">Cout</label>
                 <input
-                  [(ngModel)]="cout"
+                  [(ngModel)]="formation.cout"
                   class="form-control"
                   type="number"
                   name="cout"
@@ -86,7 +120,7 @@
 
                 <label for="dateDebut">Date de debut de formation:</label>
                 <input
-                  [(ngModel)]="dateDebut"
+                  [(ngModel)]="formation.dateDebut"
                   class="form-control"
                   type="date"
                   name="dateDebut"
@@ -96,7 +130,7 @@
 
                 <label for="dateFin">Date de fin de formation:</label>
                 <input
-                  [(ngModel)]="dateFin"
+                  [(ngModel)]="formation.dateFin"
                   class="form-control"
                   type="date"
                   name="dateFin"
@@ -110,6 +144,9 @@
                   id="formateur"
                   (change)="onFormateurSelected($event.target.value)"
                 >
+                  <option [value]="0">
+                    - No Formateur : Select to change -
+                  </option>
                   <option
                     *ngFor="let formateur of formateurs"
                     [value]="formateur.id"
@@ -124,6 +161,9 @@
                   id="entreprise"
                   (change)="onEntrepriseSelected($event.target.value)"
                 >
+                  <option [value]="0">
+                    - No Entreprise : Select to change -
+                  </option>
                   <option
                     *ngFor="let entreprise of entreprises"
                     [value]="entreprise.id"
@@ -134,8 +174,7 @@
 
                 <button
                   [disabled]="isSubmitting"
-                  (click)="addFormation()"
-                  type="button"
+                  type="submit"
                   class="form-control btn btn-outline-primary mt-3"
                 >
                   Ajouter la Formation

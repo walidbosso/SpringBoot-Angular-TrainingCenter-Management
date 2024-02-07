@@ -1,4 +1,5 @@
 package univ.iwa.config;
+
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.context.annotation.Bean; 
 import org.springframework.context.annotation.Configuration; 
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder; 
 import org.springframework.security.web.SecurityFilterChain; 
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 
 import univ.iwa.filters.JwtAuthFilter;
 import univ.iwa.service.UserInfoService; 
@@ -29,19 +31,17 @@ public class SecurityConfig {
 	} 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { 
-		http.authorizeHttpRequests((auth)->auth
-	
-			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", 
-					"/Formation/date/**","formation/get/**", "formation/categorie/**").permitAll() 
+		http.cors(cors->cors.configurationSource(request -> new CorsConfiguration(corsConfiguration())))
+			.authorizeHttpRequests((auth)->auth
+			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", "formation/get/**", 
+					"formation/categorie/**", "formation/date/**", "/individu/add/formation/**").permitAll()
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
 			.requestMatchers("/formation/**").permitAll()
-			.requestMatchers("/formateur/**").permitAll()
-			.requestMatchers("/auth/assistant/**").permitAll()
-			.requestMatchers("/auth/admin/**").permitAll()	
-			.requestMatchers("/auth/formateur/**").permitAll()
-//			.requestMatchers("/auth/individu/**").authenticated() 
-			.requestMatchers("/individu/**").permitAll()
-
+			.requestMatchers("/auth/assistant/**").permitAll() // .authenticated()
+			.requestMatchers("/auth/admin/**").permitAll()	 // .authenticated()
+			.requestMatchers("/auth/formateur/**").permitAll()	 // .authenticated()
+			.requestMatchers("/formateur/**").permitAll() // .authenticated()
+			.requestMatchers("/individu/**").authenticated() // Done
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
 			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);	
@@ -62,5 +62,14 @@ public class SecurityConfig {
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception { 
 		return config.getAuthenticationManager(); 
-	} 
+	}
+	
+	public CorsConfiguration corsConfiguration() {
+		CorsConfiguration corsConfig = new CorsConfiguration();
+		corsConfig.addAllowedOrigin("http://localhost:4200");
+		corsConfig.addAllowedMethod("*");
+		corsConfig.addAllowedHeader("*");
+		corsConfig.setAllowCredentials(true);
+		return corsConfig;
+	}
 } 

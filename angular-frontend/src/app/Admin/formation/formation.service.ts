@@ -24,6 +24,12 @@ export class FormationService {
     return axios.get(`/formation/categorie/${categorie}`, { headers });
   }
 
+  findByDebut(date: string): Promise<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    console.log("Service date dans /date "+date)
+    return axios.get(`/formation/date/${date}`, { headers });
+  }
+
   // POST ADD
   addFormation(request: any): Promise<any> {
     const headers = { 'Content-Type': 'application/json' };
@@ -36,11 +42,27 @@ export class FormationService {
       cout: request.cout,
       dateDebut: request.dateDebut,
       dateFin: request.dateFin,
-      formateur: request.formateur,
-      entreprise: request.entreprise,
+      formateur: request.formateur || null,
+      entreprise: request.entreprise || null,
     };
     return axios.post(`/formation/add`, reqData, { headers });
   }
+
+  
+
+  addFormationWithImage(formation: any, imageFile: File): Promise<any> {
+    const headers = { 'Content-Type': 'multipart/form-data' };
+
+    // Create FormData and append formation data
+    const formData = new FormData();
+    formData.append('formation', JSON.stringify(formation));
+    // Append image file
+    formData.append('imageFile', imageFile);
+    console.log("addFormationWithImage service  formdata: "+formData+ imageFile+ JSON.stringify(formation));
+
+    return axios.post('/formation/add', formData, { headers });
+  }
+  
 
   // put update
   updateFormation(request: any): Promise<any> {

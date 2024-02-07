@@ -16,7 +16,6 @@ export class AllIndividusComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllIndividus();
-    throw new Error('Method not implemented.');
   }
 
   // This method is used to generate rows numbers in the individus list instead of displaying the id 
@@ -26,7 +25,6 @@ export class AllIndividusComponent implements OnInit {
 
   getAllIndividus() {
     this.individuService.getAllIndividus().then((response) => {
-      console.log(response);
       this.individus = response.data;
     })
     .catch((error) => {
@@ -47,7 +45,7 @@ export class AllIndividusComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.individuService
-          .deleteIndividu(id) //after deletion then
+          .deleteIndividu(id)
           .then((response) => {
             Swal.fire({
               icon: 'success',
@@ -55,7 +53,7 @@ export class AllIndividusComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500,
             });
-            this.getAllIndividus(); //REFRESHED AFTER DELETION
+            this.getAllIndividus(); //Refresh after deletion
             return response;
           })
           .catch((error) => {

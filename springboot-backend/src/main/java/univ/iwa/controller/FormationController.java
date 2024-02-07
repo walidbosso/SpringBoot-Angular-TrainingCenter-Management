@@ -1,12 +1,16 @@
 package univ.iwa.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
-
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,13 +20,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import univ.iwa.model.Formation;
 import univ.iwa.service.FormationService;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping("/formation")
 public class FormationController {
 
@@ -47,11 +56,27 @@ public class FormationController {
 
 	}
 	
-	@PostMapping("/add")
+	@PostMapping(value = "/add", consumes = {"multipart/form-data", "application/json"})
 //	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	public Formation addFormation(@RequestBody Formation formation) {
-		return formationService.addFormation(formation);
-	}
+	public Formation addFormation( @RequestParam("formation") String formationJson,
+            @RequestParam(value = "imageFile", required = false) MultipartFile imageFile) throws IOException {
+		System.out.println("formation + imageFile : "+formationJson+imageFile);
+		 ObjectMapper objectMapper = new ObjectMapper();
+		    Formation formation = objectMapper.readValue(formationJson, Formation.class);
+		return formationService.addFormation(formation, imageFile);}
+	
+	
+//	fetch image related to a formation, used directly in home and dashboard
+	 @GetMapping("/{formationId}/image")
+	    public ResponseEntity<byte[]> getFormationImage(@PathVariable Long formationId) {
+	        
+	            Formation formation = formationService.getFormationById(formationId); 
+	            return ResponseEntity.ok()
+	                    .contentType(MediaType.IMAGE_PNG) // adjust based on your image type
+	                    .body(formation.getImageData());
+	       
+	    }
+	
 	
 	@PutMapping("/update")
 //	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -71,12 +96,12 @@ public class FormationController {
 //	public List<Formation> deleteFormationsLessThanNow() {
 //		return formationService.deleteFormationsLessThanNow();
 //	}
-//	
-//	@GetMapping("/date/{date}")
-//	public List<Formation> findByDateFormationquals(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-//	    return formationService.findByDateFormationEquals(date);
-//
-//	}
+	
+	@GetMapping("/date/{date}")
+	public List<Formation> findByDateFormationquals(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+	    return formationService.findByDateFormationEquals(date);
+
+	}
 
 	
 

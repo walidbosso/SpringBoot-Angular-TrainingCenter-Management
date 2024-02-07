@@ -11,7 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import io.jsonwebtoken.io.IOException;
 import univ.iwa.model.Formation;
 import univ.iwa.repository.FormationRepository;
 
@@ -31,10 +33,22 @@ public class FormationService {
 	}
 	
 	//TACHE2
-	public Formation addFormation( Formation formation) {
-		System.out.print(formation);
-		return formationRepository.save(formation);
-	}
+
+	 public Formation addFormation(Formation formation, MultipartFile imageFile) throws java.io.IOException {
+	        try {
+	            // Set image name
+	            formation.setImageName(imageFile.getOriginalFilename());
+
+	            // Convert image data to byte array
+	            byte[] imageData = imageFile.getBytes();
+	            formation.setImageData(imageData);
+
+	            // Save the formation
+	            return formationRepository.save(formation);
+	        } catch (IOException e) {
+	            throw new RuntimeException("Failed to process image data", e);
+	        }
+	    }
 	
 	public Formation updateFormation( Formation formation) {
 		return formationRepository.save(formation);
@@ -52,13 +66,13 @@ public class FormationService {
         formationRepository.deleteById(id);
 	}
 	
-//	
+	
 //	//TACHE7	
-//    public List<Formation> findByDebut(Date date) {
-//        List<Formation> formations = formationRepository.findByDebut(date);
+//    public List<Formation> findByDebut(LocalDate date) {
+//        List<Formation> formations = formationRepository.findByDateDebut(date);
 //        return formations;
 //    }
-//    
+    
 //	//TACHE7
 //    public List<Formation> findByVille(String ville) {
 //        List<Formation> Formation = formationRepository.findByVille(ville);
@@ -71,10 +85,10 @@ public class FormationService {
         return Formation;
     }
 	
-//	public List<Formation> findByDateFormationEquals(  LocalDate date) {
-//	    Date convertedDate = java.sql.Date.valueOf(date);
-//		return formationRepository.findByDebutEquals(convertedDate); 
-//	}
+	public List<Formation> findByDateFormationEquals(  LocalDate date) {
+	    Date convertedDate = java.sql.Date.valueOf(date);
+		return formationRepository.findByDateDebutEquals(convertedDate); 
+	}
 	
 //	public List<Formation> deleteFormationsLessThanNow() {
 //		List<Formation> Formations= formationRepository.findByFinLessThan(new Date());

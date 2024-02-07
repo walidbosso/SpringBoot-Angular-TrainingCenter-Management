@@ -1,6 +1,8 @@
 <!--begin::Form-->
 <form class="form w-100" novalidate="novalidate" id="kt_sign_up_form"
-    data-kt-redirect-url="../../demo1/dist/authentication/layouts/overlay/sign-in.html" action="#">
+    data-kt-redirect-url="../../demo1/dist/authentication/layouts/overlay/sign-in.html" action="#"
+    [formGroup]="signupForm"
+              (ngSubmit)="signupFormator()">
     <!--begin::Heading-->
     <div class="text-center mb-11">
         <!--begin::Title-->
@@ -12,8 +14,12 @@
     </div>
     <div class="fv-row mb-8">
         <!--begin::Name-->
-        <input type="text" placeholder="Name" [(ngModel)]="name" id="name" name="name" autocomplete="off" class="form-control bg-transparent"
-            required />
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <label *ngIf="name.errors?.['required']" class="text-danger">
+              Name required</label
+            >
+        </div>
+        <input type="text" placeholder="Name" formControlName="name" id="name" name="name" autocomplete="off" class="form-control bg-transparent" required/>
         <!--end::Name-->
     </div>
     <!-- <div class="fv-row mb-8">
@@ -23,39 +29,58 @@
     </div> -->
     <div class="fv-row mb-8">
         <!-- Email -->
-        <input type="email" placeholder="E-mail" [(ngModel)]="email" id="email" name="email" autocomplete="off" class="form-control bg-transparent" required #emailInput="ngModel" />
-        <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">
-          <div *ngIf="emailEmptyError" class="text-danger">Email is required</div>
-          <div *ngIf="emailFormatError" class="text-danger">Invalid email format</div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <label *ngIf="email.errors?.['required']" class="text-danger">
+              E-mail required</label
+            >
+            <label *ngIf="email.errors?.['email']" class="text-danger">
+              Enter a correct e-mail form</label
+            >
         </div>
-      </div>
+        <input type="email" placeholder="E-mail" formControlName="email" id="email" name="email" autocomplete="off" class="form-control bg-transparent" required/>
+    </div>
+
     <!--begin::Input group-->
     <div class="fv-row mb-8" data-kt-password-meter="true">
         <!--begin::Wrapper-->
-        <div class="mb-1">
-            <!--begin::Input wrapper-->
-            <div class="position-relative mb-3">
-                <input class="form-control bg-transparent" type="password" placeholder="Password" id="password"
-                    [(ngModel)]="password" name="password" autocomplete="off" required />
-            </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <label *ngIf="password.errors?.['required']" class="text-danger">
+              Password required
+            </label>
         </div>
+        <input class="form-control bg-transparent" type="password" placeholder="Password" id="password"
+        formControlName="password" name="password" autocomplete="off" required />
     </div>
+
     <div class="fv-row mb-8">
         <!--begin::Repeat Password-->
-        <input placeholder="Repeat Password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword"
+        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) && password !== confirmPassword">
+            <label *ngIf="confirmPassword.errors?.['required']" class="text-danger">
+                Password required
+            </label>
+        </div>    
+        <input placeholder="Repeat Password" id="confirmPassword" formControlName="confirmPassword" name="confirmPassword"
             type="password" autocomplete="off" class="form-control bg-transparent" required />
-        <div *ngIf="password !== confirmPassword" class="text-danger">Passwords do not match</div>
+
+        <!-- <div *ngIf="password.value !== confirmPassword.value" class="text-danger">Passwords do not match</div> -->
         <!--end::Repeat Password-->
     </div>
+
     <div class="fv-row mb-8">
         <!--begin::Competences-->
-        <input type="text" placeholder="Competences" [(ngModel)]="competences" id="competences" name="competences" class="form-control bg-transparent" required />
+        <div *ngIf="competences.invalid && (competences.dirty || competences.touched)">
+            <label *ngIf="competences.errors?.['required']" class="text-danger">
+                Competences required</label
+            >
+        </div>
+        <input type="text" placeholder="Competences" formControlName="competences" id="competences" name="competences" class="form-control bg-transparent" required />
         <!--end::Competences-->
     </div>
     <!--end::Accept-->
     <!--begin::Submit button-->
     <div class="d-grid mb-10">
-        <button [disabled]="isSubmitting" (click)="signupFormator()" type="submit" id="kt_sign_up_submit" class="btn btn-primary">
+        <button [disabled]="isSubmitting" 
+        [disabled]="!signupForm.valid || password.value !== confirmPassword.value" type="submit" id="kt_sign_up_submit" class="btn btn-primary">
             <!--begin::Indicator label-->
             <span class="indicator-label">Sign up</span>
             <!--end::Indicator label-->

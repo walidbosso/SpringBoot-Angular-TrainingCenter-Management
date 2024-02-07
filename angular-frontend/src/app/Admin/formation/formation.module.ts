@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormationRoutingModule } from './formation-routing.module';
-import { CategoryFormationComponent } from './category-formation/category-formation.component';
-import { DateFormationComponent } from './date-formation/date-formation.component';
+import { CategoryFormationComponent } from '../../home/category-formation/category-formation.component';
+import { DateFormationComponent } from '../../home/date-formation/date-formation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateFormationComponent } from './create-formation/create-formation.component';
 import { EditFormationComponent } from './edit-formation/edit-formation.component';

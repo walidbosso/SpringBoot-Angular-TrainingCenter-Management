@@ -25,7 +25,7 @@ import univ.iwa.service.JwtService;
 import univ.iwa.service.UserInfoService;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping("/auth")
 public class UserController {
 	

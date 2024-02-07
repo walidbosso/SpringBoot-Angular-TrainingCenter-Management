@@ -1,191 +1,314 @@
-<div class="app-main flex-column flex-row-fluid d-flex justify-content-center align-items-center">
-    <!--begin::Content wrapper-->
-    <div class="d-flex flex-column flex-column-fluid" style="display: flex; flex-wrap: wrap;">
-        <!--begin::Toolbar-->
-        <div id="kt_app_toolbar" class="app-toolbar py-2 py-lg-4">
-            <!--begin::Toolbar container-->
-            <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
-                <div class="row g-12 g-xl-8">
-                    <!--begin::Col-->
-                    <div class="col-sm-12 col-xl-6" *ngFor="let formation of formations">
-                        <!--begin::Card-->
-                        <div *ngIf="formation.entreprise === null" class="card h-100" style="flex: 1 0 25%; margin-right: 12px;">
-                         
-                                <!--begin::Card header-->
-                                <div class="card-header flex-nowrap border-0 pt-9">
-                                    <!--begin::Card title-->
-                                    <div class="card-title m-0">
-                                        <!--begin::Icon-->
-                                        <div class="symbol symbol-45px w-45px bg-light me-5">
-                                            <img src="assets/img/angular.png" alt="image" class="p-3" />
-                                        </div>
-                                        <!--end::Icon-->
-                                        <!--begin::Title-->
-                                        <a [routerLink]="['/admin/formation/categorie', formation.categorie]" class="fs-4 fw-semibold text-hover-primary text-gray-600 m-0">{{formation.categorie}}</a>
-                                        <!--end::Title-->
-                                    </div>
-                                    <!--end::Card title-->
-                                    <!--begin::Card toolbar-->
-                                    <div class="card-toolbar m-0">
-                                        <!--begin::Menu-->
-                                        <button type="button"
-                                            class="btn btn-clean btn-sm btn-icon btn-icon-primary btn-active-light-primary me-n3"
-                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                            <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                                            <span class="svg-icon svg-icon-3 svg-icon-primary">
-                                                
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
-                                                    viewBox="0 0 24 24">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="currentColor" />
-                                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="currentColor"
-                                                            opacity="0.3" />
-                                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="currentColor"
-                                                            opacity="0.3" />
-                                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="currentColor"
-                                                            opacity="0.3" />
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </button>
-                                        <!--begin::Menu 3-->
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3"
-                                            data-kt-menu="true">
-                                            <!--begin::Heading-->
-                                            <div class="menu-item px-3">
-                                                <div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Payments</div>
-                                            </div>
-                                            <!--end::Heading-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Create Invoice</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link flex-stack px-3">Create Payment
-                                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                                        title="Specify a target name for future usage and reference"></i></a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Generate Bill</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3" data-kt-menu-trigger="hover"
-                                                data-kt-menu-placement="right-end">
-                                                <a href="#/home" class="menu-link px-3">
-                                                    <span class="menu-title">Subscription</span>
-                                                    <span class="menu-arrow"></span>
-                                                </a>
-                                                <!--begin::Menu sub-->
-                                                <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <a href="#" class="menu-link px-3">Plans</a>
-                                                    </div>
-                                                    <!--end::Menu item-->
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <a href="#" class="menu-link px-3">Billing</a>
-                                                    </div>
-                                                    <!--end::Menu item-->
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <a href="#" class="menu-link px-3">Statements</a>
-                                                    </div>
-                                                    <!--end::Menu item-->
-                                                    <!--begin::Menu separator-->
-                                                    <div class="separator my-2"></div>
-                                                    <!--end::Menu separator-->
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <div class="menu-content px-3">
-                                                            <!--begin::Switch-->
-                                                            <label
-                                                                class="form-check form-switch form-check-custom form-check-solid">
-                                                                <!--begin::Input-->
-                                                                <input class="form-check-input w-30px h-20px" type="checkbox"
-                                                                    value="1" checked="checked" name="notifications" />
-                                                                <!--end::Input-->
-                                                                <!--end::Label-->
-                                                                <span class="form-check-label text-muted fs-6">Recuring</span>
-                                                                <!--end::Label-->
-                                                            </label>
-                                                            <!--end::Switch-->
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Menu item-->
-                                                </div>
-                                                <!--end::Menu sub-->
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3 my-1">
-                                                <a href="#" class="menu-link px-3">Settings</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu 3-->
-                                        <!--end::Menu-->
-                                    </div>
-                                    <!--end::Card toolbar-->
-                                </div>
-                                <!--end::Card header-->
-                                <!--begin::Card body-->
-                                <div class="card-body d-flex flex-column px-9 pt-6 pb-8">
-                                    <!--begin::Heading-->
-                                    <div class="fs-2tx fw-bold mb-3"> {{formation.nom}}</div>
-                                    <div class="fs-14 text-muted mb-4">Description: {{formation.description}}</div>
-
-                                    <!--end::Heading-->
-                                    <!--begin::Stats-->
-                                    <div class="d-flex align-items-center flex-wrap mb-5 mt-auto fs-6">
-                                        <!--SVG file not found: icons/duotune/arrows/Up-right.svg-->
-                                        <!--begin::Number-->
-                                        <div class="fw-bold text-primary me-2">Date de debut: {{formation.dateDebut}}</div>
-                                        <!--end::Number-->
-                                        <!--begin::Label-->
-                                        <div class="fw-semibold text-gray-400">{{formation.duree}} heures</div>
-                                        <!--end::Label-->
-                                    </div>
-
-                                    <!--end::Stats-->
-                                    <!--begin::Indicator-->
-                                    <div class="d-flex align-items-center fw-semibold">
-                                        <span class="badge bg-light text-gray-700 px-3 py-2 me-2">-30% </span>
-                                        <span class="text-gray-400 fs-7">{{formation.cout}}Dh</span>
-                                        <i class="fas fa-exclamation-circle fs-7 ms-2" data-bs-toggle="tooltip"
-                                            title="Recurring"></i>
-                                    </div>
-                                        <a
-                                        [routerLink]="['/admin/individu/add/formation', formation.id]"
-                                        class="btn btn-outline-info mx-1"
-                                        >S'inscrire au formation</a
-                                      >
+<div
+  class="app-main flex-column flex-row-fluid d-flex justify-content-center align-items-center"
+>
+  <!--begin::Content wrapper-->
+  <div
+    class="d-flex flex-column flex-column-fluid"
+    style="display: flex; flex-wrap: wrap"
+  >
+    <!--begin::Toolbar-->
+    <div id="kt_app_toolbar" class="app-toolbar py-2 py-lg-4">
+      <!--begin::Toolbar container-->
+      <div
+        id="kt_app_toolbar_container"
+        class="app-container container-xxl d-flex flex-stack"
+      >
+        <div class="row g-12 g-xl-8">
+          <!--begin::Col-->
+          <ng-container *ngFor="let formation of formations">
+            <div
+              class="col-sm-12 col-xl-6"
+              *ngIf="formation.entreprise === null"
+            >
+              <!--begin::Card-->
+              <div class="card h-100" style="flex: 1 0 25%; margin-right: 12px">
+                <!--begin::Card header-->
+                <div class="card-header flex-nowrap border-0 pt-9">
+                  <!--begin::Card title-->
+                  <div class="card-title m-0">
+                    <!--begin::Icon-->
+                    <div class="symbol symbol-45px w-45px bg-light me-5">
+                                           
+                        <img
+                          *ngIf="formation.imageName !== null; else defaultImage"
+                          [src]="'http://localhost:8080/formation/' + formation.id + '/image'"
+                          alt="image"
+                        class="p-3"
+                        />
+                        <ng-template #defaultImage>
+                          <img src="/assets/img/angular.png" 
+                          alt="image"
+                        class="p-3"/>
+                        </ng-template>
                     
-                                        <a  *ngIf="formation.formateur === null"
-                                          [routerLink]="[
-                                            '/admin/formateur/add/formation',
-                                            formation.id
-                                          ]"
-                                          class="btn btn-outline-success mx-1"
-                                          >S'inscrire en tant que formateur</a
-                                        >
-                                    
-                                    <!--end::Indicator-->
-                                </div>
-                                <!--end::Card body-->
-                            </div>
-                            <!--end::Card-->
-                        </div>
-                        
+                      
                     </div>
-            </div>
-        </div>
-    </div>
-</div>
+                    <!--end::Icon-->
+                    <!--begin::Title-->
+                    <a
+                      [routerLink]="[
+                        '/home/formation/categorie',
+                        formation.categorie
+                      ]"
+                      class="fs-4 fw-semibold text-hover-primary text-gray-600 m-0"
+                      >{{ formation.categorie }}</a
+                    >
+                    <!--end::Title-->
+                  </div>
+                  <!--end::Card title-->
+                  <!--begin::Card toolbar-->
+                  <div class="card-toolbar m-0">
+                    <!--begin::Menu-->
+                    <button
+                      type="button"
+                      class="btn btn-clean btn-sm btn-icon btn-icon-primary btn-active-light-primary me-n3"
+                      data-kt-menu-trigger="click"
+                      data-kt-menu-placement="bottom-end"
+                    >
+                      <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
+                      <span class="svg-icon svg-icon-3 svg-icon-primary">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24px"
+                          height="24px"
+                          viewBox="0 0 24 24"
+                        >
+                          <g
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                          >
+                            <rect
+                              x="5"
+                              y="5"
+                              width="5"
+                              height="5"
+                              rx="1"
+                              fill="currentColor"
+                            />
+                            <rect
+                              x="14"
+                              y="5"
+                              width="5"
+                              height="5"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.3"
+                            />
+                            <rect
+                              x="5"
+                              y="14"
+                              width="5"
+                              height="5"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.3"
+                            />
+                            <rect
+                              x="14"
+                              y="14"
+                              width="5"
+                              height="5"
+                              rx="1"
+                              fill="currentColor"
+                              opacity="0.3"
+                            />
+                          </g>
+                        </svg>
+                      </span>
+                      <!--end::Svg Icon-->
+                    </button>
+                    <!--begin::Menu 3-->
+                    <div
+                      class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3"
+                      data-kt-menu="true"
+                    >
+                      <!--begin::Heading-->
+                      <div class="menu-item px-3">
+                        <div
+                          class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase"
+                        >
+                          Payments
+                        </div>
+                      </div>
+                      <!--end::Heading-->
+                      <!--begin::Menu item-->
+                      <div class="menu-item px-3">
+                        <a href="#" class="menu-link px-3">Create Invoice</a>
+                      </div>
+                      <!--end::Menu item-->
+                      <!--begin::Menu item-->
+                      <div class="menu-item px-3">
+                        <a href="#" class="menu-link flex-stack px-3"
+                          >Create Payment
+                          <i
+                            class="fas fa-exclamation-circle ms-2 fs-7"
+                            data-bs-toggle="tooltip"
+                            title="Specify a target name for future usage and reference"
+                          ></i
+                        ></a>
+                      </div>
+                      <!--end::Menu item-->
+                      <!--begin::Menu item-->
+                      <div class="menu-item px-3">
+                        <a href="#" class="menu-link px-3">Generate Bill</a>
+                      </div>
+                      <!--end::Menu item-->
+                      <!--begin::Menu item-->
+                      <div
+                        class="menu-item px-3"
+                        data-kt-menu-trigger="hover"
+                        data-kt-menu-placement="right-end"
+                      >
+                        <a href="#/home" class="menu-link px-3">
+                          <span class="menu-title">Subscription</span>
+                          <span class="menu-arrow"></span>
+                        </a>
+                        <!--begin::Menu sub-->
+                        <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                          <!--begin::Menu item-->
+                          <div class="menu-item px-3">
+                            <a href="#" class="menu-link px-3">Plans</a>
+                          </div>
+                          <!--end::Menu item-->
+                          <!--begin::Menu item-->
+                          <div class="menu-item px-3">
+                            <a href="#" class="menu-link px-3">Billing</a>
+                          </div>
+                          <!--end::Menu item-->
+                          <!--begin::Menu item-->
+                          <div class="menu-item px-3">
+                            <a href="#" class="menu-link px-3">Statements</a>
+                          </div>
+                          <!--end::Menu item-->
+                          <!--begin::Menu separator-->
+                          <div class="separator my-2"></div>
+                          <!--end::Menu separator-->
+                          <!--begin::Menu item-->
+                          <div class="menu-item px-3">
+                            <div class="menu-content px-3">
+                              <!--begin::Switch-->
+                              <label
+                                class="form-check form-switch form-check-custom form-check-solid"
+                              >
+                                <!--begin::Input-->
+                                <input
+                                  class="form-check-input w-30px h-20px"
+                                  type="checkbox"
+                                  value="1"
+                                  checked="checked"
+                                  name="notifications"
+                                />
+                                <!--end::Input-->
+                                <!--end::Label-->
+                                <span class="form-check-label text-muted fs-6"
+                                  >Recuring</span
+                                >
+                                <!--end::Label-->
+                              </label>
+                              <!--end::Switch-->
+                            </div>
+                          </div>
+                          <!--end::Menu item-->
+                        </div>
+                        <!--end::Menu sub-->
+                      </div>
+                      <!--end::Menu item-->
+                      <!--begin::Menu item-->
+                      <div class="menu-item px-3 my-1">
+                        <a href="#" class="menu-link px-3">Settings</a>
+                      </div>
+                      <!--end::Menu item-->
+                    </div>
+                    <!--end::Menu 3-->
+                    <!--end::Menu-->
+                  </div>
+                  <!--end::Card toolbar-->
+                </div>
+                <!--end::Card header-->
+                <!--begin::Card body-->
+                <div class="card-body d-flex flex-column px-9 pt-6 pb-8">
+                  <!--begin::Heading-->
+                  <div class="fs-2tx fw-bold mb-3">{{ formation.nom }}</div>
+                  <div class="fs-14 text-muted mb-4">
+                    Description: {{ formation.description }}
+                  </div>
 
+                  <!--end::Heading-->
+                  <!--begin::Stats-->
+                  <div
+                    class="d-flex align-items-center flex-wrap mb-5 mt-auto fs-6"
+                  >
+                    <!--SVG file not found: icons/duotune/arrows/Up-right.svg-->
+                    <!--begin::Number-->
+                    <div class="fw-bold text-primary me-2">
+                      <a
+                        [routerLink]="[
+                          '/home/formation/date',
+                          formation.dateDebut
+                        ]"
+                        >Date de debut: {{ formation.dateDebut }}</a
+                      >
+                    </div>
+                    <!--end::Number-->
+                    <!--begin::Label-->
+                    <div class="fw-semibold text-gray-400">
+                      {{ formation.duree }} heures
+                    </div>
+                    <!--end::Label-->
+                  </div>
+
+                  <!--end::Stats-->
+                  <!--begin::Indicator-->
+                  <div class="d-flex align-items-center fw-semibold">
+                    <span class="badge bg-light text-gray-700 px-3 py-2 me-2"
+                      >-30%
+                    </span>
+                    <span class="text-gray-400 fs-7"
+                      >{{ formation.cout }}Dh</span
+                    >
+                    <i
+                      class="fas fa-exclamation-circle fs-7 ms-2"
+                      data-bs-toggle="tooltip"
+                      title="Recurring"
+                    ></i>
+                  </div>
+                  <a
+                    [routerLink]="[
+                      '/home/individu/add',
+                      formation.id,
+                      'formation'
+                    ]"
+                    class="btn btn-outline-info mx-1"
+                    >S'inscrire au formation</a
+                  >
+
+                  <a
+                    *ngIf="formation.formateur === null"
+                    [routerLink]="[
+                      '/admin/formateur/add/formation',
+                      formation.id
+                    ]"
+                    class="btn btn-outline-success mx-1"
+                    >S'inscrire en tant que formateur</a
+                  >
+                  <!-- IF ADMIN -->
+                  <a
+                    *ngIf="formation.formateur === null"
+                    [routerLink]="['/admin/formation', formation.id, 'edit']"
+                    class="btn btn-outline-warning mx-1"
+                    >Affecte formateur au formation</a
+                  >
+                  <!--end::Indicator-->
+                </div>
+                <!--end::Card body-->
+              </div>
+              <!--end::Card-->
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
