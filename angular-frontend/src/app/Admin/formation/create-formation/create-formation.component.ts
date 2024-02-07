@@ -35,7 +35,6 @@ export class CreateFormationComponent {
     // image_name:null
   };
 
-
   isSubmitting: boolean = false; //track button clicked or no, when user clicking multiple times
   constructor(
     public formationService: FormationService,
@@ -60,26 +59,15 @@ export class CreateFormationComponent {
     const file = event.target.files[0];
 
     if (file) {
-      this.selectedImage = file;
       this.simulateFileUpload();
+      this.selectedImage = file;
     }
-  } 
-
-  getAllEntreprises() {
-    this.entrepriseService
-      .getAllEntreprises()
-      .then((response) => {
-        console.log('getAllEntreprises ' + response.data);
-        this.entreprises = response.data.sort((a, b) => a.nom.localeCompare(b.nom));
-        // this.entreprise = this.entreprises[0] || null;
-      })
-      .catch((error) => {
-        return error;
-      });
   }
 
-
- 
+  getImageUrl(): any {
+    // console.log(this.selectedImage);
+    return this.selectedImage ? URL.createObjectURL(this.selectedImage) : '';
+  }
 
   private simulateFileUpload(): void {
     // Clear any existing interval
@@ -87,7 +75,7 @@ export class CreateFormationComponent {
 
     // Simulate a slow fill for the progress bar
     this.uploadInterval = setInterval(() => {
-      this.progress += 10;
+      this.progress += 20;
       if (this.progress >= 100) {
         this.clearUploadInterval();
       }
@@ -107,13 +95,31 @@ export class CreateFormationComponent {
       .getAllFormateurs()
       .then((response) => {
         console.log('getAllFormateurs ' + response.data);
-        this.formateurs = response.data.sort((a, b) => a.name.localeCompare(b.name));
+        this.formateurs = response.data.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
         // this.formateur = this.formateurs[0] || null;
       })
       .catch((error) => {
         return error;
       });
   }
+
+  getAllEntreprises() {
+    this.entrepriseService
+      .getAllEntreprises()
+      .then((response) => {
+        console.log('getAllEntreprises ' + response.data);
+        this.entreprises = response.data.sort((a, b) =>
+          a.nom.localeCompare(b.nom)
+        );
+        // this.entreprise = this.entreprises[0] || null;
+      })
+      .catch((error) => {
+        return error;
+      });
+  }
+
   onEntrepriseSelected(entrepriseId: string) {
     console.log('entrepriseId ' + entrepriseId);
     // this.entreprise_id = parseInt(entrepriseId);
@@ -137,6 +143,7 @@ export class CreateFormationComponent {
     this.formation.formateur = selectedFormateur;
   }
 
+  // ADD FORMATION WITH IMAGE, current version
   addFormationWithImage(): void {
     this.isSubmitting = true;
 
@@ -179,20 +186,14 @@ export class CreateFormationComponent {
         });
       });
   }
-  getImageUrl(): any {
-    // console.log(this.selectedImage);
-    return this.selectedImage ? URL.createObjectURL(this.selectedImage) : '';
-  }
-  
+
+  // ADD , old version
 
   addFormation() {
     this.isSubmitting = true;
     this.formationService
-      .addFormation(
-        this.formation
-      )
+      .addFormation(this.formation)
       .then((response) => {
-        
         this.isSubmitting = false;
         Swal.fire({
           icon: 'success',
@@ -214,7 +215,7 @@ export class CreateFormationComponent {
           formateur: null,
           entreprise: null,
         };
- 
+
         return response;
       }) //response
       .catch((error) => {
