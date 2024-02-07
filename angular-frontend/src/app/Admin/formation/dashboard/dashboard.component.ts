@@ -36,6 +36,16 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  getImageUrl(imageData: any): any {
+    return imageData ? `data:image/png;base64,${imageData}` : '';
+  }
+  fetchImageForFormation(formation: any): void {
+    this.formationService.getFormationById(formation.id).then((response) => {
+      // Assuming the image data is in response.data.image_data
+      formation.image_data = response.data.image_data;
+    });
+  }
+
   deleteFormation(id: number) {
     //give user a chance of option, using notification sweetalert
     Swal.fire({

@@ -48,6 +48,22 @@ export class FormationService {
     return axios.post(`/formation/add`, reqData, { headers });
   }
 
+  
+
+  addFormationWithImage(formation: any, imageFile: File): Promise<any> {
+    const headers = { 'Content-Type': 'multipart/form-data' };
+
+    // Create FormData and append formation data
+    const formData = new FormData();
+    formData.append('formation', JSON.stringify(formation));
+    // Append image file
+    formData.append('imageFile', imageFile);
+    console.log("addFormationWithImage service  formdata: "+formData+ imageFile+ JSON.stringify(formation));
+
+    return axios.post('/formation/add', formData, { headers });
+  }
+  
+
   // put update
   updateFormation(request: any): Promise<any> {
     const headers = { 'Content-Type': 'application/json' };

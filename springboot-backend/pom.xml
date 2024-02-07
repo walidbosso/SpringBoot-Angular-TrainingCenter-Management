@@ -65,6 +65,12 @@
             <artifactId>jjwt-jackson</artifactId> 
             <version>0.11.5</version> 
         </dependency> 
+        <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+     <!-- Use the latest version -->
+</dependency>
+
     </dependencies> 
 
 	<build>

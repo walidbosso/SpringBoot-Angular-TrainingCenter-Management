@@ -8,10 +8,21 @@
           >Ajouter Formation</a
         >
       </p>
-      <div class="col-md-4" *ngFor="let formation of formations">
+      <div class="col-md-4  mb-6" *ngFor="let formation of formations">
         <div class="card card-chart">
           <div class="img">
-            <img src="/assets/img/angular.png" />
+          
+              <img class="mt-4"
+                *ngIf="formation.imageName !== null; else defaultImage"
+                [src]="'http://localhost:8080/formation/' + formation.id + '/image'"
+                width="200"
+                height="150"
+              />
+              <ng-template #defaultImage>
+                <img class="mt-4" src="/assets/img/angular.png" width="200" height="150" />
+              </ng-template>
+       
+            
           </div>
           <div class="card-body">
             <a
