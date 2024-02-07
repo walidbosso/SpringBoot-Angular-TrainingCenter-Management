@@ -58,16 +58,16 @@ public class FormateurService {
 		userInfoRepository.deleteById(id);
 	}
 	
-	/*
-	public void deleteFormateur( Integer id) {
-		List<Formation> Formations = getFormationsByFormateurId(id);
-		//lambda expression
-		Formations.forEach(formation -> {
-			formation.setFormateur(null);
-		});
-		
-		userInfoRepository.deleteById(id);
-	}
+	
+//	public void deleteFormateur( Integer id) {
+//		List<Formation> Formations = getFormationsByFormateurId(id);
+//		//lambda expression
+//		Formations.forEach(formation -> {
+//			formation.setFormateur(null);
+//		});
+//		
+//		userInfoRepository.deleteById(id);
+//	}
 	
 	public List<Formation> getFormationsByFormateurId(Integer id) {
 		UserInfo formateur = userInfoRepository.findById(id).get();
@@ -76,8 +76,8 @@ public class FormateurService {
 	
 		//we pass that group 
 		return formationRepository.findByFormateur(formateur);
-	}*/
-	/*
+	}
+	
 	//TACHE9
 	public Formation addFormateurToFormation( Integer idFormateur,  Formation f,  Long idFormation) {
 		UserInfo e= userInfoRepository.findById(idFormateur).orElseThrow(() -> new EntityNotFoundException("UserInfo not found"));
@@ -91,5 +91,5 @@ public class FormateurService {
 			m2.setFormateur(e);
 			return formationRepository.save(m2);}
 	}
-	*/
+	
 }

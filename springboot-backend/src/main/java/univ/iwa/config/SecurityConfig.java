@@ -33,18 +33,18 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { 
 		http.cors(cors->cors.configurationSource(request -> new CorsConfiguration(corsConfiguration())))
 			.authorizeHttpRequests((auth)->auth
-			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", 
-					"/Formation/date/**","formation/get/**", "/individu/add/formation/**").permitAll()
+			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", "/Formation/date/**", 
+					"formation/get/**", "/individu/add/formation/**", "formation/categorie/**").permitAll()
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
 			.requestMatchers("/formation/**").permitAll()
-			.requestMatchers("/auth/assistant/**").authenticated() 
-			.requestMatchers("/auth/admin/**").authenticated() 	
-			.requestMatchers("/auth/formateur/**").authenticated()
+			.requestMatchers("/auth/assistant/**").permitAll() // .authenticated()
+			.requestMatchers("/auth/admin/**").permitAll()	 // .authenticated()
+			.requestMatchers("/auth/formateur/**").permitAll()	 // .authenticated()
 			.requestMatchers("/formateur/**").permitAll() // .authenticated()
 			.requestMatchers("/individu/**").authenticated() // Done
 			).csrf(csrf->csrf.disable())
 			.authenticationProvider(authenticationProvider()) 
-			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class) ;	
+			.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);	
 		return http.build();
 	} 
 	// Password Encoding 

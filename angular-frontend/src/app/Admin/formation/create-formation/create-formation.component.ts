@@ -16,15 +16,15 @@ export class CreateFormationComponent {
   nom: string = '';
   entreprises: Entreprise[] = [];
   formateurs: Formator[] = [];
-  entreprise: Entreprise=null;
-  formateur: Formator=null;
+  entreprise: Entreprise = null;
+  formateur: Formator = null;
   categorie: string = '';
   objectif: string = '';
   description: string = '';
-  duree: string = '';
-  cout: number = 0;
-  dateDebut: Date=null;
-  dateFin: Date=null;
+  duree: number = 12;
+  cout: number = 300;
+  dateDebut: Date = new Date();
+  dateFin: Date = null;
   // formateur_id: number = 0;
   //  entreprise_id: number=0;
 
@@ -51,8 +51,9 @@ export class CreateFormationComponent {
     this.entrepriseService
       .getAllEntreprises()
       .then((response) => {
-        console.log(response);
+        console.log('getAllEntreprises ' + response.data);
         this.entreprises = response.data;
+        // this.entreprise = this.entreprises[0] || null;
       })
       .catch((error) => {
         return error;
@@ -62,22 +63,23 @@ export class CreateFormationComponent {
     this.formatorService
       .getAllFormateurs()
       .then((response) => {
-        console.log(response);
+        console.log('getAllFormateurs ' + response.data);
         this.formateurs = response.data;
+        // this.formateur = this.formateurs[0] || null;
       })
       .catch((error) => {
         return error;
       });
   }
   onEntrepriseSelected(entrepriseId: string) {
-    console.log(entrepriseId);
+    console.log('entrepriseId ' + entrepriseId);
     // this.entreprise_id = parseInt(entrepriseId);
     // Find the selected entreprise from the array and assign it to the variable
     const selectedEntreprise =
       this.entreprises.find(
         (entreprise) => entreprise.id === parseInt(entrepriseId)
       ) || null;
-    console.log(selectedEntreprise);
+    console.log('selectedEntreprise ' + selectedEntreprise);
     this.entreprise = selectedEntreprise;
   }
   onFormateurSelected(formateurId: string) {
@@ -88,7 +90,7 @@ export class CreateFormationComponent {
       this.formateurs.find(
         (formateur) => formateur.id === parseInt(formateurId)
       ) || null;
-    console.log(selectedFormateur);
+    console.log('selectedFormateur ' + selectedFormateur);
     this.formateur = selectedFormateur;
   }
   addFormation() {
@@ -107,7 +109,10 @@ export class CreateFormationComponent {
         entreprise: this.entreprise,
       })
       .then((response) => {
-        console.log(this.entreprise);
+        console.log(
+          'add this.entreprise ' + this.entreprise.nom,
+          this.formateur.name
+        );
         this.isSubmitting = false;
         Swal.fire({
           icon: 'success',
@@ -119,18 +124,18 @@ export class CreateFormationComponent {
         this.nom = '';
         this.categorie = '';
         this.objectif = '';
-        this.duree = '';
+        this.duree = 0;
         this.description = '';
         this.cout = 0;
-        this.dateDebut=null;
-        this.dateFin=null;
+        this.dateDebut = null;
+        this.dateFin = null;
         this.formateur = null;
         this.entreprise = null;
 
         return response;
       }) //response
       .catch((error) => {
-        console.log(error);
+        console.log('add this.entreprise ERROR ' + error);
         this.isSubmitting = false;
         Swal.fire({
           icon: 'error',
