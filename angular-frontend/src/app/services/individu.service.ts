@@ -33,4 +33,20 @@ export class IndividuService {
   deleteIndividu(id: number): Promise<any> {
     return axios.delete('/individu/delete/' + id, { headers: this.header });
   }
+
+  // Add Individu to formation
+  signup( id:number, formData:any ) {
+    const individu: Individu = {
+      id: 0,
+      nom: formData.nom,
+      prenom: formData.prenom,
+      email: formData.email,
+      tele: formData.tele,
+      ville: formData.ville,
+      code: '',
+      dateNaissance: formData.dateNaissance
+    }
+
+    return axios.post('/individu/add/formation/' + id, individu)
+  }
 }

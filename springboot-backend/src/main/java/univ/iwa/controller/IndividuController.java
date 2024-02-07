@@ -54,4 +54,9 @@ public class IndividuController {
 	public void deleteIndividu(@PathVariable Long id) {
 		individuService.deleteIndividu(id);
 	}
+	
+	@PostMapping("/add/formation/{idFormation}")
+	public Individu addIndividuToFormation(@PathVariable Long idFormation, @RequestBody Individu individu) {
+		return individuService.addIndividuToFormation(idFormation, individu);
+	}
 }

@@ -8,16 +8,17 @@ import axios from 'axios';
 export class UserService {
   constructor() {}
 
-  private requestHeader = {
+  private header = {
     'NO-AUTH': 'True',
     'Content-Type': 'application/json',
   };
 
-  public generateToken(user: User): Promise<any> {
-    return axios.post(
-      '/auth/generateToken',
-      user,
-      { headers: this.requestHeader }
-    );
+  public generateToken(formData: any): Promise<any> {
+    const user: User = {
+      username: formData.username,
+      password: formData.password
+    }
+
+    return axios.post('/auth/generateToken', user, { headers: this.header });
   }
 }

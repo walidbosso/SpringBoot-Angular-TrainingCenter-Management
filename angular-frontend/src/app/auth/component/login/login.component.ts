@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'app/model/user.model';
 import { UserAuthsService } from 'app/services/user-auths.service';
 import { UserService } from 'app/services/user.service';
 
@@ -11,11 +10,6 @@ import { UserService } from 'app/services/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  // Utilisez le modèle User ici
-  user: User = {
-    username: '',
-    password: '',
-  };
   msgError: string = '';
 
   constructor(
@@ -26,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.userAuthsService.clear();
+    this.loginForm.reset();
   }
 
   loginForm = new FormGroup({
@@ -41,8 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    ({ username: this.user.username, password: this.user.password } = this.loginForm.value);
-    this.userService.generateToken(this.user).then(
+    this.userService.generateToken(this.loginForm.value).then(
       (response: any) => {
         this.userAuthsService.setRole(response.data.role);
         this.userAuthsService.setToken(response.data.accessToken);
@@ -54,7 +48,6 @@ export class LoginComponent implements OnInit {
         } else if (response.data.role === 'ROLE_FORMAT') {
           this.router.navigate(['/format']);
         }
-        this.loginForm.reset();
       })
       .catch((error) => {
         this.msgError = 'Incorrect username or password !!';
