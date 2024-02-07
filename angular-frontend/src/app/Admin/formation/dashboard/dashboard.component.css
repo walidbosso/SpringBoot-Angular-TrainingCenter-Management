@@ -1,0 +1,17 @@
+.card-chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.card-chart .img {
+    flex-shrink: 0;
+}
+
+.card-chart img {
+    max-width: 100%;
+    max-height: 100%;
+}

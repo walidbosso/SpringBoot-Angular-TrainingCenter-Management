@@ -14,9 +14,10 @@ import { Formation } from '../formation';
   styleUrls: ['./create-formation.component.css'],
 })
 export class CreateFormationComponent {
-  nom: string = '';
+  // nom: string = '';
   entreprises: Entreprise[] = [];
   formateurs: Formator[] = [];
+  selectedImage: File;
   // entreprise: Entreprise ;
   // formateur: Formator ;
   // categorie: string = '';
@@ -38,6 +39,7 @@ export class CreateFormationComponent {
     dateFin: null,
     formateur: null,
     entreprise: null,
+    // image_name:null
   };
   // formateur_id: number = 0;
   //  entreprise_id: number=0;
@@ -60,6 +62,14 @@ export class CreateFormationComponent {
     this.getAllEntreprises();
     this.getAllFormateurs();
   } // on loand we call the function below
+
+  onImageSelected(event: any): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      this.selectedImage = file;
+    }
+  }
 
   getAllEntreprises() {
     this.entrepriseService
@@ -107,6 +117,55 @@ export class CreateFormationComponent {
     console.log('selectedFormateur ' + selectedFormateur);
     this.formation.formateur = selectedFormateur;
   }
+
+  addFormationWithImage(): void {
+    this.isSubmitting = true;
+
+    this.formationService
+      .addFormationWithImage(this.formation, this.selectedImage)
+      .then((response) => {
+        this.isSubmitting = false;
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Formation created successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        this.formation = {
+          nom: '',
+          categorie: '',
+          objectif: '',
+          description: '',
+          duree: '',
+          cout: 0,
+          dateDebut: null,
+          dateFin: null,
+          formateur: null,
+          entreprise: null,
+        };
+
+        // Reset selected image
+        this.selectedImage = null;
+      })
+      .catch((error) => {
+        this.isSubmitting = false;
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Some error occurred',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  }
+  getImageUrl(): any {
+    // console.log(this.selectedImage);
+    return this.selectedImage ? URL.createObjectURL(this.selectedImage) : '';
+  }
+  
+
   addFormation() {
     this.isSubmitting = true;
     this.formationService

@@ -13,4 +13,6 @@ export interface Formation {
   dateFin: Date;
   formateur: Formator;
   entreprise: Entreprise;
+  imageName?: string;
+  imageData?: File;
 }

@@ -28,11 +28,20 @@
                   <div class="card-title m-0">
                     <!--begin::Icon-->
                     <div class="symbol symbol-45px w-45px bg-light me-5">
-                      <img
-                        src="assets/img/angular.png"
-                        alt="image"
+                                           
+                        <img
+                          *ngIf="formation.imageName !== null; else defaultImage"
+                          [src]="'http://localhost:8080/formation/' + formation.id + '/image'"
+                          alt="image"
                         class="p-3"
-                      />
+                        />
+                        <ng-template #defaultImage>
+                          <img src="/assets/img/angular.png" 
+                          alt="image"
+                        class="p-3"/>
+                        </ng-template>
+                    
+                      
                     </div>
                     <!--end::Icon-->
                     <!--begin::Title-->
