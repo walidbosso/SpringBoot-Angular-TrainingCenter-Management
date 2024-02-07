@@ -22,7 +22,7 @@ import univ.iwa.model.Formation;
 import univ.iwa.service.FormationService;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping("/formation")
 public class FormationController {
 

@@ -19,7 +19,7 @@ import univ.iwa.model.Formation;
 import univ.iwa.service.EntrepriseService;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping("/entreprise")
 public class EntrepriseController {
 	

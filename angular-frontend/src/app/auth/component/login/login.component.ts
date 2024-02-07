@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'app/model/user.model';
 import { UserAuthsService } from 'app/services/user-auths.service';
 import { UserService } from 'app/services/user.service';
 
@@ -10,11 +10,7 @@ import { UserService } from 'app/services/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  // Utilisez le modèle User ici
-  user: User = {
-    username: '',
-    password: '',
-  };
+  msgError: string = '';
 
   constructor(
     private userService: UserService,
@@ -22,32 +18,40 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userAuthsService.clear();
+    this.loginForm.reset();
+  }
+
+  loginForm = new FormGroup({
+    username:new FormControl( '',[Validators.required]),
+    password:new FormControl('', [Validators.required])
+  });
+
+  get username() {
+    return this.loginForm.get('username') as FormControl
+  }
+  get password() {
+    return this.loginForm.get('password') as FormControl
+  }
 
   public login() {
-    console.log('Inside Login Function');
-
-    this.userService.generateToken(this.user).subscribe(
+    this.userService.generateToken(this.loginForm.value).then(
       (response: any) => {
-        console.log('role: ' + response.role);
-        console.log('accessToken: ' + response.accessToken);
-        this.userAuthsService.setRole(response.role);
-        this.userAuthsService.setToken(response.accessToken);
-        console.log('getRole: ' + this.userAuthsService.getRole());
-        console.log('getToken: ' + this.userAuthsService.getToken());
+        this.userAuthsService.setRole(response.data.role);
+        this.userAuthsService.setToken(response.data.accessToken);
 
-        // if (response.role === 'ROLE_ADMIN') {
-        //   this.router.navigate(['/admin']);
-        // } else if (response.role === 'ROLE_ASSISTANT') {
-        //   this.router.navigate(['/assistant']);
-        // } else if (response.role === 'ROLE_FORMAT') {
-        //   this.router.navigate(['/format']);
-        // }
-      },
-      (error) => {
-        console.log('In error');
-        console.log(error);
-      }
-    );
+        if (response.data.role === 'ROLE_ADMIN') {
+          this.router.navigate(['/admin/formation']);
+        } else if (response.data.role === 'ROLE_ASSISTANT') {
+          this.router.navigate(['/assistant']);
+        } else if (response.data.role === 'ROLE_FORMAT') {
+          this.router.navigate(['/format']);
+        }
+      })
+      .catch((error) => {
+        this.msgError = 'Incorrect username or password !!';
+        return error;
+      });
   }
 }

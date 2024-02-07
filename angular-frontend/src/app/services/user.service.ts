@@ -1,28 +1,24 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserAuthsService } from './user-auths.service';
 import { User } from 'app/model/user.model';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(
-    private httpClient: HttpClient,
-    private userAuthsService: UserAuthsService
-  ) {}
+  constructor() {}
 
-  private API_BASE_URL = 'http://localhost:8080/';
-
-  requestHeader = new HttpHeaders({
+  private header = {
     'NO-AUTH': 'True',
     'Content-Type': 'application/json',
-  });
-  public generateToken(user: User) {
-    return this.httpClient.post(
-      this.API_BASE_URL + 'auth/generateToken',
-      user,
-      { headers: this.requestHeader }
-    );
+  };
+
+  public generateToken(formData: any): Promise<any> {
+    const user: User = {
+      username: formData.username,
+      password: formData.password
+    }
+
+    return axios.post('/auth/generateToken', user, { headers: this.header });
   }
 }
