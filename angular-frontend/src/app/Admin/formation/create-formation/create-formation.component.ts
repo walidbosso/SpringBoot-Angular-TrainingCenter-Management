@@ -63,7 +63,7 @@ export class CreateFormationComponent {
       this.selectedImage = file;
       this.simulateFileUpload();
     }
-  }
+  } 
 
   getAllEntreprises() {
     this.entrepriseService

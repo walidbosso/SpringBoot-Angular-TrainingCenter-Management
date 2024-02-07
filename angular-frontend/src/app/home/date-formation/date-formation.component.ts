@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Formation } from '../formation';
-import { FormationService } from '../formation.service';
+import { Formation } from '../../Admin/formation/formation';
+import { FormationService } from '../../Admin/formation/formation.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
