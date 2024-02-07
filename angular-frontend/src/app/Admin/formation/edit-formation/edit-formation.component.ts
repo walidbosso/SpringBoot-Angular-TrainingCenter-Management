@@ -18,7 +18,7 @@ export class EditFormationComponent {
   entreprise: Entreprise;
   formateurs: Formator[] = [];
   formateur: Formator;
-  formateur_id: number = 0;
+  // formateur_id: number = 0;
   formation: Formation = {
     id: 0,
     nom: '',
@@ -31,6 +31,8 @@ export class EditFormationComponent {
     dateFin: null,
     formateur: null,
     entreprise: null,
+    imageData:null,
+    imageName:null
   };
   isSubmitting: boolean = false;
 
@@ -54,6 +56,8 @@ export class EditFormationComponent {
       dateFin: null,
       formateur: null,
       entreprise: null,
+      imageData:null,
+      imageName:null
     };
   }
   ngOnInit(): void {
@@ -70,6 +74,7 @@ export class EditFormationComponent {
       .catch((error) => {
         return error;
       });
+      
   }
 
   getAllEntreprises() {
@@ -77,7 +82,7 @@ export class EditFormationComponent {
       .getAllEntreprises()
       .then((response) => {
         console.log(response);
-        this.entreprises = response.data;
+        this.entreprises = response.data.sort((a, b) => a.nom.localeCompare(b.nom));
       })
       .catch((error) => {
         return error;
@@ -99,7 +104,7 @@ export class EditFormationComponent {
       .getAllFormateurs()
       .then((response) => {
         console.log(response);
-        this.formateurs = response.data;
+        this.formateurs = response.data.sort((a, b) => a.name.localeCompare(b.name));
       })
       .catch((error) => {
         return error;
@@ -118,6 +123,17 @@ export class EditFormationComponent {
   editFormation() {
     console.log(this.formation);
     this.isSubmitting = true;
+   
+    this.formationService
+      .getFormationById(this.route.snapshot.params['id'])
+      .then((response) => {
+
+        this.formation.imageData = response.data.imageData;
+        this.formation.imageName = response.data.imageName;
+        console.log(this.formation);
+      })
+      .catch((error) => { console.log(error);
+      });
     //we already updated it with ngModel formation.title etc in html
     this.formationService
       .updateFormation(this.formation)

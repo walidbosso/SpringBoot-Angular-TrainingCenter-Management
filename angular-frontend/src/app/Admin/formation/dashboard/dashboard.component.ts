@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
       .getAllFormations()
       .then((response) => {
         console.log(response);
-        this.formations = response.data;
+        this.formations = response.data.sort((a, b) => new Date(a.dateDebut).getTime() - new Date(b.dateDebut).getTime());
       })
       .catch((error) => {
         return error;

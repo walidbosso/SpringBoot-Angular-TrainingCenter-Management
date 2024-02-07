@@ -35,77 +35,71 @@ import univ.iwa.service.FormationService;
 @RequestMapping("/formation")
 public class FormationController {
 
-	@Autowired 
+	@Autowired
 	private FormationService formationService;
-	
+
 	@GetMapping("/get")
-	public List<Formation> getAllFormations(){
+	public List<Formation> getAllFormations() {
 		return formationService.getAllFormations();
 	}
 
-	
 	@GetMapping("/get/{id}")
 	public Formation getFormationById(@PathVariable Long id) {
-		return formationService.getFormationById(id); 
+		return formationService.getFormationById(id);
 	}
-	
+
 	@GetMapping("/categorie/{categorie}")
 	public List<Formation> findByCategorie(@PathVariable String categorie) {
 		System.out.println(categorie);
-	    return formationService.findByCategorie(categorie);
+		return formationService.findByCategorie(categorie);
 
 	}
-	
-	@PostMapping(value = "/add", consumes = {"multipart/form-data", "application/json"})
+
+	@PostMapping(value = "/add", consumes = { "multipart/form-data", "application/json" })
 //	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	public Formation addFormation( @RequestParam("formation") String formationJson,
-            @RequestParam(value = "imageFile", required = false) MultipartFile imageFile) throws IOException {
-		System.out.println("formation + imageFile : "+formationJson+imageFile);
-		 ObjectMapper objectMapper = new ObjectMapper();
-		    Formation formation = objectMapper.readValue(formationJson, Formation.class);
-		return formationService.addFormation(formation, imageFile);}
-	
-	
+	public Formation addFormation(@RequestParam("formation") String formationJson,
+			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile) throws IOException {
+		System.out.println("formation + imageFile : " + formationJson + imageFile);
+		ObjectMapper objectMapper = new ObjectMapper();
+		Formation formation = objectMapper.readValue(formationJson, Formation.class);
+		return formationService.addFormation(formation, imageFile);
+	}
+
 //	fetch image related to a formation, used directly in home and dashboard
-	 @GetMapping("/{formationId}/image")
-	    public ResponseEntity<byte[]> getFormationImage(@PathVariable Long formationId) {
-	        
-	            Formation formation = formationService.getFormationById(formationId); 
-	            return ResponseEntity.ok()
-	                    .contentType(MediaType.IMAGE_PNG) // adjust based on your image type
-	                    .body(formation.getImageData());
-	       
-	    }
-	
-	
+	@GetMapping("/{formationId}/image")
+	public ResponseEntity<byte[]> getFormationImage(@PathVariable Long formationId) {
+
+		Formation formation = formationService.getFormationById(formationId);
+		return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG) // adjust based on your image type
+				.body(formation.getImageData());
+
+	}
+
 	@PutMapping("/update")
 //	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public Formation updateFormation(@RequestBody Formation formation) {
 		return formationService.updateFormation(formation);
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 //	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public void deleteFormation(@PathVariable Long id) {
 		formationService.deleteFormation(id);
 	}
-	
-	
+
 //	@DeleteMapping("/delete")
 //	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 //	public List<Formation> deleteFormationsLessThanNow() {
 //		return formationService.deleteFormationsLessThanNow();
 //	}
-	
+
 	@GetMapping("/date/{date}")
-	public List<Formation> findByDateFormationquals(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-	    return formationService.findByDateFormationEquals(date);
+	public List<Formation> findByDateFormationquals(
+			@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+		return formationService.findByDateFormationEquals(date);
 
 	}
 
-	
-
-	
 //	@DeleteMapping("/delete/{id}")
 //    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
 //	public void deleteFormation(@PathVariable Long id) {
@@ -115,5 +109,5 @@ public class FormationController {
 //	public List<Formation> getAllFormations(int page, int size, String feild){
 //		return formationService.getAllFormations(page, size, feild);
 //	}
-	
+
 }
