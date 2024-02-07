@@ -6,6 +6,7 @@ import { Entreprise } from 'app/Admin/entreprise/entreprise';
 import { EntrepriseService } from 'app/Admin/entreprise/entreprise.service';
 import { Formator } from 'app/model/formator.model';
 import { FormatorService } from 'app/services/formators.service';
+import { Formation } from '../formation';
 
 @Component({
   selector: 'app-create-formation',
@@ -16,15 +17,28 @@ export class CreateFormationComponent {
   nom: string = '';
   entreprises: Entreprise[] = [];
   formateurs: Formator[] = [];
-  entreprise: Entreprise = null;
-  formateur: Formator = null;
-  categorie: string = '';
-  objectif: string = '';
-  description: string = '';
-  duree: number = 12;
-  cout: number = 300;
-  dateDebut: Date = new Date();
-  dateFin: Date = null;
+  // entreprise: Entreprise ;
+  // formateur: Formator ;
+  // categorie: string = '';
+  // objectif: string = '';
+  // description: string = '';
+  // duree: number = 12;
+  // cout: number = 300;
+  // dateDebut: Date = new Date();
+  // dateFin: Date = null;
+  formation: Formation = {
+    // id: 0,
+    nom: '',
+    categorie: '',
+    objectif: '',
+    description: '',
+    duree: '',
+    cout: 0,
+    dateDebut: null,
+    dateFin: null,
+    formateur: null,
+    entreprise: null,
+  };
   // formateur_id: number = 0;
   //  entreprise_id: number=0;
 
@@ -80,7 +94,7 @@ export class CreateFormationComponent {
         (entreprise) => entreprise.id === parseInt(entrepriseId)
       ) || null;
     console.log('selectedEntreprise ' + selectedEntreprise);
-    this.entreprise = selectedEntreprise;
+    this.formation.entreprise = selectedEntreprise;
   }
   onFormateurSelected(formateurId: string) {
     console.log(formateurId);
@@ -91,28 +105,16 @@ export class CreateFormationComponent {
         (formateur) => formateur.id === parseInt(formateurId)
       ) || null;
     console.log('selectedFormateur ' + selectedFormateur);
-    this.formateur = selectedFormateur;
+    this.formation.formateur = selectedFormateur;
   }
   addFormation() {
     this.isSubmitting = true;
     this.formationService
-      .addFormation({
-        nom: this.nom,
-        categorie: this.categorie,
-        objectif: this.objectif,
-        description: this.description,
-        duree: this.duree,
-        cout: this.cout,
-        dateDebut: this.dateDebut,
-        dateFin: this.dateFin,
-        formateur: this.formateur,
-        entreprise: this.entreprise,
-      })
+      .addFormation(
+        this.formation
+      )
       .then((response) => {
-        console.log(
-          'add this.entreprise ' + this.entreprise.nom,
-          this.formateur.name
-        );
+        
         this.isSubmitting = false;
         Swal.fire({
           icon: 'success',
@@ -121,16 +123,19 @@ export class CreateFormationComponent {
           timer: 1500,
         });
 
-        this.nom = '';
-        this.categorie = '';
-        this.objectif = '';
-        this.duree = 0;
-        this.description = '';
-        this.cout = 0;
-        this.dateDebut = null;
-        this.dateFin = null;
-        this.formateur = null;
-        this.entreprise = null;
+        this.formation = {
+          // id: 0,
+          nom: '',
+          categorie: '',
+          objectif: '',
+          description: '',
+          duree: '',
+          cout: 0,
+          dateDebut: null,
+          dateFin: null,
+          formateur: null,
+          entreprise: null,
+        };
 
         return response;
       }) //response

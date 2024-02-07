@@ -33,8 +33,8 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { 
 		http.cors(cors->cors.configurationSource(request -> new CorsConfiguration(corsConfiguration())))
 			.authorizeHttpRequests((auth)->auth
-			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", "/Formation/date/**", 
-					"formation/get/**", "/individu/add/formation/**", "formation/categorie/**").permitAll()
+			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", "formation/get/**", 
+					"formation/categorie/**", "formation/date/**", "/individu/add/formation/**").permitAll()
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
 			.requestMatchers("/formation/**").permitAll()
 			.requestMatchers("/auth/assistant/**").permitAll() // .authenticated()
