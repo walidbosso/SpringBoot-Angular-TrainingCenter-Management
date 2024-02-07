@@ -1,7 +1,7 @@
 package univ.iwa.controller;
 
 import java.time.LocalDate;
-
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,12 +71,12 @@ public class FormationController {
 //	public List<Formation> deleteFormationsLessThanNow() {
 //		return formationService.deleteFormationsLessThanNow();
 //	}
-//	
-//	@GetMapping("/date/{date}")
-//	public List<Formation> findByDateFormationquals(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-//	    return formationService.findByDateFormationEquals(date);
-//
-//	}
+	
+	@GetMapping("/date/{date}")
+	public List<Formation> findByDateFormationquals(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+	    return formationService.findByDateFormationEquals(date);
+
+	}
 
 	
 

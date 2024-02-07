@@ -32,7 +32,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests((auth)->auth
 	
 			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", 
-					"/Formation/date/**","formation/get/**", "formation/categorie/**").permitAll() 
+					"/Formation/date/**","formation/get/**", "formation/categorie/**", "formation/date/**").permitAll() 
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
 			.requestMatchers("/formation/**").permitAll()
 			.requestMatchers("/formateur/**").permitAll()

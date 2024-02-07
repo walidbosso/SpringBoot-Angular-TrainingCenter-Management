@@ -254,14 +254,14 @@
                     title="Recurring"
                   ></i>
                 </div>
+                <!-- individus -->
                 <a
                   [routerLink]="['/admin/individu/add/formation', formation.id]"
                   class="btn btn-outline-info mx-1"
                   >S'inscrire au formation</a
                 >
-                <div *ngIf="formation.formateur === null">
-                    
-                  <a
+                    <!-- FORMATEUR EXTERNE -->
+                  <a *ngIf="formation.formateur === null"
                     [routerLink]="[
                       '/admin/formateur/add/formation',
                       formation.id
@@ -269,7 +269,15 @@
                     class="btn btn-outline-success mx-1"
                     >S'inscrire en tant que formateur</a
                   >
-                </div>
+                  <!-- IF ADMIN -->
+                  <a *ngIf="formation.formateur === null"
+                    [routerLink]="[
+                      '/admin/formation',
+                      formation.id,'edit'
+                    ]"
+                    class="btn btn-outline-success mx-1"
+                    >Affecte formateur au formation</a
+                  >
                 <!--end::Indicator-->
               </div>
               <!--end::Card body-->

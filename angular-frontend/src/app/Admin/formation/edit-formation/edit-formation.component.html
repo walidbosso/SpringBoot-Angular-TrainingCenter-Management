@@ -104,7 +104,7 @@
                   id="formateur"
                   (change)="onFormateurSelected($event.target.value)"
                 >
-                  <option [value]="formation.formateur.id">
+                  <option *ngIf="formation.formateur !== null" [value]="formation.formateur.id">
                     {{ formation.formateur.name }}
                   </option>
                   <option
@@ -121,7 +121,7 @@
                   id="entreprise"
                   (change)="onEntrepriseSelected($event.target.value)"
                 >
-                  <option [value]="formation.entreprise.id">
+                  <option *ngIf="formation.entreprise !== null" [value]="formation.entreprise.id">
                     {{ formation.entreprise.nom }}
                   </option>
                   <option

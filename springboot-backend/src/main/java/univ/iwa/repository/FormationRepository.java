@@ -1,5 +1,6 @@
 package univ.iwa.repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -15,12 +16,11 @@ public interface FormationRepository extends JpaRepository<Formation, Long>{
 	List<Formation> findByFormateur(UserInfo formateur);
 	List<Formation> findByEntreprise(Entreprise entreprise);
 	
-	//YOU CHANGED THE ATTRIBUTS NAME Aymane
-//	List<Formation> findByFinLessThan(Date d); 
-//	List<Formation> findByDebutEquals(Date d); 
+//	List<Formation> findByDateFinLessThan(Date d); 
+//	List<Formation> findByDateDebutEquals(Date d); 
 	
 //    List<Formation> findByVille(String ville);
-//    List<Formation> findByDebut(Date date);
+    List<Formation> findByDateDebutEquals(Date a);
     List<Formation> findByCategorie(String categorie);
 	
 }
