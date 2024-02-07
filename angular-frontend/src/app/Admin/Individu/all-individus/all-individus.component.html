@@ -36,6 +36,7 @@
                           >Edit</a
                         >
                         <button
+                          *ngIf="permission"
                           (click)="deleteIndividu(individu.id)"
                           class="btn btn-outline-danger mx-1"
                         >

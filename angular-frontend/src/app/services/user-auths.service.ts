@@ -22,11 +22,14 @@ export class UserAuthsService {
   public clear() {
     localStorage.clear();
   }
+  public isAdmin(): boolean {
+    return this.getRole() === "ROLE_ADMIN";
+  }
+  public isAdminOrAssistant(): boolean {
+    return this.getRole() === "ROLE_ADMIN" || this.getRole() === "ROLE_ASSISTANT";
+  }
   // public isLoggedIn(): boolean {
   //   return this.getRole() !== null && this.getToken() !== null;
-  // }
-  // public isAdmin(): boolean {
-  //   return this.getRole() === "ROLE_ADMIN";
   // }
   // public roleMatch(allowedRoles: string[]): boolean {
   //   const userRole = this.getRole();

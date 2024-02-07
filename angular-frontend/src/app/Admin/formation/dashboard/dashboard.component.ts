@@ -3,6 +3,7 @@ import * as Chartist from 'chartist';
 import { Formation } from '../formation';
 import Swal from 'sweetalert2';
 import { FormationService } from '../formation.service';
+import { UserAuthsService } from 'app/services/user-auths.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,11 +12,16 @@ import { FormationService } from '../formation.service';
 })
 export class DashboardComponent implements OnInit {
   formations: Formation[] = [];
+  permission: boolean;
 
-  constructor(public formationService: FormationService) {}
+  constructor(
+    public formationService: FormationService,
+    private userAuthsService: UserAuthsService
+  ) {}
 
   ngOnInit() {
     this.getAllFormations(); // on loand we call the function below
+    this.permission = this.userAuthsService.isAdmin();
   }
 
   getAllFormations() {

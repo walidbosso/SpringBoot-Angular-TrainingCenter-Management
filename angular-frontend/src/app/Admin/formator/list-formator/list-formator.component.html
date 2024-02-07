@@ -5,7 +5,7 @@
         <div class="card" style="height: 430px;">
           <div class="card-header card-header-danger sticky-top fixed">
             <h4 class="card-title  d-inline-block">Formator List</h4>
-            <button class="btn btn-success" routerLink="/admin/formateur/add">
+            <button *ngIf="permission" class="btn btn-success" routerLink="/admin/formateur/add">
               Ajouter Formateur
             </button>
           </div>
@@ -30,7 +30,10 @@
                     <td class="text-right">
                       <button [routerLink]="['/admin/formateur',formator.id,'update']"
                         class="btn btn-warning btn-sm mr-2">Edit</button>
-                      <button class="btn btn-danger btn-sm" (click)="deleteFormator(formator.id)">
+                      <button 
+                        class="btn btn-danger btn-sm" 
+                        (click)="deleteFormator(formator.id)"
+                        *ngIf="permission">
                         <i class="fas fa-trash-alt"></i> Delete
                       </button>
                     </td>
