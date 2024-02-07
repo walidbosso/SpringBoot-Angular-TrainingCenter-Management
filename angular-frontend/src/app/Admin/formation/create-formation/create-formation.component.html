@@ -21,11 +21,26 @@
               
               <div class="form-group">
                 
-                
+              
                 <div *ngIf="selectedImage" class="text-center mt-3">
                   <img width="200" height="150" [src]="getImageUrl()" alt="Selected Image" class="img-fluid rounded" />
                 </div>
-            
+                <div *ngIf="selectedImage" class=" mb-2">
+                  <p class="font-weight-bold">Selected File: {{ selectedImage.name }}</p>
+                  
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      [style.width]="progress + '%'"
+                      [attr.aria-valuenow]="progress"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      {{ progress }}%
+                    </div>
+                  </div>
+                </div>
                 <!-- File input with styling -->
                 <div class="form-group mt-3">
                   <label for="imageFile" class="font-weight-bold">Select Image:</label>
@@ -44,6 +59,11 @@
                   </div>
                   
                 </div>
+                 
+                  
+                
+                
+                 
                    
           
                 

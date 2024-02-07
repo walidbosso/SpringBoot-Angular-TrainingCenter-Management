@@ -119,6 +119,9 @@
                   >
                     {{ formateur.name }}
                   </option>
+                  <option [value]="0" *ngIf="formation.formateur !== null">
+                    - No Formateur : Remove current formateur -
+                  </option>
                 </select>
 
                 <label for="entreprise">Select Entreprise:</label>
@@ -141,6 +144,9 @@
                     [value]="entreprise.id"
                   >
                     {{ entreprise.nom }}
+                  </option>
+                  <option [value]="0" *ngIf="formation.entreprise !== null">
+                    - No Entreprise : Remove current entreprise -
                   </option>
                 </select>
 

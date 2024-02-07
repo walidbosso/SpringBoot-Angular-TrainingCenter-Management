@@ -30,4 +30,15 @@
     border: 1px solid #ced4da;
     border-radius: .25rem;
   }
+
+  /* file-upload.component.css */
+
+.progress {
+    margin-top: 10px;
+  }
+  
+  .progress-bar {
+    height: 20px;
+  }
+  
   

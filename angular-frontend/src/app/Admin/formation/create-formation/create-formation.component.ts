@@ -14,19 +14,12 @@ import { Formation } from '../formation';
   styleUrls: ['./create-formation.component.css'],
 })
 export class CreateFormationComponent {
-  // nom: string = '';
   entreprises: Entreprise[] = [];
   formateurs: Formator[] = [];
-  selectedImage: File;
-  // entreprise: Entreprise ;
-  // formateur: Formator ;
-  // categorie: string = '';
-  // objectif: string = '';
-  // description: string = '';
-  // duree: number = 12;
-  // cout: number = 300;
-  // dateDebut: Date = new Date();
-  // dateFin: Date = null;
+  selectedImage: File | null = null;
+  progress = 0;
+  private uploadInterval: any;
+
   formation: Formation = {
     // id: 0,
     nom: '',
@@ -41,8 +34,7 @@ export class CreateFormationComponent {
     entreprise: null,
     // image_name:null
   };
-  // formateur_id: number = 0;
-  //  entreprise_id: number=0;
+
 
   isSubmitting: boolean = false; //track button clicked or no, when user clicking multiple times
   constructor(
@@ -64,10 +56,12 @@ export class CreateFormationComponent {
   } // on loand we call the function below
 
   onImageSelected(event: any): void {
+    this.progress = 0;
     const file = event.target.files[0];
 
     if (file) {
       this.selectedImage = file;
+      this.simulateFileUpload();
     }
   }
 
@@ -82,6 +76,31 @@ export class CreateFormationComponent {
       .catch((error) => {
         return error;
       });
+  }
+
+
+ 
+
+  private simulateFileUpload(): void {
+    // Clear any existing interval
+    this.clearUploadInterval();
+
+    // Simulate a slow fill for the progress bar
+    this.uploadInterval = setInterval(() => {
+      this.progress += 10;
+      if (this.progress >= 100) {
+        this.clearUploadInterval();
+      }
+    }, 100);
+  }
+
+  private clearUploadInterval(): void {
+    clearInterval(this.uploadInterval);
+  }
+
+  ngOnDestroy(): void {
+    // Clear the interval when the component is destroyed
+    this.clearUploadInterval();
   }
   getAllFormateurs() {
     this.formatorService
