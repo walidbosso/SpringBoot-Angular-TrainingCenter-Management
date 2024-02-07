@@ -15,10 +15,11 @@
       >
         <div class="row g-12 g-xl-8">
           <!--begin::Col-->
-          <div class="col-sm-12 col-xl-6" *ngFor="let formation of formations">
+          <ng-container *ngFor="let formation of formations">
+          <div class="col-sm-12 col-xl-6" *ngIf="formation.entreprise === null">
             <!--begin::Card-->
             <div
-              *ngIf="formation.entreprise === null"
+              
               class="card h-100"
               style="flex: 1 0 25%; margin-right: 12px"
             >
@@ -34,7 +35,7 @@
                   <!--begin::Title-->
                   <a
                     [routerLink]="[
-                      '/admin/formation/categorie',
+                      '/home/formation/categorie',
                       formation.categorie
                     ]"
                     class="fs-4 fw-semibold text-hover-primary text-gray-600 m-0"
@@ -232,7 +233,7 @@
                   <div class="fw-bold text-primary me-2">
                     <a
                     [routerLink]="[
-                      '/admin/formation/date',
+                      '/home/formation/date',
                       formation.dateDebut
                     ]">Date de debut: {{ formation.dateDebut }}</a>
                     
@@ -286,6 +287,7 @@
             </div>
             <!--end::Card-->
           </div>
+        </ng-container>
         </div>
       </div>
     </div>

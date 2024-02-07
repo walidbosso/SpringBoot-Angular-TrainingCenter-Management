@@ -136,7 +136,7 @@ export class CreateFormationComponent {
           formateur: null,
           entreprise: null,
         };
-
+ 
         return response;
       }) //response
       .catch((error) => {

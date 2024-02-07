@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Formation } from '../formation';
-import { FormationService } from '../formation.service';
+import { Formation } from '../../Admin/formation/formation';
+import { FormationService } from '../../Admin/formation/formation.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,10 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DateFormationComponent implements OnInit {
   formations: Formation[] = [];
+  title:string = '';
 
   constructor(public formationService: FormationService,  private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.title=this.route.snapshot.params['date'];
+
     this.formationService
       .findByDebut(this.route.snapshot.params['date'])
       .then((response) => {
