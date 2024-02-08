@@ -15,7 +15,7 @@
         id="kt_app_toolbar_container"
         class="app-container container-xxl d-flex flex-stack"
       >
-        <div class="row g-12 g-xl-8">
+        <div class="row g-12 g-xl-8"> 
           <!--begin::Col-->
           <ng-container *ngFor="let formation of formations">
             <div
@@ -280,8 +280,7 @@
                   <a
                     [routerLink]="[
                       '/home/individu/add',
-                      formation.id,
-                      'formation'
+                      formation.id,'formation'
                     ]"
                     class="btn btn-outline-info mx-1"
                     >S'inscrire au formation</a
@@ -290,8 +289,9 @@
                   <a
                     *ngIf="formation.formateur === null"
                     [routerLink]="[
-                      '/admin/formateur/add',
-                      formation.id,'formation'
+                      '/home/formateur/add',
+                      formation.id,
+                      'formation'
                     ]"
                     class="btn btn-outline-success mx-1"
                     >S'inscrire en tant que formateur</a
