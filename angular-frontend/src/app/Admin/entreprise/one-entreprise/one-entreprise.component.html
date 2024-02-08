@@ -1,24 +1,87 @@
-<div class="container">
-  <h2 class="text-center mt-5 mb-5">Entreprise Detail</h2>
-  <div class="card">
-    <div class="card-header">
-      <a
-        class="btn btn-outline-info float-right"
-        routerLink="/admin/entreprise/get"
-        >Toutes les entreprises</a
-      >
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formation Detail</title>
+   
+    <!-- Add any additional stylesheets or fonts if needed -->
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .card {
+        border: none;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        background-color: #920000;
+        color: #fff;
+      }
+
+      .btn-back {
+        background-color: #0d117b;
+        color: #fff;
+      }
+
+      .btn-back:hover {
+        background-color: #285c9b;
+      }
+
+      .formation-image {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-10">
+      <div class="card mt-10">
+        <div class="card-header mt-10">
+          <h2 class="mb-0 pt-6">Entreprise: {{ entreprise.nom }}</h2>
+          <div class=" float-right">
+            <a
+              class="pt-6 btn btn-outline-warning float-right"
+              routerLink="/admin/entreprise/get"
+              > Toutes les entreprises</a
+            >
+          </div>
+        </div>
+
+       
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="text-muted">Addresse:</label>
+                <p>{{ entreprise.address }}</p>
+              </div>
+
+              <div class="form-group">
+                <label class="text-muted">Site web:</label>
+                <p>{{ entreprise.url }}</p>
+              </div>
+</div> <div class="col-md-6">
+              <div class="form-group">
+                <label class="text-muted">E-mail:</label>
+                <p>{{ entreprise.email }}</p>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Telephone:</label>
+                <p>{{ entreprise.tel }}</p>
+              </div>
+            </div>
+           
+
+          </div>
+
+         </div>
+
     </div>
-    <div class="card-body">
-      <b class="text-muted">Nom:</b>
-      <p>{{ entreprise.nom }}</p>
-      <b class="text-muted">Addresse:</b>
-      <p>{{ entreprise.address }}</p>
-      <b class="text-muted">Site web:</b>
-      <p>{{ entreprise.url }}</p>
-      <b class="text-muted">E-mail:</b>
-      <p>{{ entreprise.email }}</p>
-      <b class="text-muted">Telephone:</b>
-      <p>{{ entreprise.tel }}</p>
     </div>
-  </div>
-</div>
+
+    <!-- Bootstrap and other script imports -->
+   
+  </body>

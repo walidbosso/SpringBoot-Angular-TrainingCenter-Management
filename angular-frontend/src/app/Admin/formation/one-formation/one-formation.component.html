@@ -39,8 +39,11 @@
   <body>
     <div class="container mt-5">
       <div class="card">
-        <div class="card-header text-center">
+        <div class="card-header text-center mt-10">
           <h2 class="mb-0 pt-6">{{ formation.nom }}</h2>
+          <a class="pt-6 float-right  btn btn-outline-info mt-3" routerLink="/admin/dashboard">
+            Retour
+          </a>
         </div>
 
         <div class="card-body">
@@ -135,9 +138,7 @@
         </div>
       </div>
 
-      <button class="btn btn-back mt-3" routerLink="/admin/dashboard">
-        Retour
-      </button>
+     
     </div>
 
     <!-- Bootstrap and other script imports -->

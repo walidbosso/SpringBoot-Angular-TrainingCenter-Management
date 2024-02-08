@@ -4,13 +4,14 @@
       <p class="card-category" *ngIf="permission">
         <a
           routerLink="/admin/formation/create"
-          class="btn btn-outline-primary float-right"
+          class="btn btn-danger float-right"
           >Ajouter Formation</a
         >
       </p>
-      <div class="col-md-4  mb-6" *ngFor="let formation of formations">
+      <div class="col-md-4  mb-14" *ngFor="let formation of formations">
         <div class="card card-chart">
-          <div class="img">
+          <div [ngClass]="{ 'card-header-success': formation.formateur !== null, 'card-header-danger': formation.formateur === null,'card-header-warning': formation.entreprise === null}">
+            <div class="img">
           
               <img class="pt-4"
                 *ngIf="formation.imageName !== null; else defaultImage"
@@ -23,7 +24,7 @@
               </ng-template>
        
             
-          </div>
+            </div></div>
           <div class="card-body">
             <a
               [routerLink]="['/admin/formation', formation.id, 'details']"
@@ -57,9 +58,10 @@
               {{ formation.description }} | Cout: {{ formation.cout }} Dh
             </div>
           </div>
-        </div>
+     
       </div>
-      <div class="col-md-4">
+      
+      <!-- <div class="col-md-4">
         <div class="card card-chart">
           <div class="card-header card-header-success">
             <div class="img">
@@ -74,8 +76,8 @@
             <div class="stats"><i class="material-icons">24h</i> 200Dh</div>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
+      </div> -->
+      <!-- <div class="col-md-4">
         <div class="card card-chart">
           <div class="card-header card-header-danger">
             <div class="img">
@@ -90,7 +92,10 @@
             <div class="stats"><i class="material-icons">13h</i> 100Dh</div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
+<small class="btn btn-outline-success">Green: Formateur and entreprise are affected</small>
+      <small class="btn btn-outline-warning">Orange: Formateur affected but entreprise NOT affected</small>
+      <small class="btn btn-outline-danger">Red: Formateur and entreprise are NOT affected</small>

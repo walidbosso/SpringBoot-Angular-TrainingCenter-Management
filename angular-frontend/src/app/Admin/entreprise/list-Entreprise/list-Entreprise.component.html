@@ -15,7 +15,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table">
+              <table class="table text-center">
                 <thead class="text-primary">
                   <th>ID</th>
                   <th>Nom</th>
@@ -23,7 +23,7 @@
                   <th>Telephone</th>
                   <th>Site Web</th>
                   <th>E-Mail</th>
-                  <th class="text-right" style="padding-right: 70px">Action</th>
+                  <th class="text-center" style="text-align:center">Action</th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let entreprise of entreprises">
@@ -33,7 +33,7 @@
                     <td>{{ entreprise.tel }}</td>
                     <td>{{ entreprise.url }}</td>
                     <td>{{ entreprise.email }}</td>
-                    <td class="text-right">
+                    <td class="text-center">
                       <a
                         [routerLink]="['/admin/entreprise', entreprise.id, 'details']"
                         class="btn btn-outline-info mx-1"
@@ -41,13 +41,13 @@
                       >
                       <button
                         [routerLink]="['/admin/entreprise', entreprise.id, 'edit']"
-                        class="btn btn-warning btn-sm mr-2"
+                        class="btn btn-outline-warning mx-1"
                       >
                         Edit
                       </button>
                       <button
                         (click)="deleteEntreprise(entreprise.id)"
-                        class="btn btn-danger btn-sm"
+                        class="btn btn-outline-danger mx-1"
                       >
                         Delete
                       </button>
