@@ -1,0 +1,49 @@
+/* Add this CSS to your styles.css or component-specific styles file */
+.card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card:hover .card-overlay {
+    opacity: 1;
+  }
+  
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .card-overlay h4 {
+    margin-bottom: 10px;
+  }
+  
+  .card-overlay a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #17a2b8;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card-overlay a:hover {
+    background-color: #117a8b;
+  }
+  
