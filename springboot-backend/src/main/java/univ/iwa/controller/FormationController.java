@@ -61,8 +61,9 @@ public class FormationController {
 		return formationService.findByNomLike(nom);
 
 	}
-	
+
 	@PostMapping(value = "/add", consumes = { "multipart/form-data", "application/json" })
+//	This is how they look in angular formData.append('imageFile', imageFile); formData.append('formation', JSON.stringify(formation));
 //	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public Formation addFormation(@RequestParam("formation") String formationJson,
 			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile) throws IOException {

@@ -36,14 +36,11 @@ public class FormationService {
 
 	 public Formation addFormation(Formation formation, MultipartFile imageFile) throws java.io.IOException {
 	        try {
-	            // Set image name
 	            formation.setImageName(imageFile.getOriginalFilename());
 
-	            // Convert image data to byte array
 	            byte[] imageData = imageFile.getBytes();
 	            formation.setImageData(imageData);
 
-	            // Save the formation
 	            return formationRepository.save(formation);
 	        } catch (IOException e) {
 	            throw new RuntimeException("Failed to process image data", e);

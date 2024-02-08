@@ -40,6 +40,7 @@ export class SidebarComponent implements OnInit {
       { path: '/admin/individu', title: 'List - Individu',  icon:'content_paste', class: '', role: this.userAuthsService.isAdminOrAssistant()},
       { path: '/admin/entreprise/get', title: 'List - Entreprise',  icon:'list', class: '', role: this.userAuthsService.isAdminOrAssistant()},
       { path: '/admin/calendar', title: 'Calendar',  icon:'event', class: '', role: this.userAuthsService.isAdminOrAssistant()},
+      { path: '/admin/demande', title: 'List - Demandes Externes',  icon:'event', class: '', role: this.userAuthsService.isAdminOrAssistant()},
       { path: '/home', title: 'Page Acceuil',  icon:'dashboard', class: '', role: true},
       { path: '/admin/logout', title: 'Logout',  icon:'logout', class: 'active-pro', role: this.userAuthsService.isAdminOrAssistant()},
     ];

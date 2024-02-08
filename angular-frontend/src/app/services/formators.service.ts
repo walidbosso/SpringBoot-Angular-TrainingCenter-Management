@@ -1,6 +1,7 @@
 // formation.service.ts
 
 import { Injectable } from '@angular/core';
+import { Formator } from 'app/model/formator.model';
 import axios from 'axios';
 
 @Injectable({
@@ -31,6 +32,20 @@ export class FormatorService {
    deleteFormator(id: number): Observable<any> {
      return this.http.delete<any>(`${this.apiUrl}/formateur/delete/${id}`);
    }*/
+
+  //  signup( idFormation:number, formData:any ) {
+  //   const individu: Formator = {
+  //     id: formData.id,
+  //     name: formData.name,
+  //     email: formData.email,
+  //     password: formData.password,
+  //     competences: formData.competences,
+  //     remarques: formData.remarques,
+  //   }
+
+
+  //   return axios.post('/demande/add/' + idFormation, individu)
+  // }
 
    getAllFormateurs(): Promise<any> {
     const headers = { 'Content-Type': 'application/json' };

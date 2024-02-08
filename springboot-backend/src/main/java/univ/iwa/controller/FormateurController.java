@@ -57,9 +57,10 @@ public class FormateurController {
 	}
 	
 	@PostMapping("add/{idFormateur}/formation/{idFormation}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
-	public Formation addFormateurToFormation(@PathVariable Integer idFormateur, @RequestBody Formation m, @PathVariable Long idFormation) {
-		return formateurService.addFormateurToFormation(idFormateur, m, idFormation);
+//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_ASSISTANT')")
+	public Formation addFormateurToFormation(@PathVariable Integer idFormateur, @PathVariable Long idFormation) {
+	System.out.print("addFormateurToFormation idFormateur ");
+		return formateurService.addFormateurToFormation(idFormateur,idFormation);
 	}
 	
 	@GetMapping("Formateur/{id}/Formation")

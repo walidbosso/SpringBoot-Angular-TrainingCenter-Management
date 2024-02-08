@@ -294,8 +294,9 @@
                   <a
                     *ngIf="formation.formateur === null"
                     [routerLink]="[
-                      '/admin/formateur/add/formation',
-                      formation.id
+                      '/home/formateur/add',
+                      formation.id,
+                      'formation'
                     ]"
                     class="btn btn-outline-success mx-1"
                     >S'inscrire en tant que formateur</a
