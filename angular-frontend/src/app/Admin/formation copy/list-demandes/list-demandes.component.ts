@@ -85,12 +85,12 @@ export class DemandeComponent implements OnInit {
   accepteDemande(idFormateur: number, idFormation: number) {
     Swal.fire({
       title: 'Are you sure you want to affecte this formateur?',
-      text: 'Demande deleted cannot be recovered',
+      text: 'Demande cannot be reversed',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d5',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Go ahead with deletion',
+      confirmButtonText: 'Go ahead',
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('idFormateur,idFormation: ', idFormateur, idFormation);

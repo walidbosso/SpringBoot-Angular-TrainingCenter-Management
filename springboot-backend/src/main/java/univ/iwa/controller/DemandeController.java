@@ -33,6 +33,12 @@ public class DemandeController {
 	public List<Demande> getAlldemandes() {
 		return demandeService.getAllDemandes();
 	}
+	
+	@GetMapping("/count")
+	public int countLines() {
+		
+		return demandeService.countLines();
+	}
 
 	@GetMapping("/get/{id}")
 	public Demande getdemandeById(@PathVariable Long id) {

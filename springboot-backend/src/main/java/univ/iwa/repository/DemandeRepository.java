@@ -20,5 +20,11 @@ public interface DemandeRepository extends JpaRepository<Demande, Long> {
 	@Modifying
 	@Query("DELETE FROM Demande d WHERE d.formation.id = :formationId")
 	void deleteByFormationId(Long formationId);
+	
+
+
+	@Query("SELECT COUNT(d) FROM Demande d")
+	int countLines();
+
 
 }

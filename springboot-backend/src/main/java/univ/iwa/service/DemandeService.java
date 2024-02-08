@@ -33,6 +33,11 @@ public class DemandeService {
 
 	}
 
+	public int countLines() {
+
+		return demandeRepository.countLines();
+
+	}
 //	public Demande updateDemande(Demande demande) {
 //		return demandeRepository.save(demande);
 //	}

@@ -14,6 +14,11 @@ export class DemandeService {
 
     return axios.get('/demande/get', { headers });
   }
+  countLines(): Promise<any> {
+    const headers = { 'Content-Type': 'application/json' };
+
+    return axios.get('/demande/count', { headers });
+  }
 
   getDemandeById(id: number): Promise<any> {
     const headers = { 'Content-Type': 'application/json' };
