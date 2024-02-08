@@ -23,7 +23,7 @@
                   <th>Telephone</th>
                   <th>Site Web</th>
                   <th>E-Mail</th>
-                  <th class="text-center" style="text-align:center">Action</th>
+                  <th class="text-center" style="text-align: center">Action</th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let entreprise of entreprises">
@@ -35,12 +35,20 @@
                     <td>{{ entreprise.email }}</td>
                     <td class="text-center">
                       <a
-                        [routerLink]="['/admin/entreprise', entreprise.id, 'details']"
+                        [routerLink]="[
+                          '/admin/entreprise',
+                          entreprise.id,
+                          'details'
+                        ]"
                         class="btn btn-outline-info mx-1"
                         >Details</a
                       >
                       <button
-                        [routerLink]="['/admin/entreprise', entreprise.id, 'edit']"
+                        [routerLink]="[
+                          '/admin/entreprise',
+                          entreprise.id,
+                          'edit'
+                        ]"
                         class="btn btn-outline-warning mx-1"
                       >
                         Edit

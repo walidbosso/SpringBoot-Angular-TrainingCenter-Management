@@ -9,12 +9,13 @@ import { CreateFormationComponent } from './create-formation/create-formation.co
 import { EditFormationComponent } from './edit-formation/edit-formation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OneFormationComponent } from './one-formation/one-formation.component';
+import { NomFormationComponent } from './nom-formation/nom-formation.component';
 
 @NgModule({
   declarations: [
     CategoryFormationComponent,
     DateFormationComponent,
-    CategoryFormationComponent,
+    NomFormationComponent,
     DateFormationComponent,
     CreateFormationComponent,
     EditFormationComponent,

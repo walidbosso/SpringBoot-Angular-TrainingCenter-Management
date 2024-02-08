@@ -23,6 +23,11 @@ export class FormationService {
     console.log("Service categorie dans /categorie "+categorie)
     return axios.get(`/formation/categorie/${categorie}`, { headers });
   }
+  findByNomLike(nom: string): Promise<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    console.log("Service nom dans /nom "+nom,)
+    return axios.get(`/formation/nom/${nom}`, { headers });
+  }
 
   findByDebut(date: string): Promise<any> {
     const headers = { 'Content-Type': 'application/json' };

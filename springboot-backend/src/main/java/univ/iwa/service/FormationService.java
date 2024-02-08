@@ -84,7 +84,13 @@ public class FormationService {
         List<Formation> Formation = formationRepository.findByCategorie(categorie);
         return Formation;
     }
-	
+
+    
+    public List<Formation> findByNomLike(String nom) {
+        List<Formation> Formation = formationRepository.findByNomContainingIgnoreCase(nom);
+        return Formation;
+    }
+    
 	public List<Formation> findByDateFormationEquals(  LocalDate date) {
 	    Date convertedDate = java.sql.Date.valueOf(date);
 		return formationRepository.findByDateDebutEquals(convertedDate); 

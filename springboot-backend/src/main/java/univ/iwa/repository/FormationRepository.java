@@ -16,11 +16,11 @@ public interface FormationRepository extends JpaRepository<Formation, Long>{
 	List<Formation> findByFormateur(UserInfo formateur);
 	List<Formation> findByEntreprise(Entreprise entreprise);
 	
-//	List<Formation> findByDateFinLessThan(Date d); 
-//	List<Formation> findByDateDebutEquals(Date d); 
-	
+//	List<Formation> findByDateFinLessThan(Date d); 	
 //    List<Formation> findByVille(String ville);
     List<Formation> findByDateDebutEquals(Date a);
     List<Formation> findByCategorie(String categorie);
+    List<Formation> findByNomContainingIgnoreCase(String nom);
+
 	
 }

@@ -1,23 +1,35 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, NgModule } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+//SEARCH
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
+
+  
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    nomFormation :string ;
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    //SEARCH
+    searchForm: FormGroup;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+
+    constructor(location: Location, private fb: FormBuilder, private element: ElementRef, private router: Router) {
       this.location = location;
           this.sidebarVisible = false;
+          //SEARCH we need formbuilder
+          this.searchForm = this.fb.group({
+            nom: [''] // Default value for the search input
+          });
     }
 
     ngOnInit(){
@@ -33,6 +45,14 @@ export class NavbarComponent implements OnInit {
          }
      });
     }
+
+    //SEARCH
+    onSubmit() {
+        const nomValue = this.searchForm.get('nom').value;
+        const route = `/admin/formation/nom/${nomValue}`;
+        this.router.navigate([route]);
+      }
+    //   END SEARCH
 
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -122,4 +142,6 @@ export class NavbarComponent implements OnInit {
       }
       return '';
     }
+
+
 }

@@ -55,6 +55,13 @@ public class FormationController {
 
 	}
 
+	@GetMapping("/nom/{nom}")
+	public List<Formation> findByNomLike(@PathVariable String nom) {
+		System.out.println(nom);
+		return formationService.findByNomLike(nom);
+
+	}
+	
 	@PostMapping(value = "/add", consumes = { "multipart/form-data", "application/json" })
 //	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public Formation addFormation(@RequestParam("formation") String formationJson,

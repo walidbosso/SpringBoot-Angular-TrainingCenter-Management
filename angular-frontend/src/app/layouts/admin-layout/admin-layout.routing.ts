@@ -15,6 +15,7 @@ import { CreateFormationComponent } from 'app/Admin/formation/create-formation/c
 import { CalendarComponent } from 'app/Admin/calendar/calendar.component';
 import { Logout } from '../../Admin/logout/logout.component';
 import { AdminLayoutComponent } from './admin-layout.component';
+import { NomFormationComponent } from 'app/Admin/formation/nom-formation/nom-formation.component';
 
 export const AdminLayoutRoutes: Routes = [
   {
@@ -43,7 +44,7 @@ export const AdminLayoutRoutes: Routes = [
       { path: 'formation/:id/details', component: OneFormationComponent },
       { path: 'formation/:id/edit', component: EditFormationComponent },
       { path: 'formation/create', component: CreateFormationComponent },
-      // { path: 'formation/date/:date', component: DateFormationComponent },
+      { path: 'formation/nom/:nom', component: NomFormationComponent },
       // {
       //   path: 'formation/categorie/:categorie',
       //   component: CategoryFormationComponent,
