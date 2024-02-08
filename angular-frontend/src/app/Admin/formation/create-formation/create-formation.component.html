@@ -5,10 +5,10 @@
         <div class="card">
           <div class="card-header card-header-danger">
             <h4 class="card-title">Ajouter une formation</h4>
-            <div class="card-header">
+            <div class="card-category">
               <!-- if we know the link we type normally, if like delete a list we use [] -->
               <a
-                class="btn btn-outline-info float-right"
+                class="btn btn-outline-warning float-right"
                 routerLink="/admin/dashboard"
                 >Toutes les formations</a
               >
@@ -54,7 +54,7 @@
                       accept="image/*"
                     />
                     <label class="custom-file-label" for="imageFile"><small class="form-text text-muted">
-                    Select a valid image file ( png).
+                    Select a valid and less than 500KB size image file (png, jpeg, gif etc..)
                   </small></label>
                   </div>
                   
@@ -195,7 +195,7 @@
                 <button
                   [disabled]="isSubmitting"
                   type="submit"
-                  class="form-control btn btn-outline-primary mt-3"
+                  class="form-control btn btn-outline-info mt-3"
                 >
                   Ajouter la Formation
                 </button>

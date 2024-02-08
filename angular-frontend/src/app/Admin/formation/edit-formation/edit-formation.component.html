@@ -5,10 +5,10 @@
         <div class="card">
           <div class="card-header card-header-danger">
             <h4 class="card-title">Modifier une formation</h4>
-            <div class="card-header">
+            <div class="card-category">
               <!-- if we know the link we type normally, if like delete a list we use [] -->
               <a
-                class="btn btn-outline-info float-right"
+                class="btn btn-outline-warning float-right"
                 routerLink="/admin/dashboard"
                 >Toutes les formations</a
               >
@@ -154,7 +154,7 @@
                   [disabled]="isSubmitting"
                   (click)="editFormation()"
                   type="button"
-                  class="form-control btn btn-outline-primary mt-3"
+                  class="form-control btn btn-outline-info mt-3"
                 >
                   Modifier la formation
                 </button>

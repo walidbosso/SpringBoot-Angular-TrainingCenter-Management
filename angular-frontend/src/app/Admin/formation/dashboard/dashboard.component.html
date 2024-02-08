@@ -8,23 +8,35 @@
           >Ajouter Formation</a
         >
       </p>
-      <div class="col-md-4  mb-14" *ngFor="let formation of formations">
+      <div class="col-md-4 mb-14" *ngFor="let formation of formations">
         <div class="card card-chart">
-          <div [ngClass]="{ 'card-header-success': formation.formateur !== null, 'card-header-danger': formation.formateur === null,'card-header-warning': formation.entreprise === null}">
+          <div
+            [ngClass]="{
+              'card-header-success': formation.formateur !== null,
+              'card-header-danger': formation.formateur === null,
+              'card-header-warning': formation.entreprise === null
+            }"
+          >
             <div class="img">
-          
-              <img class="pt-4"
+              <img
+                class="pt-4"
                 *ngIf="formation.imageName !== null; else defaultImage"
-                [src]="'http://localhost:8080/formation/' + formation.id + '/image'"
+                [src]="
+                  'http://localhost:8080/formation/' + formation.id + '/image'
+                "
                 width="200"
                 height="150"
               />
               <ng-template #defaultImage>
-                <img class="pt-4" src="/assets/img/angular.png" width="200" height="150" />
+                <img
+                  class="pt-4"
+                  src="/assets/img/angular.png"
+                  width="200"
+                  height="150"
+                />
               </ng-template>
-       
-            
-            </div></div>
+            </div>
+          </div>
           <div class="card-body">
             <a
               [routerLink]="['/admin/formation', formation.id, 'details']"
@@ -58,44 +70,17 @@
               {{ formation.description }} | Cout: {{ formation.cout }} Dh
             </div>
           </div>
-     
+        </div>
       </div>
-      
-      <!-- <div class="col-md-4">
-        <div class="card card-chart">
-          <div class="card-header card-header-success">
-            <div class="img">
-              <img src="/assets/img/angular.png" />
-            </div>
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Numpy & Pandas</h4>
-            <p class="card-category">Data Analaysis</p>
-          </div>
-          <div class="card-footer">
-            <div class="stats"><i class="material-icons">24h</i> 200Dh</div>
-          </div>
-        </div>
-      </div> -->
-      <!-- <div class="col-md-4">
-        <div class="card card-chart">
-          <div class="card-header card-header-danger">
-            <div class="img">
-              <img src="/assets/img/angular.png" />
-            </div>
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Matplotlip & Seaborn</h4>
-            <p class="card-category">Data Visualisation</p>
-          </div>
-          <div class="card-footer">
-            <div class="stats"><i class="material-icons">13h</i> 100Dh</div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
+  <small class="btn btn-outline-success"
+    >Green: Formateur and entreprise are affected</small
+  >
+  <small class="btn btn-outline-warning"
+    >Orange: Formateur affected but entreprise NOT affected</small
+  >
+  <small class="btn btn-outline-danger"
+    >Red: Formateur and entreprise are NOT affected</small
+  >
 </div>
-<small class="btn btn-outline-success">Green: Formateur and entreprise are affected</small>
-      <small class="btn btn-outline-warning">Orange: Formateur affected but entreprise NOT affected</small>
-      <small class="btn btn-outline-danger">Red: Formateur and entreprise are NOT affected</small>
