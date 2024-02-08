@@ -78,6 +78,8 @@
                     "
                     width="200"
                     height="150"
+                    (error)="handleImageError()"
+                    (load)="handleImageLoad()"
                   />
                   <ng-template #defaultImage>
                     <img
@@ -124,14 +126,14 @@
                 <label class="text-muted"
                   >Nom de formateur associe avec cette formation::</label
                 >
-                <p>{{ formation.formateur.name }}</p>
+                <p *ngIf="formation.formateur!==null">{{ formation.formateur.name }}</p>
               </div>
 
               <div class="form-group">
                 <label class="text-muted"
                   >Entreprise qui benefice de cette formation:</label
                 >
-                <p>{{ formation.entreprise.nom }}</p>
+                <p *ngIf="formation.entreprise!==null">{{ formation.entreprise.nom }}</p>
               </div>
             </div>
           </div>

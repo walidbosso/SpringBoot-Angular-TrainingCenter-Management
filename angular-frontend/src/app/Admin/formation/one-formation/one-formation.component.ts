@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Formation } from '../formation';
 import { FormationService } from '../formation.service';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-one-formation',
   templateUrl: './one-formation.component.html',
   styleUrls: ['./one-formation.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class OneFormationComponent {
   formation: Formation = {
@@ -57,4 +59,16 @@ export class OneFormationComponent {
         return error;
       });
   }
+
+  handleImageError() {
+    // Handle image loading error
+    console.log('Error loading image');
+    // Optionally, you can set a default image or take other actions
+  }
+
+  handleImageLoad() {
+    // Handle successful image loading
+    console.log('Image loaded successfully');
+  }
+
 }
