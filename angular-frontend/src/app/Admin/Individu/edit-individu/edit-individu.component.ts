@@ -47,7 +47,7 @@ export class EditIndividuComponent implements OnInit {
         this.isSubmited = false;
         Swal.fire({
           icon: 'success',
-          title: 'Entreprise updated successfully',
+          title: 'Individu updated successfully',
           showConfirmButton: false,
           timer: 1500,
         });

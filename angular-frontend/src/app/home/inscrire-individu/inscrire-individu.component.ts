@@ -52,7 +52,7 @@ export class InscrireIndividuComponent implements OnInit{
       (response: any) => {
         Swal.fire({
           icon: 'success',
-          title: 'Entreprise updated successfully',
+          title: 'Registration successful',
           showConfirmButton: false,
           timer: 1500,
         });

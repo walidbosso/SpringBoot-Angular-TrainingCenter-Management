@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin/formation']);
         } else if (response.data.role === 'ROLE_ASSISTANT') {
           this.router.navigate(['/admin/formation']);
-        } else if (response.data.role === 'ROLE_FORMAT') {
-          this.router.navigate(['/format']);
+        } else if (response.data.role === 'ROLE_FORMATEUR') {
+          this.router.navigate(['/formateur']);
         }
       })
       .catch((error) => {
