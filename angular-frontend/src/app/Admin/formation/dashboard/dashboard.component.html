@@ -70,6 +70,18 @@
           <div class="card-footer">
             <div class="stats">
               <i class="material-icons"> </i>  Cout: {{ formation.cout }} Dh
+              <br>
+              <ng-container *ngIf="formation.entreprise === null; else elseBlock">
+                Number of individus registered: {{ individusCounts[formation.id] || '0' }}
+              </ng-container>
+              <ng-template #elseBlock>
+               Entreprise: {{ formation.entreprise.nom }}
+              </ng-template>
+              <br>
+              <ng-container *ngIf="formation.formateur !== null">
+                Formateur: {{ formation.formateur.name }}
+               </ng-container>
+              <br>
             </div>
           </div>
         </div>

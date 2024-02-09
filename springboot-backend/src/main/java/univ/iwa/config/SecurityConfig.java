@@ -34,7 +34,7 @@ public class SecurityConfig {
 		http.cors(cors->cors.configurationSource(request -> new CorsConfiguration(corsConfiguration())))
 			.authorizeHttpRequests((auth)->auth
 			.requestMatchers("/auth/home", "/auth/addNewUser", "/auth/generateToken", "formation/get/**", 
-					"formation/categorie/**", "formation/date/**", "/individu/add/formation/**").permitAll()
+					"formation/categorie/**", "formation/date/**", "/individu/add/formation/**", "/evaluation/**").permitAll()
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
 			.requestMatchers("/formation/**").permitAll()
 			.requestMatchers("/demande/**").permitAll()

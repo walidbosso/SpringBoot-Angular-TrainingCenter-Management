@@ -58,17 +58,17 @@ export class InscrireIndividuComponent implements OnInit{
         });
         this.router.navigate(['home']); // redirect to the individus list
         return response.data;
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Some error occurred',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.msgError = 'An error occurred';
-        return error
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Some error occurred',
+        showConfirmButton: false,
+        timer: 1500,
       });
+      this.msgError = 'An error occurred';
+      return error
+    });
   }
 
 }

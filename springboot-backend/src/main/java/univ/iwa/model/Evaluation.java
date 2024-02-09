@@ -18,6 +18,7 @@ public class Evaluation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
+	private String code;
 	private int qualite;
 	private int rythme;
 	private int cours;
@@ -25,6 +26,6 @@ public class Evaluation {
 	private int maitrise;
 	
 	@OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "formation_id")
     private Formation formation;
 }

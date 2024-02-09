@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import univ.iwa.model.Formation;
+import univ.iwa.model.Individu;
 import univ.iwa.service.FormationService;
 
 @RestController
@@ -46,6 +47,17 @@ public class FormationController {
 	@GetMapping("/get/{id}")
 	public Formation getFormationById(@PathVariable Long id) {
 		return formationService.getFormationById(id);
+	}
+	@GetMapping("/countIndividus/{idFormation}")
+	public int countIndividus(@PathVariable Long idFormation) {
+		
+		return formationService.countIndividus(idFormation);
+	}
+	
+	@GetMapping("/findIndividus/{idFormation}")
+	public List<Individu> findIndividusByFormationId(@PathVariable Long idFormation) {
+		
+		return formationService.findIndividusByFormationId(idFormation);
 	}
 
 	@GetMapping("/categorie/{categorie}")

@@ -12,6 +12,11 @@ export class FormationService {
 
     return axios.get('/formation/get', { headers });
   }
+  countIndividus(id: number): Promise<any> {
+    const headers = { 'Content-Type': 'application/json' };
+
+    return axios.get(`/formation/countIndividus/${id}`, { headers });
+  }
 
   getFormationById(id: number): Promise<any> {
     const headers = { 'Content-Type': 'application/json' };
@@ -58,10 +63,8 @@ export class FormationService {
   addFormationWithImage(formation: any, imageFile: File): Promise<any> {
     const headers = { 'Content-Type': 'multipart/form-data' };
 
-    // Create FormData and append formation data
     const formData = new FormData();
     formData.append('formation', JSON.stringify(formation));
-    // Append image file
     formData.append('imageFile', imageFile);
     console.log("addFormationWithImage service  formdata: "+formData+ imageFile+ JSON.stringify(formation));
 
@@ -86,6 +89,7 @@ export class FormationService {
       entreprise: request.entreprise,
       imageName:request.imageName,
       imageData:request.imageData,
+      individus:request.individus,
     };
     return axios.put(`/formation/update`, reqData, { headers });
   }

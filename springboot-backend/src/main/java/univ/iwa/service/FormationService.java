@@ -1,6 +1,7 @@
 package univ.iwa.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,12 +10,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import io.jsonwebtoken.io.IOException;
 import univ.iwa.model.Formation;
+import univ.iwa.model.Individu;
 import univ.iwa.repository.FormationRepository;
 
 @Service
@@ -23,6 +26,9 @@ public class FormationService {
 	@Autowired 
 	private FormationRepository formationRepository;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	//TACHE7
 	public List<Formation> getAllFormations(){
 		return formationRepository.findAll();
@@ -30,6 +36,15 @@ public class FormationService {
 	
 	public Formation getFormationById( Long id) {
 		return formationRepository.findById(id).get(); 
+	}
+	
+	
+	public int countIndividus( Long id) {
+		return formationRepository.countIndividus(id); 
+	}
+	
+	public List<Individu> findIndividusByFormationId( Long id) {
+		return formationRepository.findIndividusByFormationId(id); 
 	}
 	
 	//TACHE2
@@ -105,4 +120,26 @@ public class FormationService {
 		return FormationsPage.getContent();
 	}
 	
+	// i will run the app on 3 AM (3 dlil hahahah) to test if the method will run auto and send the link via email
+	@Scheduled(cron = "0 0 3 * * ?")
+	public List<Formation> checkEndedFormations() {
+		Date today = new Date();
+        List<Formation> endedFormations = formationRepository.findByDateFin(today);
+        
+        endedFormations.forEach( formation -> {
+        	formation.getIndividus().forEach( individu -> {
+        		emailService.sendFeedBack(formation, individu);
+        	});
+        });
+        return endedFormations;
+    }
 }
+
+
+
+
+
+
+
+
+

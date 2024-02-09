@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,11 +48,10 @@ public class Formation {
 
     private String imageName;
 
-//    Formation accepts one and only one formateur, formateur can be in many formation, has a list of formations he is affected to
+    // Formation accepts one and only one formateur, formateur can be in many formation, has a list of formations he is affected to
     @ManyToOne()
     private UserInfo formateur;
     
-    // cascade = {CascadeType.PERSIST, CascadeType.MERGE}
     @ManyToOne()
     private Entreprise entreprise;
 
@@ -68,5 +66,4 @@ public class Formation {
     @OneToMany(mappedBy = "formation") 
 	@JsonIgnore 
 	List<Demande> demandes; 
-    
 }
