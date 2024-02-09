@@ -1,6 +1,5 @@
 package univ.iwa.repository;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +20,5 @@ public interface FormationRepository extends JpaRepository<Formation, Long>{
     List<Formation> findByDateDebutEquals(Date a);
     List<Formation> findByCategorie(String categorie);
     List<Formation> findByNomContainingIgnoreCase(String nom);
-
-	
+    List<Formation> findByDateFin(Date dateFin);
 }

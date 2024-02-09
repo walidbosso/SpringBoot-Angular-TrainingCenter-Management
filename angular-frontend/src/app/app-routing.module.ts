@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { EvaluationComponent } from './components/evaluation/evaluation.component';
 
 const routes: Routes =[
   {
@@ -24,6 +25,7 @@ const routes: Routes =[
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
+  { path:'feedback/:id', component: EvaluationComponent }
 ];
 
 @NgModule({

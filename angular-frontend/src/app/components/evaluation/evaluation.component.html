@@ -1,0 +1,148 @@
+<div class="container mt-5">
+  <div class="card p-4">
+    <div class="text-center mb-4">
+      <h2 class="form-title">Add a heading here</h2>
+    </div>
+    <form
+      [formGroup]="evaluationForm"
+      (ngSubmit)="evaluate()"
+      class="evaluation-form"
+    >
+      <div class="form-group row align-items-center">
+        <label for="code" class="col-md-4 form-label"
+          >Enter your unique code:</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control bg-transparent"
+            formControlName="code"
+            type="text"
+            id="code"
+            required
+          />
+          <div *ngIf="quality.invalid && (quality.dirty || quality.touched)">
+            <label *ngIf="quality.errors?.['required']" style="color: red">
+              Please enter your unique code
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label for="quality" class="col-md-4 form-label"
+          >Educational quality:</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control bg-transparent"
+            formControlName="quality"
+            type="number"
+            id="quality"
+            min="1"
+            max="5"
+            required
+          />
+          <div *ngIf="quality.invalid && (quality.dirty || quality.touched)">
+            <label *ngIf="quality.errors?.['required']" style="color: red">
+              Please rate the educational quality
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label for="pace" class="col-md-4 form-label">Pace:</label>
+        <div class="col-md-8">
+          <input
+            class="form-control bg-transparent"
+            formControlName="pace"
+            type="number"
+            id="pace"
+            min="1"
+            max="5"
+            required
+          />
+          <div *ngIf="pace.invalid && (pace.dirty || pace.touched)">
+            <label *ngIf="pace.errors?.['required']" style="color: red">
+              Please rate the pace
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label for="course" class="col-md-4 form-label"
+          >Course support:</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control bg-transparent"
+            formControlName="course"
+            type="number"
+            id="course"
+            min="1"
+            max="5"
+            required
+          />
+          <div *ngIf="course.invalid && (course.dirty || course.touched)">
+            <label *ngIf="course.errors?.['required']" style="color: red">
+              Please rate the course support
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label for="tp" class="col-md-4 form-label">TP support:</label>
+        <div class="col-md-8">
+          <input
+            class="form-control bg-transparent"
+            formControlName="tp"
+            type="number"
+            id="tp"
+            min="1"
+            max="5"
+            required
+          />
+          <div *ngIf="tp.invalid && (tp.dirty || tp.touched)">
+            <label *ngIf="tp.errors?.['required']" style="color: red">
+              Please rate TP support
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label for="mastery" class="col-md-4 form-label"
+          >Mastery of the subject:</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control bg-transparent"
+            formControlName="mastery"
+            type="number"
+            id="mastery"
+            min="1"
+            max="5"
+            required
+          />
+          <div *ngIf="mastery.invalid && (mastery.dirty || mastery.touched)">
+            <label *ngIf="mastery.errors?.['required']" style="color: red">
+              Please rate mastery of the subject
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group text-center mt-4">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!evaluationForm.valid"
+        >
+          Submit Feedback
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

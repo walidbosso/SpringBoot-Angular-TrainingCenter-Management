@@ -6,17 +6,18 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EvaluationComponent } from './evaluation/evaluation.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule,
-
+    ReactiveFormsModule
   ],
   declarations: [
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    EvaluationComponent
   ],
   exports: [
     NavbarComponent,
