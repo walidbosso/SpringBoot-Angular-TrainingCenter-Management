@@ -50,10 +50,11 @@ public class FormationService {
 
 	 public Formation addFormation(Formation formation, MultipartFile imageFile) throws java.io.IOException {
 	        try {
+	        	if(imageFile!=null) {
 	            formation.setImageName(imageFile.getOriginalFilename());
 
 	            byte[] imageData = imageFile.getBytes();
-	            formation.setImageData(imageData);
+	            formation.setImageData(imageData);}
 
 	            return formationRepository.save(formation);
 	        } catch (IOException e) {

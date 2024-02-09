@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Demande } from 'app/Admin/formation copy/demande';
-import { DemandeService } from 'app/Admin/formation copy/demande.service';
+import { Demande } from 'app/Admin/demande/demande';
+import { DemandeService } from 'app/Admin/demande/demande.service';
 import { Formation } from 'app/Admin/formation/formation';
 import { FormationService } from 'app/Admin/formation/formation.service';
 import { Formator } from 'app/model/formator.model';

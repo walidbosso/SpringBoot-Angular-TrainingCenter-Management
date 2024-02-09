@@ -19,7 +19,7 @@ export class DemandeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getAllDemandes(); // on loand we call the function below
+    this.getAllDemandes(); // on load we call the function below
     this.permission = this.userAuthsService.isAdmin();
   }
 
@@ -42,7 +42,6 @@ export class DemandeComponent implements OnInit {
   }
   fetchImageForDemande(Demande: any): void {
     this.DemandeService.getDemandeById(Demande.id).then((response) => {
-      // Assuming the image data is in response.data.image_data
       Demande.image_data = response.data.image_data;
     });
   }

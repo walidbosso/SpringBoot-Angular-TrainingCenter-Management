@@ -26,7 +26,7 @@ export class DemandeService {
   }
   
  
-  // POST ADD GETS CALLED IN HOME
+  // ADD DEMANDE, first we add formateur to his DB then we take him and add it to demande db
   async addDemande(request: any): Promise<any> {
     console.log("addDemande service " + request);
 
@@ -36,11 +36,9 @@ export class DemandeService {
       // Perform the formateur/add request
       const response = await axios.post(`/formateur/add`, request.formateur, { headers });
 
-      // Handle the response
-      this.formatorData = response.data;
+      this.formatorData = response.data; 
       console.log("/formateur/add RESPONSE " + this.formatorData.name);
 
-      // Build the request data for /demande/add
       const reqData = {
         id: Math.random(),
         formateur: this.formatorData,
@@ -55,7 +53,7 @@ export class DemandeService {
       return demandeResponse;
     } catch (error) {
       console.error(error);
-      throw error; // Rethrow the error to be caught by the calling function/component
+      throw error; 
     }
   }
 

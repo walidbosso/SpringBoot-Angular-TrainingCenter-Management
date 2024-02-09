@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DemandeService } from 'app/Admin/formation copy/demande.service';
+import { DemandeService } from 'app/Admin/demande/demande.service';
 import { UserAuthsService } from 'app/services/user-auths.service';
 
 declare const $: any;
@@ -9,7 +9,7 @@ interface RouteInfo {
   title: string;
   icon: string;
   class: string;
-  role: boolean;
+  role: boolean; 
 }
 
 export let ROUTES: RouteInfo[] = [];

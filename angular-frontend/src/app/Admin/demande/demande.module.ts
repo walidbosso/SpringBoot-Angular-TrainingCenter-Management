@@ -8,9 +8,7 @@ import { DemandeComponent } from './list-demandes/list-demandes.component';
 @NgModule({
   declarations: [
 
-   // DashboardComponent,
     DemandeComponent,
-    // OneDemandeComponent,
   ],
   imports: [
     CommonModule,

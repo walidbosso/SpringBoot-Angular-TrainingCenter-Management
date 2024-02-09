@@ -16,7 +16,7 @@ import { CalendarComponent } from 'app/Admin/calendar/calendar.component';
 import { Logout } from '../../Admin/logout/logout.component';
 import { AdminLayoutComponent } from './admin-layout.component';
 import { NomFormationComponent } from 'app/Admin/formation/nom-formation/nom-formation.component';
-import { DemandeComponent } from 'app/Admin/formation copy/list-demandes/list-demandes.component';
+import { DemandeComponent } from 'app/Admin/demande/list-demandes/list-demandes.component';
 // import { OneDemandeComponent } from 'app/Admin/formation copy/one-demande/one-demande.component';
 
 export const AdminLayoutRoutes: Routes = [
