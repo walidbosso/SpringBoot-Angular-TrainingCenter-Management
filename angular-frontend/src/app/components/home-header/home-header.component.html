@@ -40,79 +40,42 @@
           id="kt_app_header_menu"
           data-kt-menu="true"
         >
-          <!--begin:Menu item-->
           <div
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
             data-kt-menu-placement="bottom-start"
             class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2"
           >
             <!--begin:Menu link-->
-            <a href="#/admin/dashboard">
+            <a *ngIf="permission === true" href="#/admin/dashboard">
               <span class="menu-title menu-link">Admin Dashboard</span>
               <span class="menu-arrow d-lg-none"></span>
             </a>
             <!--end:Menu link-->
           </div>
-          <!--end:Menu item-->
-          <!--begin:Menu item-->
-          <div
+          
+          <!-- <div
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
             data-kt-menu-placement="bottom-start"
             class="menu-item here show"
           >
-            <!--begin:Menu link-->
-            <a href="#/home">
+            <a *ngIf="permission === true" href="#/home">
               <span class="menu-title menu-link">Page d'acceuil</span>
               <span class="menu-arrow d-lg-none"></span>
             </a>
-            <!--end:Menu link-->
-          </div>
-          <!--end:Menu item-->
-
-          <!--begin:Menu item-->
-          <div
-            data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-            data-kt-menu-placement="bottom-start"
-            class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2"
-          >
-            <!--begin:Menu link-->
-            <a href="#/admin/calendar">
-              <span class="menu-title menu-link">Calendrier</span>
-              <span class="menu-arrow d-lg-none"></span>
-            </a>
-            <!--end:Menu link-->
-          </div>
-          <!--end:Menu item-->
-          <!--begin:Menu item-->
-          <div
-            data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-            data-kt-menu-placement="bottom-start"
-            class="menu-item menu-lg-down-accordion me-0 me-lg-2"
-          >
-            <!--begin:Menu link-->
-            <span class="menu-link">
-              <span class="menu-title menu-link">Profile</span>
-              <span class="menu-arrow d-lg-none"></span>
-            </span>
-            <!--end:Menu link-->
-          </div>
-          <!--end:Menu item-->
-          <!--begin:Menu item-->
+          </div> -->
           <div
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
             data-kt-menu-placement="bottom-start"
             class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 ms-auto me-lg-2"
           >
             <!--begin:Menu link-->
-            <a href="#/auth/login">
+            <a *ngIf="!permission" href="#/auth/login">
               <!-- ngIf notoken register/login  -->
               <span class="menu-title menu-link">Login</span>
               <span class="menu-arrow d-lg-none"></span>
             </a>
             <!--end:Menu link-->
           </div>
-
-          <!--end:Menu item-->
         </div>
         <!--end::Menu-->
       </div>

@@ -28,9 +28,9 @@ export class UserAuthsService {
   public isAdminOrAssistant(): boolean {
     return this.getRole() === "ROLE_ADMIN" || this.getRole() === "ROLE_ASSISTANT";
   }
-  // public isLoggedIn(): boolean {
-  //   return this.getRole() !== null && this.getToken() !== null;
-  // }
+  public isLoggedIn(): boolean {
+    return this.getRole() !== null && this.getToken() !== null;
+  }
   // public roleMatch(allowedRoles: string[]): boolean {
   //   const userRole = this.getRole();
 
