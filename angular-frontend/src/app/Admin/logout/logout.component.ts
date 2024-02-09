@@ -7,7 +7,7 @@ import { Component} from '@angular/core';
 export class Logout {
   logout(): void {
     
-    window.location.href = 'https://www.google.com';
+    //window.location.href = 'https://www.google.com';
 
   }
 

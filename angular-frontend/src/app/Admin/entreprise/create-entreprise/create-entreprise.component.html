@@ -11,7 +11,7 @@
                 
                 routerLink="/admin/entreprise/get"
                 class="btn btn-outline-primary float-right"
-                >All Entreprises</a
+                >Liste Des Entreprises</a
               >
             </div>
           </div>
@@ -74,15 +74,16 @@
                   id="email"
                   required
                 />
-
+                <div class="form-group text-center">
                 <button
                   [disabled]="isSubmitting"
                   (click)="addEntreprise()"
                   type="button"
-                  class="form-control btn btn-outline-info mt-3"
+                  class="btn btn-outline-info  mt-3"
                 >
                   Ajouter
                 </button>
+              </div>
               </div>
             </form>
           </div>
