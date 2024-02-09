@@ -63,10 +63,8 @@ export class FormationService {
   addFormationWithImage(formation: any, imageFile: File): Promise<any> {
     const headers = { 'Content-Type': 'multipart/form-data' };
 
-    // Create FormData and append formation data
     const formData = new FormData();
     formData.append('formation', JSON.stringify(formation));
-    // Append image file
     formData.append('imageFile', imageFile);
     console.log("addFormationWithImage service  formdata: "+formData+ imageFile+ JSON.stringify(formation));
 

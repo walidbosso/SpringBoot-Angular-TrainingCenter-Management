@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-one-formation',
   templateUrl: './one-formation.component.html',
   styleUrls: ['./one-formation.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 export class OneFormationComponent {
@@ -23,7 +22,7 @@ export class OneFormationComponent {
     dateFin: null,
     formateur: null,
     entreprise: null,
-    individus: null,
+    // individus: null,
   };
   isSubmitting: boolean = false;
 
@@ -45,7 +44,7 @@ export class OneFormationComponent {
       dateFin: null,
       formateur: null,
       entreprise: null,
-      individus:null
+      // individus:null
     };
   }
   ngOnInit(): void {
@@ -55,7 +54,8 @@ export class OneFormationComponent {
         //console.log(response);
         //WE FILL VARIABLE WITH formation EXTRACTED USING ID PROVIDED IN URL
         this.formation = response.data;
-        console.log(this.formation);
+        // this.formation.nom=response.data.nom;
+        console.log("getFormationById ",this.formation);
       })
       .catch((error) => {
         return error;

@@ -17,7 +17,7 @@ import { Logout } from '../../Admin/logout/logout.component';
 import { AdminLayoutComponent } from './admin-layout.component';
 import { NomFormationComponent } from 'app/Admin/formation/nom-formation/nom-formation.component';
 import { DemandeComponent } from 'app/Admin/formation copy/list-demandes/list-demandes.component';
-import { OneDemandeComponent } from 'app/Admin/formation copy/one-demande/one-demande.component';
+// import { OneDemandeComponent } from 'app/Admin/formation copy/one-demande/one-demande.component';
 
 export const AdminLayoutRoutes: Routes = [
   {
@@ -42,7 +42,7 @@ export const AdminLayoutRoutes: Routes = [
 
       // DEMANDES
       { path: 'demande', component: DemandeComponent },
-      { path: 'demande:id/details', component: OneDemandeComponent },
+      // { path: 'demande:id/details', component: OneDemandeComponent },
 
       // FORMATION
       { path: 'dashboard', component: DashboardComponent },

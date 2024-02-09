@@ -14,7 +14,7 @@ export interface Formation {
   dateFin: Date;
   formateur: Formator;
   entreprise: Entreprise;
-  individus: Individu[];
+  individus?: Individu[];
   imageName?: string;
   imageData?: File;
 }

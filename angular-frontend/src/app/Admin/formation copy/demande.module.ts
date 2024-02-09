@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { DemandeRoutingModule } from './demande-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { OneDemandeComponent } from './one-demande/one-demande.component';
 import { DemandeComponent } from './list-demandes/list-demandes.component';
 
 @NgModule({
@@ -12,7 +10,7 @@ import { DemandeComponent } from './list-demandes/list-demandes.component';
 
    // DashboardComponent,
     DemandeComponent,
-    OneDemandeComponent,
+    // OneDemandeComponent,
   ],
   imports: [
     CommonModule,

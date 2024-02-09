@@ -15,7 +15,7 @@ export class CardHomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllFormations(); // on loand we call the function below
-    this.userAuthsService.clear()
+    // this.userAuthsService.clear()
   }
 
   getAllFormations() {
