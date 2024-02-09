@@ -1,7 +1,13 @@
 <div class="container mt-5">
   <div class="card p-4">
     <div class="text-center mb-4">
-      <h2 class="form-title">Add a heading here</h2>
+      <h2 class="form-title mb-3">Feel free to share your feedback</h2>
+      <div class="alert alert-info alert-dismissible fade show fs-5" role="alert">
+        Please <strong class="fs-3">note</strong> that once feedbacks are submitted, they cannot be edited or
+        re-added. This policy ensures the integrity of the feedback process and
+        maintains fairness for all participants.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     </div>
     <form
       [formGroup]="evaluationForm"
@@ -20,8 +26,8 @@
             id="code"
             required
           />
-          <div *ngIf="quality.invalid && (quality.dirty || quality.touched)">
-            <label *ngIf="quality.errors?.['required']" style="color: red">
+          <div *ngIf="code.invalid && (code.dirty || code.touched)">
+            <label *ngIf="code.errors?.['required']" style="color: red">
               Please enter your unique code
             </label>
           </div>
@@ -38,13 +44,19 @@
             formControlName="quality"
             type="number"
             id="quality"
-            min="1"
-            max="5"
             required
           />
           <div *ngIf="quality.invalid && (quality.dirty || quality.touched)">
             <label *ngIf="quality.errors?.['required']" style="color: red">
               Please rate the educational quality
+            </label>
+            <label
+              *ngIf="
+                numberInputControl.errors.min || numberInputControl.errors.max
+              "
+              style="color: red"
+            >
+              Number must be between 1 and 5.
             </label>
           </div>
         </div>
@@ -58,35 +70,45 @@
             formControlName="pace"
             type="number"
             id="pace"
-            min="1"
-            max="5"
             required
           />
           <div *ngIf="pace.invalid && (pace.dirty || pace.touched)">
             <label *ngIf="pace.errors?.['required']" style="color: red">
               Please rate the pace
             </label>
+            <label
+              *ngIf="
+                numberInputControl.errors.min || numberInputControl.errors.max
+              "
+              style="color: red"
+            >
+              Number must be between 1 and 5.
+            </label>
           </div>
         </div>
       </div>
 
       <div class="form-group row align-items-center">
-        <label for="course" class="col-md-4 form-label"
-          >Course support:</label
-        >
+        <label for="course" class="col-md-4 form-label">Course support:</label>
         <div class="col-md-8">
           <input
             class="form-control bg-transparent"
             formControlName="course"
             type="number"
             id="course"
-            min="1"
-            max="5"
             required
           />
           <div *ngIf="course.invalid && (course.dirty || course.touched)">
             <label *ngIf="course.errors?.['required']" style="color: red">
               Please rate the course support
+            </label>
+            <label
+              *ngIf="
+                numberInputControl.errors.min || numberInputControl.errors.max
+              "
+              style="color: red"
+            >
+              Number must be between 1 and 5.
             </label>
           </div>
         </div>
@@ -100,13 +122,19 @@
             formControlName="tp"
             type="number"
             id="tp"
-            min="1"
-            max="5"
             required
           />
           <div *ngIf="tp.invalid && (tp.dirty || tp.touched)">
             <label *ngIf="tp.errors?.['required']" style="color: red">
               Please rate TP support
+            </label>
+            <label
+              *ngIf="
+                numberInputControl.errors.min || numberInputControl.errors.max
+              "
+              style="color: red"
+            >
+              Number must be between 1 and 5.
             </label>
           </div>
         </div>
@@ -122,13 +150,19 @@
             formControlName="mastery"
             type="number"
             id="mastery"
-            min="1"
-            max="5"
             required
           />
           <div *ngIf="mastery.invalid && (mastery.dirty || mastery.touched)">
             <label *ngIf="mastery.errors?.['required']" style="color: red">
               Please rate mastery of the subject
+            </label>
+            <label
+              *ngIf="
+                numberInputControl.errors.min || numberInputControl.errors.max
+              "
+              style="color: red"
+            >
+              Number must be between 1 and 5.
             </label>
           </div>
         </div>
