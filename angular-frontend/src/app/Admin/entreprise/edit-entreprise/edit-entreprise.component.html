@@ -11,7 +11,7 @@
                 
                 routerLink="/admin/entreprise/get"
                 class="btn btn-outline-warning float-right"
-                >Toutes les Entreprises</a
+                >Liste Des Entreprises</a
               >
             </div>
           </div>
@@ -73,6 +73,7 @@
                   id="email"
                 />
 
+                <div class="form-group text-center">
                 <button
                   [disabled]="isSubmitting"
                   (click)="editentreprise()"
@@ -81,6 +82,7 @@
                 >
                   Modifier
                 </button>
+              </div>
               </div>
             </form>
           </div>

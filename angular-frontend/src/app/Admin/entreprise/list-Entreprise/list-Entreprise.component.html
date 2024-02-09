@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <div class="card">
-          <div class="card-header card-header-danger">
+        <div class="card" style="height: 460px;">
+          <div class="card-header card-header-danger sticky-top fixed">
             <h4 class="card-title">Liste des entreprises</h4>
             <p class="card-category">
               <a
@@ -14,9 +14,9 @@
             </p>
           </div>
           <div class="card-body">
-            <div class="table-responsive">
-              <table class="table text-center">
-                <thead class="text-primary">
+            <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
+              <table class="table">
+                <thead class="text-primary text-center">
                   <th>ID</th>
                   <th>Nom</th>
                   <th>Addresse</th>
@@ -25,7 +25,7 @@
                   <th>E-Mail</th>
                   <th class="text-center" style="text-align: center">Action</th>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                   <tr *ngFor="let entreprise of entreprises">
                     <td>{{ entreprise.id }}</td>
                     <td>{{ entreprise.nom }}</td>

@@ -3,14 +3,10 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
+          <div class="card-header card-header-danger sticky-top fixed">
             <h4 class="card-title">Modifier un individu</h4>
-            <div class="card-header">
-              <a
-                class="btn btn-outline-info float-right"
-                routerLink="/admin/individu/get"
-                >Toutes les Individu</a
-              >
+            <div class="card-category">
+              <a class="btn btn-outline-info float-right" routerLink="/admin/individu/get">Toutes les Individu</a>
             </div>
           </div>
 
@@ -19,72 +15,34 @@
               <div class="form-group">
                 <!-- Nom -->
                 <label for="nom">Nom</label>
-                <input
-                  [(ngModel)]="individu.nom"
-                  class="form-control"
-                  type="text"
-                  name="nom"
-                  id="nom"
-                />
+                <input [(ngModel)]="individu.nom" class="form-control" type="text" name="nom" id="nom" />
 
                 <!-- Prenom -->
                 <label for="prenom">Prenom</label>
-                <input
-                  [(ngModel)]="individu.prenom"
-                  class="form-control"
-                  type="text"
-                  name="prenom"
-                  id="prenom"
-                />
+                <input [(ngModel)]="individu.prenom" class="form-control" type="text" name="prenom" id="prenom" />
 
                 <!-- Email -->
                 <label for="email">E-mail</label>
-                <input
-                  [(ngModel)]="individu.email"
-                  class="form-control"
-                  type="email"
-                  name="email"
-                  id="email"
-                />
+                <input [(ngModel)]="individu.email" class="form-control" type="email" name="email" id="email" />
 
                 <!-- Tele -->
                 <label for="tel">Telephone</label>
-                <input
-                  [(ngModel)]="individu.tele"
-                  class="form-control"
-                  type="text"
-                  name="tel"
-                  id="tel"
-                />
+                <input [(ngModel)]="individu.tele" class="form-control" type="text" name="tel" id="tel" />
 
                 <!-- Ville -->
                 <label for="url">Ville</label>
-                <input
-                  [(ngModel)]="individu.ville"
-                  class="form-control"
-                  type="text"
-                  name="ville"
-                  id="ville"
-                />
+                <input [(ngModel)]="individu.ville" class="form-control" type="text" name="ville" id="ville" />
 
                 <!-- Date Naissance -->
                 <label for="dateNaissance">Date De Naissance</label>
-                <input
-                  [(ngModel)]="individu.dateNaissance"
-                  class="form-control"
-                  type="text"
-                  name="dateNaissance"
-                  id="dateNaissance"
-                />
-
-                <button
-                  [disabled]="isSubmited"
-                  (click)="updateIndividu()"
-                  type="button"
-                  class="btn btn-outline-primary mt-3"
-                >
-                  Modifier
-                </button>
+                <input [(ngModel)]="individu.dateNaissance" class="form-control" type="text" name="dateNaissance"
+                  id="dateNaissance" />
+                <div class="form-group text-center">
+                  <button [disabled]="isSubmited" (click)="updateIndividu()" type="button"
+                    class="btn btn-outline-info  mt-3">
+                    Modifier
+                  </button>
+                </div>
               </div>
             </form>
           </div>
