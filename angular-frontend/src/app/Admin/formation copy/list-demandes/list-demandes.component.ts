@@ -94,7 +94,7 @@ export class DemandeComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('idFormateur,idFormation: ', idFormateur, idFormation);
-        this.DemandeService.accepteDemande(idFormateur, idFormation) //after deletion then
+        this.DemandeService.accepteDemande(idFormateur, idFormation) 
           .then((response) => {
             Swal.fire({
               icon: 'success',

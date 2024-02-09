@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import io.jsonwebtoken.io.IOException;
 import univ.iwa.model.Formation;
+import univ.iwa.model.Individu;
 import univ.iwa.repository.FormationRepository;
 
 @Service
@@ -30,6 +31,15 @@ public class FormationService {
 	
 	public Formation getFormationById( Long id) {
 		return formationRepository.findById(id).get(); 
+	}
+	
+	
+	public int countIndividus( Long id) {
+		return formationRepository.countIndividus(id); 
+	}
+	
+	public List<Individu> findIndividusByFormationId( Long id) {
+		return formationRepository.findIndividusByFormationId(id); 
 	}
 	
 	//TACHE2

@@ -23,6 +23,7 @@ export class OneFormationComponent {
     dateFin: null,
     formateur: null,
     entreprise: null,
+    individus: null,
   };
   isSubmitting: boolean = false;
 
@@ -44,6 +45,7 @@ export class OneFormationComponent {
       dateFin: null,
       formateur: null,
       entreprise: null,
+      individus:null
     };
   }
   ngOnInit(): void {
@@ -60,15 +62,6 @@ export class OneFormationComponent {
       });
   }
 
-  handleImageError() {
-    // Handle image loading error
-    console.log('Error loading image');
-    // Optionally, you can set a default image or take other actions
-  }
-
-  handleImageLoad() {
-    // Handle successful image loading
-    console.log('Image loaded successfully');
-  }
+ 
 
 }

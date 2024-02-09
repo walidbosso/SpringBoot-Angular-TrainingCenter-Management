@@ -4,6 +4,7 @@ import { Formation } from '../formation';
 import Swal from 'sweetalert2';
 import { FormationService } from '../formation.service';
 import { UserAuthsService } from 'app/services/user-auths.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,8 @@ import { UserAuthsService } from 'app/services/user-auths.service';
 export class DashboardComponent implements OnInit {
   formations: Formation[] = [];
   permission: boolean;
+  individusCounts: { [key: number]: number } = {}; 
+
 
   constructor(
     public formationService: FormationService,
@@ -24,16 +27,32 @@ export class DashboardComponent implements OnInit {
     this.permission = this.userAuthsService.isAdmin();
   }
 
+ 
+
+
   getAllFormations() {
     this.formationService
       .getAllFormations()
       .then((response) => {
         console.log(response);
         this.formations = response.data.sort((a, b) => new Date(a.dateDebut).getTime() - new Date(b.dateDebut).getTime());
+        this.fetchIndividusCounts();
       })
       .catch((error) => {
         return error;
       });
+  }
+
+  fetchIndividusCounts() {
+    this.formations.forEach(formation => {
+      axios.get<number>(`http://localhost:8080/formation/countIndividus/${formation.id}`)
+        .then(response => {
+          this.individusCounts[formation.id] = response.data;
+        })
+        .catch(error => {
+          console.error(`Error fetching individus count for formation ${formation.id}:`, error);
+        });
+    });
   }
 
   getImageUrl(imageData: any): any {
