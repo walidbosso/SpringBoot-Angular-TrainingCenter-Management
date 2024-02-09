@@ -2,39 +2,38 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <div class="card" style="height: 430px;">
+        <div class="card" style="height: 460px;">
           <div class="card-header card-header-danger sticky-top fixed">
-            <h4 class="card-title  d-inline-block">Formator List</h4>
-            <button *ngIf="permission" class="btn btn-success" routerLink="/admin/formateur/add">
-              Ajouter Formateur
-            </button>
+            <h4 class="card-title">Formator List</h4>
+            <p class="card-category">
+              <a *ngIf="permission" class="btn btn-outline-primary float-right" routerLink="/admin/formateur/add">
+                Ajouter Formateur
+              </a>
+            </p>
           </div>
           <div class="card-body">
             <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
-              <table class="table" style="height: 400px;">
-                <thead class="text-primary fixed">
+              <table class="table">
+                <thead class="text-primary text-center fixed">
                   <th>ID</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Competances</th>
                   <th>Remarques</th>
-                  <th class="text-right" style="padding-right: 70px;">Actions</th>
+                  <th>Actions</th>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                   <tr *ngFor="let formator of formators">
                     <td>{{formator.id}}</td>
                     <td>{{formator.name}}</td>
                     <td>{{formator.email}}</td>
                     <td>{{formator.competences}}</td>
                     <td>{{formator.remarques}}</td>
-                    <td class="text-right">
-                      <button [routerLink]="['/admin/formateur',formator.id,'update']"
-                        class="btn btn-warning btn-sm mr-2">Edit</button>
-                      <button 
-                        class="btn btn-danger btn-sm" 
-                        (click)="deleteFormator(formator.id)"
-                        *ngIf="permission">
-                        <i class="fas fa-trash-alt"></i> Delete
+                    <td class="text-center">
+                      <a [routerLink]="['/admin/formateur',formator.id,'update']"
+                        class="btn btn-outline-success mx-1">Edit</a>
+                      <button class="btn btn-outline-danger mx-1" (click)="deleteFormator(formator.id)"
+                        *ngIf="permission">Delete
                       </button>
                     </td>
                   </tr>
