@@ -54,21 +54,21 @@ public class UserInfoService implements UserDetailsService {
 		return "assistant added successfully";
 	}
 	
-	@PostConstruct
-	public String formateur(){
-		UserInfo formateur = new UserInfo();
-		formateur.setId(3);
-		formateur.setName("formateur");
-		formateur.setRoles("ROLE_FORMATEUR");
-		formateur.setPassword(encoder.encode("1234"));
-		repository.save(formateur);
-		UserInfo formateur2 = new UserInfo();
-		formateur2.setId(4);
-		formateur2.setName("formateur2");
-		formateur2.setRoles("ROLE_FORMATEUR");
-		formateur2.setPassword(encoder.encode("1234"));
-		repository.save(formateur2);
-		return "2 formateurs added successfully";
-	}
+//	@PostConstruct
+//	public String formateur(){
+//		UserInfo formateur = new UserInfo();
+//		formateur.setId(3);
+//		formateur.setName("formateur");
+//		formateur.setRoles("ROLE_FORMATEUR");
+//		formateur.setPassword(encoder.encode("1234"));
+//		repository.save(formateur);
+//		UserInfo formateur2 = new UserInfo();
+//		formateur2.setId(4);
+//		formateur2.setName("formateur2");
+//		formateur2.setRoles("ROLE_FORMATEUR");
+//		formateur2.setPassword(encoder.encode("1234"));
+//		repository.save(formateur2);
+//		return "2 formateurs added successfully";
+//	}
 	
 } 
