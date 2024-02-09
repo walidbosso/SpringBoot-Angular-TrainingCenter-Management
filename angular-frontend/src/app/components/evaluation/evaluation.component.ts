@@ -24,11 +24,11 @@ export class EvaluationComponent implements OnInit {
 
   evaluationForm = new FormGroup({
     code: new FormControl('', [Validators.required]),
-    quality: new FormControl('', [Validators.required]),
-    pace: new FormControl('', [Validators.required]),
-    course: new FormControl('', [Validators.required]),
-    tp: new FormControl('', [Validators.required]),
-    mastery: new FormControl('', [Validators.required]),
+    quality: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
+    pace: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
+    course: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
+    tp: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
+    mastery: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]),
   });
 
   get code() {

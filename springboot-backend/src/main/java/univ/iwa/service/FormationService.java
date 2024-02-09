@@ -1,7 +1,6 @@
 package univ.iwa.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -121,11 +120,11 @@ public class FormationService {
 	}
 	
 	// i will run the app on 3 AM (3 dlil hahahah) to test if the method will run auto and send the link via email
-	@Scheduled(cron = "0 0 3 * * ?")
+	@Transactional
+	@Scheduled(cron = "0 0 0 * * ?")
 	public List<Formation> checkEndedFormations() {
 		Date today = new Date();
         List<Formation> endedFormations = formationRepository.findByDateFin(today);
-        
         endedFormations.forEach( formation -> {
         	formation.getIndividus().forEach( individu -> {
         		emailService.sendFeedBack(formation, individu);

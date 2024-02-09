@@ -17,7 +17,6 @@ public class EmailService {
 	private JavaMailSender javaMailSender;
 	
 	public void sendFeedBack(Formation formation, Individu individu) {
-		System.out.println(individu.getEmail());
 		try {
 	        MimeMessage message = javaMailSender.createMimeMessage();
 	        MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
