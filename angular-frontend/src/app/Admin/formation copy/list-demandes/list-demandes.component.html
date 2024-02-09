@@ -1,9 +1,10 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-     
-      <div class="col-md-4 mb-14" *ngFor="let Demande of Demandes">
-        <div class="card card-chart">
+      <ng-container *ngFor="let Demande of Demandes">
+      <div class="col-md-4 mb-14" *ngIf="Demande.formation.formateur === null">
+        <ng-container >
+        <div  class="card card-chart">
           <div
             [ngClass]="{
               'card-header-danger': Demande.formateur === null,
@@ -70,8 +71,9 @@
             </button>
           </div>
         </div>
+        </ng-container>
       </div>
-    
+      </ng-container>
     </div>
  <!-- <a href="/admin/dashboard#" title="Scroll up" class="up ml-4 mb-7" style="margin-bottom: 9px; font-size:130%; text-decoration:none; float:left; ">👆</a> -->
    

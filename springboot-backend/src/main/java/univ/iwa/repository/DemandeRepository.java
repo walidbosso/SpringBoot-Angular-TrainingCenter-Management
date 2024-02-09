@@ -22,9 +22,10 @@ public interface DemandeRepository extends JpaRepository<Demande, Long> {
 	void deleteByFormationId(Long formationId);
 	
 
-
-	@Query("SELECT COUNT(d) FROM Demande d")
+// frmateur inside formation inside demande must be null to be to be included in the count
+	@Query("SELECT COUNT(d) FROM Demande d WHERE d.formation.formateur IS NULL")
 	int countLines();
+
 
 
 }
