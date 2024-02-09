@@ -3,13 +3,13 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
+          <div class="card-header card-header-danger sticky-top fixed">
             <h4 class="card-title">Modifier un individu</h4>
-            <div class="card-header">
+            <div class="card-category">
               <a
                 class="btn btn-outline-info float-right"
                 routerLink="/admin/individu/get"
-                >Toutes les Individu</a
+                >Toutes les Individus</a
               >
             </div>
           </div>
@@ -76,15 +76,16 @@
                   name="dateNaissance"
                   id="dateNaissance"
                 />
-
+                <div class="form-group text-center">
                 <button
                   [disabled]="isSubmited"
                   (click)="updateIndividu()"
                   type="button"
-                  class="btn btn-outline-primary mt-3"
+                  class=" btn btn-outline-info  mt-3"
                 >
                   Modifier
                 </button>
+                </div>
               </div>
             </form>
           </div>
