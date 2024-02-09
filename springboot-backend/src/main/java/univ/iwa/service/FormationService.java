@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import io.jsonwebtoken.io.IOException;
 import univ.iwa.model.Formation;
+import univ.iwa.model.Individu;
 import univ.iwa.repository.FormationRepository;
 
 @Service
@@ -37,18 +38,24 @@ public class FormationService {
 		return formationRepository.findById(id).get(); 
 	}
 	
+	
+	public int countIndividus( Long id) {
+		return formationRepository.countIndividus(id); 
+	}
+	
+	public List<Individu> findIndividusByFormationId( Long id) {
+		return formationRepository.findIndividusByFormationId(id); 
+	}
+	
 	//TACHE2
 
 	 public Formation addFormation(Formation formation, MultipartFile imageFile) throws java.io.IOException {
 	        try {
-	            // Set image name
 	            formation.setImageName(imageFile.getOriginalFilename());
 
-	            // Convert image data to byte array
 	            byte[] imageData = imageFile.getBytes();
 	            formation.setImageData(imageData);
 
-	            // Save the formation
 	            return formationRepository.save(formation);
 	        } catch (IOException e) {
 	            throw new RuntimeException("Failed to process image data", e);
@@ -113,7 +120,8 @@ public class FormationService {
 		return FormationsPage.getContent();
 	}
 	
-	@Scheduled(cron = "0 0 12 * * ?")
+	// i will run the app on 3 AM (3 dlil hahahah) to test if the method will run auto and send the link via email
+	@Scheduled(cron = "0 0 3 * * ?")
 	public List<Formation> checkEndedFormations() {
 		Date today = new Date();
         List<Formation> endedFormations = formationRepository.findByDateFin(today);

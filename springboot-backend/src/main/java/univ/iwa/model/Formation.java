@@ -3,7 +3,8 @@ package univ.iwa.model;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
@@ -42,15 +43,15 @@ public class Formation {
 	
 	//IMAGES
 	@Lob
-	@Column(name = "image_data", length = 16777215) // Adjust length based on your database
+	@Column(name = "image_data", length = 16777215) // length based database
     private byte[] imageData;
 
     private String imageName;
 
+    // Formation accepts one and only one formateur, formateur can be in many formation, has a list of formations he is affected to
     @ManyToOne()
     private UserInfo formateur;
     
-    // cascade = {CascadeType.PERSIST, CascadeType.MERGE}
     @ManyToOne()
     private Entreprise entreprise;
 
@@ -61,4 +62,8 @@ public class Formation {
         inverseJoinColumns = @JoinColumn(name = "individu_id")
     )
     private List<Individu> individus;
+    
+    @OneToMany(mappedBy = "formation") 
+	@JsonIgnore 
+	List<Demande> demandes; 
 }

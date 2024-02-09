@@ -37,6 +37,7 @@ public class SecurityConfig {
 					"formation/categorie/**", "formation/date/**", "/individu/add/formation/**", "/evaluation/**").permitAll()
 			.requestMatchers("/entreprise/**").permitAll() //TEST WE WILL CHANGE IT LATER
 			.requestMatchers("/formation/**").permitAll()
+			.requestMatchers("/demande/**").permitAll()
 			.requestMatchers("/auth/assistant/**").permitAll() // .authenticated()
 			.requestMatchers("/auth/admin/**").permitAll()	 // .authenticated()
 			.requestMatchers("/auth/formateur/**").permitAll()	 // .authenticated()

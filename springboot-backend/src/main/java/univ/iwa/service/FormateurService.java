@@ -79,17 +79,17 @@ public class FormateurService {
 	}
 	
 	//TACHE9
-	public Formation addFormateurToFormation( Integer idFormateur,  Formation f,  Long idFormation) {
+	public Formation addFormateurToFormation( Integer idFormateur,  Long idFormation) {
 		UserInfo e= userInfoRepository.findById(idFormateur).orElseThrow(() -> new EntityNotFoundException("UserInfo not found"));
-		if(e.getRoles()!="ROLE_FORMAT") throw new EntityNotFoundException("Not a Formateur");
+//		if(e.getRoles()!="ROLE_FORMAT") throw new EntityNotFoundException("Not a Formateur");
 		
 		//si formation existe deja
 		Formation m2= formationRepository.findById(idFormation).orElse(null);
 		//System.out.println(m2);
-		if(m2==null) {f.setFormateur(e); return formationRepository.save(f);}
-		else {//new formation avec UserInfo
+//		if(m2==null) {f.setFormateur(e); return formationRepository.save(f);}
+//		else {//new formation avec UserInfo
 			m2.setFormateur(e);
 			return formationRepository.save(m2);}
-	}
+//	}
 	
 }

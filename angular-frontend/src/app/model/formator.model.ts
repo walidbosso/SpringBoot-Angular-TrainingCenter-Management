@@ -1,5 +1,5 @@
 export interface Formator{
-    id: number;
+    id?: number;
     name: String;
     email: String;
     password: String;

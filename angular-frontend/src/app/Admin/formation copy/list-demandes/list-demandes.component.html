@@ -1,0 +1,82 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <ng-container *ngFor="let Demande of Demandes">
+      <div class="col-md-4 mb-14" *ngIf="Demande.formation.formateur === null">
+        <ng-container >
+        <div  class="card card-chart">
+          <div
+            [ngClass]="{
+              'card-header-danger': Demande.formateur === null,
+            }"
+          >
+            <div class="img">
+              <img
+                class="pt-4"
+                *ngIf="Demande.formation.imageName !== null; else defaultImage"
+                [src]="
+                  'http://localhost:8080/formation/' + Demande.formation.id + '/image'
+                "
+                width="200"
+                height="150"
+              />
+              <ng-template #defaultImage>
+                <img
+                  class="pt-4"
+                  src="/assets/img/angular.png"
+                  width="200"
+                  height="150"
+                />
+              </ng-template>
+            </div>
+          </div>
+          <div class="card-body">
+          
+
+            <h4 class="card-title">{{ Demande.formation.nom }} </h4>
+            <p class="card-category">
+              <span class="text-success"
+                ><i class="fa fa-long-arrow-up"></i> Date de debut:
+                {{ Demande.formation.dateDebut }} <br/>
+                Cout: {{ Demande.formation.cout }} 
+              </span>
+             
+            </p> <br/><div class="text-gray">
+              Formateur: {{ Demande.formateur.name }} <br/>
+              Mot cles: {{ Demande.formateur.competences }}<br/>
+              E-mail: {{ Demande.formateur.email }}<br/>
+            
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons"> </i>  
+            </div><br/>
+            <button
+            (click)="accepteDemande(Demande.formateur.id,Demande.formation.id)"
+              class="btn btn-outline-success mx-1"
+              >Accepter demande
+            </button>
+            <!-- <a
+              [routerLink]="['/admin/demande', Demande.id, 'detail']"
+              class="btn btn-outline-success mx-1"
+              >Details</a
+            > -->
+            <button
+              *ngIf="permission"
+              (click)="deleteDemande(Demande.id)"
+              class="btn btn-outline-danger mx-1"
+            >
+              Rejeter
+            </button>
+          </div>
+        </div>
+        </ng-container>
+      </div>
+      </ng-container>
+    </div>
+ <!-- <a href="/admin/dashboard#" title="Scroll up" class="up ml-4 mb-7" style="margin-bottom: 9px; font-size:130%; text-decoration:none; float:left; ">👆</a> -->
+   
+  </div>
+  
+</div>

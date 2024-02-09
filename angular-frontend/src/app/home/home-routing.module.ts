@@ -7,6 +7,7 @@ import { CategoryFormationComponent } from './category-formation/category-format
 import { DateFormationComponent } from './date-formation/date-formation.component';
 
 import { InscrireIndividuComponent } from './inscrire-individu/inscrire-individu.component';
+import { InscrireFormateurComponent } from './inscrire-formateur/inscrire-formateur.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
         component: DateFormationComponent,
       },
 
-      { path: 'individu/add/:id/formation', component:InscrireIndividuComponent }
+      { path: 'individu/add/:id/formation', component:InscrireIndividuComponent },
+      { path: 'formateur/add/:id/formation', component:InscrireFormateurComponent }
 
     ]
   },

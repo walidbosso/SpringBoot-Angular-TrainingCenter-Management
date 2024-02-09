@@ -1,5 +1,6 @@
 import { Formator } from 'app/model/formator.model';
 import { Entreprise } from '../entreprise/entreprise';
+import { Individu } from 'app/model/individu.model';
 
 export interface Formation {
   id?: number;
@@ -13,6 +14,7 @@ export interface Formation {
   dateFin: Date;
   formateur: Formator;
   entreprise: Entreprise;
+  individus: Individu[];
   imageName?: string;
   imageData?: File;
 }

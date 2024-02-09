@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formation Detail</title>
+    <title>Demande Detail</title>
    
     <!-- Add any additional stylesheets or fonts if needed -->
     <style>
@@ -30,7 +30,7 @@
         background-color: #285c9b;
       }
 
-      .formation-image {
+      .Demande-image {
         width: 100%;
         height: auto;
       }
@@ -40,7 +40,7 @@
     <div class="container mt-5">
       <div class="card">
         <div class="card-header text-center mt-10">
-          <h2 class="mb-0 pt-6">{{ formation.nom }}</h2>
+          <h2 class="mb-0 pt-6">{{ Demande.id }}</h2>
           <a class="pt-6 float-right  btn btn-outline-info mt-3" routerLink="/admin/dashboard">
             Retour
           </a>
@@ -51,17 +51,17 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="text-muted">Categorie:</label>
-                <p>{{ formation.categorie }}</p>
+                <p>{{ Demande.formateur.name }}</p>
               </div>
 
               <div class="form-group">
                 <label class="text-muted">Objectif:</label>
-                <p>{{ formation.objectif }}</p>
+                <p>{{ Demande.formation.nom }}</p>
               </div>
 
               <div class="form-group">
                 <label class="text-muted">Description:</label>
-                <p>{{ formation.description }}</p>
+                <p>{{ Demande }}</p>
               </div>
             </div>
 
@@ -71,15 +71,16 @@
                   <label class="text-muted">Image:</label><br/>
                   <img
                     class="pt-4"
-                    *ngIf="formation.imageName !== null; else defaultImage"
+                    *ngIf="Demande !== null; else defaultImage"
                     [src]="
-                      'http://localhost:8080/formation/' +
-                      formation.id +
+                      'http://localhost:8080/Demande/' +
+                      Demande.id +
                       '/image'
                     "
                     width="200"
                     height="150"
-                 
+                    (error)="handleImageError()"
+                    (load)="handleImageLoad()"
                   />
                   <ng-template #defaultImage>
                     <img
@@ -98,24 +99,24 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="text-muted">Duree:</label>
-                <p>{{ formation.duree }}</p>
+                <p>{{ Demande }}</p>
               </div>
 
               <div class="form-group">
                 <label class="text-muted">Cout:</label>
-                <p>{{ formation.cout }}</p>
+                <p>{{ Demande }}</p>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
-                <label class="text-muted">Date de debut de formation:</label>
-                <p>{{ formation.dateDebut }}</p>
+                <label class="text-muted">Date de debut de Demande:</label>
+                <p>{{ Demande }}</p>
               </div>
 
               <div class="form-group">
-                <label class="text-muted">Date de fin de formation:</label>
-                <p>{{ formation.dateFin }}</p>
+                <label class="text-muted">Date de fin de Demande:</label>
+                <p>{{ Demande }}</p>
               </div>
             </div>
           </div>
@@ -124,16 +125,16 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="text-muted"
-                  >Nom de formateur associe avec cette formation::</label
+                  >Nom de formateur associe avec cette Demande::</label
                 >
-                <p *ngIf="formation.formateur!==null">{{ formation.formateur.name }}</p>
+                <p *ngIf="Demande.formateur!==null">{{ Demande.formateur.name }}</p>
               </div>
 
               <div class="form-group">
                 <label class="text-muted"
-                  >Entreprise qui benefice de cette formation:</label
+                  >Entreprise qui benefice de cette Demande:</label
                 >
-                <p *ngIf="formation.entreprise!==null">{{ formation.entreprise.nom }}</p>
+                <p *ngIf="Demande!==null">{{ Demande.entreprise.nom }}</p>
               </div>
             </div>
           </div>

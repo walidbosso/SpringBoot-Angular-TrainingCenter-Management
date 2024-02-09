@@ -32,6 +32,7 @@ export class CreateFormationComponent {
     dateFin: null,
     formateur: null,
     entreprise: null,
+    individus: null,
     // image_name:null
   };
 
@@ -170,6 +171,7 @@ export class CreateFormationComponent {
           dateFin: null,
           formateur: null,
           entreprise: null,
+          individus: null,
         };
 
         // Reset selected image
@@ -214,6 +216,7 @@ export class CreateFormationComponent {
           dateFin: null,
           formateur: null,
           entreprise: null,
+          individus: null,
         };
 
         return response;

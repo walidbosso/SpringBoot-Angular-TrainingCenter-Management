@@ -7,6 +7,7 @@ import { EntrepriseService } from 'app/Admin/entreprise/entreprise.service';
 import { Entreprise } from 'app/Admin/entreprise/entreprise';
 import { Formator } from 'app/model/formator.model';
 import { FormatorService } from 'app/services/formators.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-edit-formation',
@@ -32,7 +33,8 @@ export class EditFormationComponent {
     formateur: null,
     entreprise: null,
     imageData:null,
-    imageName:null
+    imageName:null,
+    individus:null
   };
   isSubmitting: boolean = false;
 
@@ -57,7 +59,8 @@ export class EditFormationComponent {
       formateur: null,
       entreprise: null,
       imageData:null,
-      imageName:null
+      imageName:null,
+      individus:null
     };
   }
   ngOnInit(): void {
@@ -119,6 +122,18 @@ export class EditFormationComponent {
     console.log(selectedFormateur);
     this.formation.formateur = selectedFormateur;
   }
+
+  // async fetchIndividus(idFormateur) {
+  //   const url = `http://localhost:8080/formation/findIndividus/${idFormateur}`;
+  
+  //   try {
+  //     const response = await axios.get(url);
+  //     // Assuming the response data has a property named 'individus'
+  //     this.formation.individus = response.data.individus;
+  //     console.log(this.formation.individus); // Check the console for the result
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }}
   //FORM CALLS THIS FUNCTION with data from inputs
   editFormation() {
     console.log(this.formation);
@@ -128,9 +143,10 @@ export class EditFormationComponent {
       .getFormationById(this.route.snapshot.params['id'])
       .then((response) => {
 
+        this.formation.individus = response.data.individus;
         this.formation.imageData = response.data.imageData;
         this.formation.imageName = response.data.imageName;
-        console.log(this.formation);
+        console.log(this.formation.individus[0].nom);
       })
       .catch((error) => { console.log(error);
       });
