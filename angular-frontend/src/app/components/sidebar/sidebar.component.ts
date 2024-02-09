@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemandeService } from 'app/Admin/formation copy/demande.service';
 import { UserAuthsService } from 'app/services/user-auths.service';
-import { Router } from 'express';
 
 declare const $: any;
 
@@ -24,7 +23,7 @@ export class SidebarComponent implements OnInit {
   menuItems: any[];
   countLine: number = 0;
 
-  constructor(private userAuthsService: UserAuthsService, public DemandeService: DemandeService, private router: Router) {}
+  constructor(private userAuthsService: UserAuthsService, public DemandeService: DemandeService) {}
 
   ngOnInit() {
     this.DemandeService.countLines()
@@ -48,7 +47,7 @@ export class SidebarComponent implements OnInit {
       { path: '/admin/calendar', title: 'Calendar', icon: 'event', class: '', role: this.userAuthsService.isAdminOrAssistant() },
       { path: '/admin/demande', title: 'Demandes Externes (' + this.countLine +')', icon: 'event', class: '', role: this.userAuthsService.isAdminOrAssistant() },
       { path: '/home', title: 'Page Acceuil', icon: 'dashboard', class: '', role: true },
-      { path: '/home', title: 'Logout', icon: 'logout', class: 'active-pro', role: this.userAuthsService.isAdminOrAssistant() },
+      { path: '/admin/logout', title: 'Logout', icon: 'logout', class: 'active-pro', role: this.userAuthsService.isAdminOrAssistant() },
     ];
   }
 

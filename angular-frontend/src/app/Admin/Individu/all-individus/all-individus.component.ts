@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class AllIndividusComponent implements OnInit {
   individus: Individu[] = [];
   permission: boolean;
+  index: number = 0;
 
   constructor(
     private individuService: IndividuService,
@@ -24,9 +25,9 @@ export class AllIndividusComponent implements OnInit {
   }
 
   // This method is used to generate rows numbers in the individus list instead of displaying the id 
-  // increment(): number {
-  //   return this.index += 1;
-  // }
+  increment(): number {
+    return this.index += 1;
+  }
 
   getAllIndividus() {
     this.individuService.getAllIndividus().then((response) => {

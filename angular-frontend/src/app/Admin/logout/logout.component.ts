@@ -5,10 +5,10 @@ import { Component} from '@angular/core';
   templateUrl: './logout.component.html'
 })
 export class Logout {
-  router: any;
   logout(): void {
     
-    //this.router.navigate(['/home']);
+    window.location.href = 'https://www.google.com';
+
   }
 
 }
