@@ -1,13 +1,13 @@
 <div class="container mt-5">
-  <div class="card p-4">
-    <div class="text-center mb-4">
-      <h2 class="form-title mb-3">Feel free to share your feedback</h2>
-      <div class="alert alert-info alert-dismissible fade show fs-5" role="alert">
-        Please <strong class="fs-3">note</strong> that once feedbacks are submitted, they cannot be edited or
-        re-added. This policy ensures the integrity of the feedback process and
-        maintains fairness for all participants.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+  <div class="card p-4 mt-5">
+    <div class="text-center my-4">
+      <h2 class="form-title text-primary fw-bold mb-3">Feel free to share your feedback</h2>
+    </div>
+    <div class="alert alert-info alert-dismissible fade show fs-5" role="alert">
+      Please <strong class="fs-3">note</strong> that once feedbacks are submitted, they cannot be edited or
+      re-added. This policy ensures the integrity of the feedback process and
+      maintains fairness for all participants.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <form
       [formGroup]="evaluationForm"
@@ -23,6 +23,7 @@
             class="form-control bg-transparent"
             formControlName="code"
             type="text"
+            placeholder="Enter your 10-character code here..."
             id="code"
             required
           />
@@ -36,13 +37,14 @@
 
       <div class="form-group row align-items-center">
         <label for="quality" class="col-md-4 form-label"
-          >Educational quality:</label
+          > Rate the educational quality of the trainer:</label
         >
         <div class="col-md-8">
           <input
             class="form-control bg-transparent"
             formControlName="quality"
             type="number"
+            placeholder="Number (1-5)..."
             id="quality"
             required
           />
@@ -63,12 +65,13 @@
       </div>
 
       <div class="form-group row align-items-center">
-        <label for="pace" class="col-md-4 form-label">Pace:</label>
+        <label for="pace" class="col-md-4 form-label">Rate the pace of the trainer:</label>
         <div class="col-md-8">
           <input
             class="form-control bg-transparent"
             formControlName="pace"
             type="number"
+            placeholder="Number (1-5)..."
             id="pace"
             required
           />
@@ -89,12 +92,13 @@
       </div>
 
       <div class="form-group row align-items-center">
-        <label for="course" class="col-md-4 form-label">Course support:</label>
+        <label for="course" class="col-md-4 form-label">Rate the course support:</label>
         <div class="col-md-8">
           <input
             class="form-control bg-transparent"
             formControlName="course"
             type="number"
+            placeholder="Number (1-5)..."
             id="course"
             required
           />
@@ -115,12 +119,13 @@
       </div>
 
       <div class="form-group row align-items-center">
-        <label for="tp" class="col-md-4 form-label">TP support:</label>
+        <label for="tp" class="col-md-4 form-label">"Rate the TP support:</label>
         <div class="col-md-8">
           <input
             class="form-control bg-transparent"
             formControlName="tp"
             type="number"
+            placeholder="Number (1-5)..."
             id="tp"
             required
           />
@@ -142,13 +147,14 @@
 
       <div class="form-group row align-items-center">
         <label for="mastery" class="col-md-4 form-label"
-          >Mastery of the subject:</label
+          >Rate the trainer's mastery of the subject:</label
         >
         <div class="col-md-8">
           <input
             class="form-control bg-transparent"
             formControlName="mastery"
             type="number"
+            placeholder="Number (1-5)..."
             id="mastery"
             required
           />
@@ -162,7 +168,7 @@
               "
               style="color: red"
             >
-              Number must be between 1 and 5.
+              Number must be between 1 and 5
             </label>
           </div>
         </div>

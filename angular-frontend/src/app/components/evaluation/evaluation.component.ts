@@ -51,7 +51,6 @@ export class EvaluationComponent implements OnInit {
   }
 
   evaluate() {
-    console.log(this.evaluationForm.value);
     this.individuService.evaluate(this.idFormation, this.evaluationForm.value).then(
       (response: any) => {
         Swal.fire({
