@@ -197,7 +197,6 @@ Your feedback and contributions are invaluable! Feel free to open issues, submit
 <br/>
 
 
-<p align="center"><a href="https://github.com/walidbosso/SpringBoot-Angular-TrainingCenter-Management?tab=readme-ov-file#"><img src="https://img.shields.io/badge/Back%20to%20top--lightgrey?style=social" alt="Back to top" height="20"/></a></p>
 
 <a href = "https://github.com/walidbosso">
   <img src = "light.gif" width="100%"/>
@@ -210,6 +209,9 @@ Your feedback and contributions are invaluable! Feel free to open issues, submit
 <a href = "https://github.com/walidbosso">
   <img src = "light.gif" width="100%"/>
 </a>
+
+<p align="center"><a href="#"><img src="https://img.shields.io/badge/Back%20to%20top--lightgrey?style=social" alt="Back to top" height="20"/></a></p>
+<p ><a href="#top"><img src="https://img.shields.io/static/v1?label&message=Back+to+Top&color=0b6ab3&style=flat&logo=java" alt="Back to Top" align="center" /></a></p>
 
 
 
